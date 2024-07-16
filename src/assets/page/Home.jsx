@@ -15,6 +15,13 @@ import Bandung from "../img/bandung.png";
 import Semarang from "../img/semarang.png";
 import Solo from "../img/solo.png";
 import Yogyakarta from "../img/yogyakarta.png";
+import HomeOne from "../img/home1.png";
+import HomeTwo from "../img/home2.png";
+import HomeThree from "../img/home3.png";
+import HomeFour from "../img/home4.png";
+import HomeFive from "../img/home5.png";
+import HomeSix from "../img/home6.png";
+import Footer from "../component/Footer";
 
 function Home() {
   return (
@@ -296,8 +303,10 @@ function Home() {
           <li>Festival</li>
           <li>Fashion</li>
         </div>
-        <div>
-          <button className="bg-white text-gray-400">←</button>
+        <div className="flex justify-center items-center">
+          <button className=" text-gray-400 h-[30px] bg-[#1A3C4414] w-[50px] text-white rounded-[10px]">
+            ←
+          </button>
           <div className="flex h-[500px] gap-[30px] justify-center mb-[50px] relative overflow-scroll">
             <div>
               <div className="m-[50px]">
@@ -399,6 +408,45 @@ function Home() {
               </div>
             </div>
           </div>
+          <button className="text-gray-400 h-[30px] bg-blue-400 w-[50px] text-black rounded-[10px]">
+            →
+          </button>
+        </div>
+        <div className="mt-[175px] bg-black p-[89px]">
+          <div className="flex items-center text-white flex-col gap-[25px] mb-[50px]">
+            <div className="flex font-bold gap-2 p-[10px] text-[12px] text-white bg-[#C1C5D0] h-[35px] w-[130px] justify-center rounded-2xl">
+              <div>——</div>
+              <div>CATEGORY</div>
+            </div>
+            <div className="font-bold text-[50px]">
+              Browse Events By Category
+            </div>
+            <p className="text-[#C1C5D0]">By companies like :</p>
+          </div>
+          <div className="flex gap-[30px] justify-center mt-[93px]">
+            <div>
+              <img src={HomeOne}></img>
+            </div>
+            <div>
+              <img src={HomeTwo}></img>
+            </div>
+            <div>
+              <img src={HomeThree}></img>
+            </div>
+            <div>
+              <img src={HomeFour}></img>
+            </div>
+            <div>
+              <img src={HomeFive}></img>
+            </div>
+            <div>
+              <img src={HomeSix}></img>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col  gap-[144px]">
+          <Footer />
+          <div>© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
     </div>
