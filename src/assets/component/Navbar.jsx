@@ -10,9 +10,9 @@ function Navbar() {
         <Link to="/">
           <li>Home</li>
         </Link>
-
-        <li>Create Event</li>
-
+        <Link to="/manage-event">
+          <li>Create Event</li>
+        </Link>
         <li>Location</li>
       </div>
       <div className="flex gap-5 w-[226px] items-center">

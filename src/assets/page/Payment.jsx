@@ -15,7 +15,7 @@ function Payment() {
     <div className="">
       <NavbarProfile />
       <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-full gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
+        <div className="flex w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
           <div className="flex flex-col  w-[60%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
             <div className="w-full">

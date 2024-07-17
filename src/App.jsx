@@ -6,6 +6,10 @@ import Booking from "./assets/page/Booking";
 import Payment from "./assets/page/Payment";
 import Profile from "./assets/page/Profile";
 import ChangePassword from "./assets/page/ChangePassword";
+import MyBooking from "./assets/page/MyBooking";
+import MyWihslist from "./assets/page/MyWihslist";
+import ManageEvent from "./assets/page/ManageEvent";
+import CreateEvent from "./assets/component/CreateEvent";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const page = createBrowserRouter([
@@ -36,6 +40,22 @@ const page = createBrowserRouter([
   {
     path: "/change-password",
     element: <ChangePassword />,
+  },
+  {
+    path: "/my-booking",
+    element: <MyBooking />,
+  },
+  {
+    path: "/my-wihslist",
+    element: <MyWihslist />,
+  },
+  {
+    path: "/manage-event",
+    element: <ManageEvent />,
+  },
+  {
+    path: "/create-event",
+    element: <CreateEvent />,
   },
 ]);
 function App() {

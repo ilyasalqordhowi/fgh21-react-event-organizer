@@ -13,7 +13,7 @@ function Booking() {
     <div className="">
       <NavbarProfile />
       <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-full gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
+        <div className="flex w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
           <div className="flex flex-col items-center w-[60%] gap-[10px]">
             <img className="w-full rounded-[20px]" src={BookingOne}></img>
           </div>

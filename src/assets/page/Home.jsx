@@ -65,55 +65,46 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex h-[500px] gap-[30px] mb-[50px] relative overflow-scroll">
-          <div>
-            <Link to="/detail">
-              <div className="m-[50px] w-[375px]">
-                <div className="relative overflow-hidden">
+        <div className="flex  gap-[30px] mb-[50px] ml-[100px] relative overflow-x-scroll">
+          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+            <img src={EventOne} alt="" className="w-full h-full" />
+            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                <h1 className="font-bold  text-[30px]">
+                  Sights & Sounds Exhibition
+                </h1>
+                <div className="flex mt-[30px] ">
                   <img
-                    className="rounded-[10%] brightness-50  object-cover "
-                    src={EventOne}
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleOne}
                   ></img>
-                </div>
-                <div className="absolute text-white  top-20 p-8 flex flex-col gap-[5px] ">
-                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                  <h1 className="font-bold  text-[30px]">
-                    Sights & Sounds
-                    <h2>Exhibition</h2>
-                  </h1>
-                  <div className="flex mt-[30px] relative w-full">
-                    <div className=" w-8 ml-[-10px] border border-slate-300">
-                      <img className="rounded-full" src={PeopleOne}></img>
-                    </div>
-                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
-                      <img src={PeopleTwo}></img>
-                    </div>
-                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
-                      <img src={PeopleThree}></img>
-                    </div>
-                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
-                      <img src={PeopleFour}></img>
-                      <div className="absolute top-0 rounded-full let-0 w-[25px] h-full bg-orange-400 flex  items-center">
-                        +62
-                      </div>
-                    </div>
+                  <img
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleTwo}
+                  ></img>
+                  <img
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleThree}
+                  ></img>
+
+                  <img
+                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleFour}
+                  ></img>
+                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                    +62
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
-          <div>
-            <div className="m-[50px]">
-              <img
-                className="rounded-[10%] brightness-50 w-[20%] h-[420px] absolute "
-                src={EventTwo}
-              ></img>
-              <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+            <img src={EventTwo} alt="" className="w-full h-full" />
+            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                 <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  See it in Gold
-                  <h2>Exhibition</h2>
-                </h1>
+                <h1 className="font-bold  text-[30px]">See it in Gold Class</h1>
                 <div className="flex mt-[30px] ">
                   <img
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
@@ -127,25 +118,25 @@ function Home() {
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
                     src={PeopleThree}
                   ></img>
+
                   <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                     src={PeopleFour}
                   ></img>
+                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                    +62
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <div className="m-[50px]">
-              <img
-                className="rounded-[10%] brightness-50 absolute "
-                src={EventOne}
-              ></img>
-              <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+            <img src={EventOne} alt="" className="w-full h-full" />
+            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                 <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                 <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds
-                  <h2>Exhibition</h2>
+                  Sights & Sounds Exhibition
                 </h1>
                 <div className="flex mt-[30px] ">
                   <img
@@ -160,26 +151,24 @@ function Home() {
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
                     src={PeopleThree}
                   ></img>
+
                   <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                     src={PeopleFour}
                   ></img>
+                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                    +62
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <div className="m-[50px]">
-              <img
-                className="rounded-[10%] brightness-50 w-[20%] h-[420px] absolute "
-                src={EventTwo}
-              ></img>
-              <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
-                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds
-                  <h2>Exhibition</h2>
-                </h1>
+          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+            <img src={EventTwo} alt="" className="w-full h-full" />
+            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
+                <h1 className="font-bold  text-[30px]">See it in Gold Class</h1>
                 <div className="flex mt-[30px] ">
                   <img
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
@@ -193,25 +182,25 @@ function Home() {
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
                     src={PeopleThree}
                   ></img>
+
                   <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                     src={PeopleFour}
                   ></img>
+                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                    +62
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <div className="m-[50px]">
-              <img
-                className="rounded-[10%] brightness-50 absolute "
-                src={EventOne}
-              ></img>
-              <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+            <img src={EventOne} alt="" className="w-full h-full" />
+            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                 <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                 <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds
-                  <h2>Exhibition</h2>
+                  Sights & Sounds Exhibition
                 </h1>
                 <div className="flex mt-[30px] ">
                   <img
@@ -226,10 +215,14 @@ function Home() {
                     className="rounded-full w-8 ml-[-10px] border border-slate-300"
                     src={PeopleThree}
                   ></img>
+
                   <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                     src={PeopleFour}
                   ></img>
+                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                    +62
+                  </div>
                 </div>
               </div>
             </div>
@@ -307,22 +300,18 @@ function Home() {
           <li>Festival</li>
           <li>Fashion</li>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center mt-[50px] items-center">
           <button className=" text-gray-400 h-[30px] bg-[#1A3C4414] w-[50px] text-white rounded-[10px]">
             ←
           </button>
           <div className="flex h-[500px] gap-[30px] justify-center mb-[50px] relative overflow-scroll">
-            <div>
-              <div className="m-[50px]">
-                <img
-                  className="rounded-[10%] brightness-50 absolute "
-                  src={EventOne}
-                ></img>
-                <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
-                    Sights & Sounds
-                    <h2>Exhibition</h2>
+                    Sights & Sounds Exhibition
                   </h1>
                   <div className="flex mt-[30px] ">
                     <img
@@ -337,25 +326,25 @@ function Home() {
                       className="rounded-full w-8 ml-[-10px] border border-slate-300"
                       src={PeopleThree}
                     ></img>
+
                     <img
-                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                       src={PeopleFour}
                     ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div>
-              <div className="m-[50px]">
-                <img
-                  className="rounded-[10%] brightness-50 w-[20%] h-[420px] absolute "
-                  src={EventTwo}
-                ></img>
-                <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventTwo} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
-                    See it in Gold
-                    <h2>Exhibition</h2>
+                    See it in Gold Class
                   </h1>
                   <div className="flex mt-[30px] ">
                     <img
@@ -370,25 +359,25 @@ function Home() {
                       className="rounded-full w-8 ml-[-10px] border border-slate-300"
                       src={PeopleThree}
                     ></img>
+
                     <img
-                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                       src={PeopleFour}
                     ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex">
-              <div className="m-[50px]">
-                <img
-                  className="rounded-[10%] brightness-50 absolute "
-                  src={EventOne}
-                ></img>
-                <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
-                    Sights & Sounds
-                    <h2>Exhibition</h2>
+                    Sights & Sounds Exhibition
                   </h1>
                   <div className="flex mt-[30px] ">
                     <img
@@ -403,10 +392,14 @@ function Home() {
                       className="rounded-full w-8 ml-[-10px] border border-slate-300"
                       src={PeopleThree}
                     ></img>
+
                     <img
-                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
                       src={PeopleFour}
                     ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>

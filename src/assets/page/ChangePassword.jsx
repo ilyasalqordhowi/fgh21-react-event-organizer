@@ -12,19 +12,31 @@ function ChangePassword() {
         <div className="flex w-[242px] h-[508px] w-[242px] h-[508px]">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
+        <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
           <div className="font-bold text-[20px]">Change Password</div>
-          <div className="flex gap-[40px]">
-            <div className="flex flex-col">
+          <div className="w-full flex gap-[40px]">
+            <div className="flex flex-col gap-[50px]">
               <label>Old Password</label>
               <label>New Password</label>
               <label>Confirm Password</label>
             </div>
-            <div className="flex flex-col">
-              <input></input>
-              <input></input>
-              <input></input>
+            <div className="flex flex-col gap-[33px] ">
+              <input
+                placeholder="Input Old Password ..."
+                className="border w-[619px] p-[6px] rounded-[10px]"
+              ></input>
+              <input
+                placeholder="input New Password"
+                className="border w-[619px] p-[6px] rounded-[10px]"
+              ></input>
+              <input
+                placeholder="Input Confirm Password ..."
+                className="border w-[619px] p-[6px] rounded-[10px]"
+              ></input>
             </div>
+          </div>
+          <div className="bg-blue-500 text-white text-[20px] p-[10px] rounded-[10px] flex justify-center items-center">
+            <button>Update</button>
           </div>
         </div>
       </div>

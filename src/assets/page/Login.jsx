@@ -15,9 +15,8 @@ function Login() {
       name === "Admin" &&
       email === "Admin@mail.com" &&
       password === "Admin1234" &&
-      confirmPassword === "Admin123"
+      confirmPassword === "Admin1234"
     ) {
-      window.alert("benar");
       navigate("/");
     } else {
       window.alert("salah");
@@ -72,7 +71,7 @@ function Login() {
             <p>Accept terms and condition</p>
           </div>
           <button
-            type="button"
+            type="submit"
             className="bg-[#3366FF] rounded-2xl w-full text-white h-[40px]"
           >
             Sign Up
