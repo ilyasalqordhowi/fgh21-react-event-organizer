@@ -10,6 +10,7 @@ import PeopleThree from "../img/people3.png";
 import PeopleFour from "../img/people4.png";
 import Map from "../img/map.png";
 import Footer from "../component/Footer";
+import { Link } from "react-router-dom";
 
 function Event() {
   return (
@@ -17,18 +18,18 @@ function Event() {
       <NavbarProfile />
       <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
         <div className="flex w-[1100px] gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
-          <div className="flex flex-col items-center gap-[10px]">
-            <img className="w-[375px] rounded-[20px]" src={EventOne}></img>
+          <div className="flex flex-col items-center gap-[10px] w-[60%]">
+            <img className="w-full rounded-[20px]" src={EventOne}></img>
             <div className="flex">
               <img className="w-[20px]" src={Heart}></img>
               <div>Add to Wishlist</div>
             </div>
           </div>
-          <div className="flex flex-col gap-[30px]">
+          <div className="flex flex-col w-[40%] gap-[30px]">
             <h1 className="font-bold w-44 text-[20px]">
               Sights & Sounds Exhibition
             </h1>
-            <div className="flex gap-[89px]">
+            <div className="flex text-[15px] w-full gap-[89px]">
               <div className="flex gap-[10px]">
                 <img src={Location}></img>
                 <div>Jakarta, Indonesia</div>
@@ -71,11 +72,16 @@ function Event() {
               <img className="w-[315px]" src={Map}></img>
             </div>
             <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] w-[375px]">
-              <button className="p-[20px]">Buy Tickets</button>
+              <Link to="/booking">
+                <button className="p-[20px]">Buy Tickets</button>
+              </Link>
             </div>
           </div>
         </div>
-        <Footer />
+        <div className="flex flex-col  gap-[144px]">
+          <Footer />
+          <div>© 2020 Wetick All Rights Reserved</div>
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,29 @@
 import React from "react";
 import People from "../img/people.png";
 import Logo from "../component/Logoo";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  function doLogin(event) {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const password = event.target.password.value;
+    const email = event.target.email.value;
+    const confirmPassword = event.target.confirmPassword.value;
+    if (
+      name === "Admin" &&
+      email === "Admin@mail.com" &&
+      password === "Admin1234" &&
+      confirmPassword === "Admin123"
+    ) {
+      window.alert("benar");
+      navigate("/");
+    } else {
+      window.alert("salah");
+    }
+  }
+
   return (
     <div className="flex h-[100vh]">
       <div className="bg-[#3366FF] w-8/12 flex items-center justify-center">
@@ -19,35 +40,44 @@ function Login() {
             <span className="text-[#3366FF]">Log In</span>
           </div>
         </div>
-        <div className="w-full flex flex-col gap-5">
-          <input
-            className="w-full border rounded-2xl p-[10px]"
-            type="text"
-            placeholder="Full Name"
-          ></input>
-          <input
-            className="w-full border rounded-2xl p-[10px]"
-            type="email"
-            placeholder="Email"
-          ></input>
-          <input
-            className="w-full border rounded-2xl p-[10px]"
-            type="password"
-            placeholder="Password"
-          ></input>
-          <input
-            className="w-full border rounded-2xl p-[10px]"
-            type="password"
-            placeholder="Confirm Password"
-          ></input>
-        </div>
-        <div className="flex w-full gap-5">
-          <input type="checkbox" className="border-sky-500"></input>
-          <p>Accept terms and condition</p>
-        </div>
-        <button className="bg-[#3366FF] rounded-2xl w-full text-white h-[40px]">
-          Sign Up
-        </button>
+        <form onSubmit={doLogin}>
+          <div className="w-full flex flex-col gap-5">
+            <input
+              className="w-full border rounded-2xl p-[10px]"
+              name="name"
+              type="text"
+              placeholder="Full Name"
+            ></input>
+            <input
+              className="w-full border rounded-2xl p-[10px]"
+              name="email"
+              type="email"
+              placeholder="Email"
+            ></input>
+            <input
+              className="w-full border rounded-2xl p-[10px]"
+              name="password"
+              type="password"
+              placeholder="Password"
+            ></input>
+            <input
+              className="w-full border rounded-2xl p-[10px]"
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+            ></input>
+          </div>
+          <div className="flex w-full gap-5">
+            <input type="checkbox" className="border-sky-500"></input>
+            <p>Accept terms and condition</p>
+          </div>
+          <button
+            type="button"
+            className="bg-[#3366FF] rounded-2xl w-full text-white h-[40px]"
+          >
+            Sign Up
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -1,18 +1,25 @@
 import React from "react";
 import Logo from "./Logoo";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <div className="flex justify-between items-center w-full">
       <Logo />
       <div className="flex list-none  gap-5">
-        <li>Home</li>
+        <Link to="/">
+          <li>Home</li>
+        </Link>
+
         <li>Create Event</li>
+
         <li>Location</li>
       </div>
       <div className="flex gap-5 w-[226px] items-center">
         <div className="bg-white rounded-2xl w-[169px]">
-          <button>Log in</button>
+          <Link to="/Login">
+            <button>Log in</button>
+          </Link>
         </div>
         <div className=" bg-[#3366FF] text-white rounded-xl text-center p-[5px] w-[169px]">
           <button>Sign Up</button>

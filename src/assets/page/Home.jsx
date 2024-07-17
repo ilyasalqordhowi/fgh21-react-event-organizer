@@ -22,6 +22,7 @@ import HomeFour from "../img/home4.png";
 import HomeFive from "../img/home5.png";
 import HomeSix from "../img/home6.png";
 import Footer from "../component/Footer";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -66,37 +67,40 @@ function Home() {
         </div>
         <div className="flex h-[500px] gap-[30px] mb-[50px] relative overflow-scroll">
           <div>
-            <div className="m-[50px]">
-              <img
-                className="rounded-[10%] brightness-50 absolute "
-                src={EventOne}
-              ></img>
-              <div className="relative text-white  top-20 p-8 flex flex-col gap-[5px] ">
-                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds
-                  <h2>Exhibition</h2>
-                </h1>
-                <div className="flex mt-[30px] ">
+            <Link to="/detail">
+              <div className="m-[50px] w-[375px]">
+                <div className="relative overflow-hidden">
                   <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
+                    className="rounded-[10%] brightness-50  object-cover "
+                    src={EventOne}
                   ></img>
                 </div>
+                <div className="absolute text-white  top-20 p-8 flex flex-col gap-[5px] ">
+                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    Sights & Sounds
+                    <h2>Exhibition</h2>
+                  </h1>
+                  <div className="flex mt-[30px] relative w-full">
+                    <div className=" w-8 ml-[-10px] border border-slate-300">
+                      <img className="rounded-full" src={PeopleOne}></img>
+                    </div>
+                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
+                      <img src={PeopleTwo}></img>
+                    </div>
+                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
+                      <img src={PeopleThree}></img>
+                    </div>
+                    <div className="rounded-full w-8 ml-[-10px] border border-slate-300">
+                      <img src={PeopleFour}></img>
+                      <div className="absolute top-0 rounded-full let-0 w-[25px] h-full bg-orange-400 flex  items-center">
+                        +62
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div>
             <div className="m-[50px]">
