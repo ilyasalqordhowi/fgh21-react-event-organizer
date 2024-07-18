@@ -14,56 +14,58 @@ import { Link } from "react-router-dom";
 
 function Event() {
   return (
-    <div className="">
+    <div className="flex flex-col bg-[#F4F7FF]">
       <NavbarProfile />
-      <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-[1100px] gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
-          <div className="flex flex-col items-center gap-[10px] w-[60%]">
+      <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#F4F7FF]">
+        <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-white rounded-[20px] ">
+          <div className="flex flex-col items-center gap-[10px]  w-full">
             <img className="w-full rounded-[20px]" src={EventOne}></img>
-            <div className="flex">
+            <div className="md:flex hidden">
               <img className="w-[20px]" src={Heart}></img>
               <div>Add to Wishlist</div>
             </div>
           </div>
-          <div className="flex flex-col w-[40%] gap-[30px]">
-            <h1 className="font-bold w-44 text-[20px]">
-              Sights & Sounds Exhibition
-            </h1>
-            <div className="flex text-[15px] w-full gap-[8px]">
-              <div className="flex gap-[10px]">
-                <img src={Location}></img>
-                <div>Jakarta, Indonesia</div>
+          <div className="flex flex-col md:relative absolute w-[40%] gap-[30px]">
+            <div className="flex flex-col md:text-black text-white md:mt-[0] md:mb-[0] mt-[100px] mb-[200px] ">
+              <h1 className="font-bold w-full md:text-[30px] text-[40px]">
+                Sights & Sounds Exhibition
+              </h1>
+              <div className="md:flex flex flex-col md:text-[15px] text-[13px] w-full gap-[8px]">
+                <div className="flex gap-[10px]">
+                  <img src={Location}></img>
+                  <div>Jakarta, Indonesia</div>
+                </div>
+                <div className="flex gap-[10px]">
+                  <img src={Clock}></img>
+                  <div>Wed, 15 Nov, 4:00 PM</div>
+                </div>
               </div>
-              <div className="flex gap-[10px]">
-                <img src={Clock}></img>
-                <div>Wed, 15 Nov, 4:00 PM</div>
+              <div className="w-[40px]">
+                <div>Attendees</div>
+                <div className="flex mb-[100px] mt-[30px] ">
+                  <img
+                    className="rounded-full w-8  border border-slate-300"
+                    src={PeopleOne}
+                  ></img>
+                  <img
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleTwo}
+                  ></img>
+                  <img
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleThree}
+                  ></img>
+                  <img
+                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                    src={PeopleFour}
+                  ></img>
+                </div>
               </div>
             </div>
-            <div className="w-[40px]">
-              <div>Attendees</div>
-              <div className="flex mt-[30px] ">
-                <img
-                  className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                  src={PeopleOne}
-                ></img>
-                <img
-                  className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                  src={PeopleTwo}
-                ></img>
-                <img
-                  className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                  src={PeopleThree}
-                ></img>
-                <img
-                  className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                  src={PeopleFour}
-                ></img>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="flex flex-col gap-[12px]">
+            <hr className="md:flex hidden"></hr>
+            <div className="flex flex-col w-full gap-[12px]">
               <h1 className="font-bold text-[20px]">Event Detail</h1>
-              <p className="text-[#373A42BF]">
+              <p className="text-[#373A42BF] ">
                 After his controversial art exhibition "Tear and Consume" back
                 in November 2018, in which guests were invited to tear up…
               </p>
@@ -72,16 +74,16 @@ function Event() {
               <img className="w-[315px]" src={Map}></img>
             </div>
             <Link to="/booking">
-              <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] w-[375px]">
+              <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] md:w-[375px]">
                 <button className="p-[20px]">Buy Tickets</button>
               </div>
             </Link>
           </div>
         </div>
-        <div className="flex flex-col  gap-[144px]">
-          <Footer />
-          <div>© 2020 Wetick All Rights Reserved</div>
-        </div>
+      </div>
+      <div className="flex flex-col md:mt-[0] mt-[700px] gap-[144px]">
+        <Footer />
+        <div>© 2020 Wetick All Rights Reserved</div>
       </div>
     </div>
   );

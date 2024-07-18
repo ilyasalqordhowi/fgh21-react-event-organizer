@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function NavbarProfile() {
   return (
-    <div className="flex justify-between items-center w-full">
+    <div className="flex md:flex-row w-full flex-col bg-white md:p-[10px] justify-between items-center ">
       <Logo />
       <div className="flex list-none  gap-5">
         <Link to="/">

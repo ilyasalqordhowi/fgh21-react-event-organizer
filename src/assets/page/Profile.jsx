@@ -10,15 +10,18 @@ function Profile() {
   return (
     <div className="">
       <NavbarProfile />
-      <div className="flex   p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-[242px] h-[508px] w-[242px] h-[508px]">
+      <div className="flex  md:p-[50px] bg-[#F4F7FF]">
+        <div className="md:flex w-[242px] h-[508px] w-[242px] hidden h-[508px]">
           <Sidebar />
         </div>
-        <div className="flex w-full gap-[46px] h-auto p-[100px] bg-white rounded-[20px] ">
-          <div className="w-[60%] gap-[10px]">
+        <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-white rounded-[20px] ">
+          <div className="w-[60%] md:pt-[0]  pt-[50px] gap-[10px]">
             <h1 className="font-bold text-[30px]">Profile</h1>
+            <div className="md:hidden flex gap-[200px]">
+              <img src={ProfilePhoto}></img>
+            </div>
             <div className="flex flex-col gap-[50px] mt-[50px]">
-              <div className="flex w-[60%] justify-between">
+              <div className="md:flex w-[70%] justify-between">
                 <div>Name</div>
                 <input
                   placeholder="Jhon Tomson"
@@ -26,7 +29,7 @@ function Profile() {
                   className="border border-[#C1C5D0] p-[5px] rounded-[5px]"
                 ></input>
               </div>
-              <div className="flex w-[42%]  justify-between">
+              <div className="md:flex w-[70%]  justify-between">
                 <div>Username</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
@@ -35,7 +38,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="flex w-[53%]  justify-between">
+              <div className="md:flex w-[70%]  justify-between">
                 <div>Email</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
@@ -44,7 +47,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="flex w-[50%]  justify-between">
+              <div className="md:flex w-[70%]  justify-between">
                 <div>Phone Number</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
@@ -53,7 +56,7 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="flex w-[50%] justify-between">
+              <div className="md:flex w-[70%] justify-between">
                 <div>Gender</div>
                 <div className="flex gap-[40px]">
                   <div className="flex">
@@ -66,9 +69,9 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="flex w-[60%] justify-between">
+              <div className="md:flex w-[70%] justify-between">
                 <div>Profession</div>
-                <div className=" flex border border-[#C1C5D0] items-center p-[30p] rounded-[5px]">
+                <div className=" flex border border-[#C1C5D0] items-center justify-end p-[30p] rounded-[5px]">
                   <input
                     type=""
                     className="p-[5px]"
@@ -77,9 +80,9 @@ function Profile() {
                   <FaChevronDown className="text-gray-400" />
                 </div>
               </div>
-              <div className="flex w-[60%] justify-between">
+              <div className="md:flex w-[70%] justify-between">
                 <div>Nationality</div>
-                <div className=" flex border border-[#C1C5D0] items-center p-[30p] rounded-[5px]">
+                <div className=" flex border border-[#C1C5D0] items-center justify-end p-[30p] rounded-[5px]">
                   <input
                     type=""
                     className="p-[5px]"
@@ -88,7 +91,7 @@ function Profile() {
                   <FaChevronDown className="text-gray-400" />
                 </div>
               </div>
-              <div className="flex w-[50%]  justify-between">
+              <div className="md:flex w-[70%] justify-between">
                 <div> Birthday Date</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
@@ -102,7 +105,7 @@ function Profile() {
               <button>Save</button>
             </div>
           </div>
-          <div className="flex flex-col items-center w-[40%]">
+          <div className="md:flex flex-col items-center  hidden w-[40%]">
             <div className="flex gap-[200px]">
               <img src={ProfilePhoto}></img>
             </div>
@@ -118,7 +121,7 @@ function Profile() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col bg-[#F4F7FF] gap-[144px]">
+      <div className="flex flex-col md:bg-[#F4F7FF] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>

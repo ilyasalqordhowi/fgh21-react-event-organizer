@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="flex md:flex-row  md:p-[10px] justify-between items-center ">
+    <div className="flex md:flex-row w-full flex-col  md:p-[10px] justify-between items-center ">
       <Logo />
       <div className="flex  list-none  gap-5">
         <Link to="/">
@@ -15,14 +15,14 @@ function Navbar() {
         </Link>
         <li>Location</li>
       </div>
-      <div className="flex gap-5  items-center">
+      <div className=" gap-5 flex flex-col md:flex-row items-center">
         <Link to="/sign-in">
-          <div className="bg-white rounded-2xl ">
+          <div className="bg-white text-center w-full md:w-[100px] rounded-2xl ">
             <button>Log in</button>
           </div>
         </Link>
         <Link to="/sign-up">
-          <div className=" bg-[#3366FF] text-white rounded-xl text-center p-[5px]">
+          <div className=" bg-[#3366FF] w-full  md:w-[150px] text-white rounded-xl text-center p-[5px]">
             <button>Sign Up</button>
           </div>
         </Link>

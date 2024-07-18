@@ -14,12 +14,23 @@ function SignUp() {
       setPass("password");
     }
   }
+  const navigate = useNavigate();
+  function doLogin(event) {
+    event.preventDefault();
+    const password = event.target.password.value;
+    const confirmPassword = event.target.confirmPassword.value;
+    if (password !== confirmPassword) {
+      window.alert("salah bangsat kontollll");
+    } else {
+      navigate("/sign-in");
+    }
+  }
   return (
     <div className="flex h-[100vh]">
-      <div className="bg-[#3366FF] w-8/12 flex items-center justify-center">
+      <div className="bg-[#3366FF]  md:block md:w-[60%] hidden md:flex items-center md:justify-center">
         <img src={People}></img>
       </div>
-      <div className="w-4/12 flex items-center justify-center flex-col gap-5 p-[100px]">
+      <div className=" flex items-center justify-center flex-col gap-5 p-[100px]">
         <div className="w-full">
           <Logo />
         </div>
@@ -30,7 +41,7 @@ function SignUp() {
             <span className="text-[#3366FF]">Log In</span>
           </div>
         </div>
-        <form className="w-full flex flex-col gap-5">
+        <form className="w-full flex flex-col gap-5" onSubmit={doLogin}>
           <div className="w-full flex flex-col gap-5">
             <input
               className="w-full border  outline-none rounded-2xl p-[10px]"
@@ -58,7 +69,7 @@ function SignUp() {
             <div className="flex justify-center rounded-2xl p-[10px] border">
               <input
                 className="flex-1 outline-none "
-                name="password"
+                name="confirmPassword"
                 type={pass}
                 placeholder="Confirm Password"
               ></input>
