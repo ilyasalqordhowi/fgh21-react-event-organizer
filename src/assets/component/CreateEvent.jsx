@@ -64,7 +64,7 @@ function CreateEvent() {
           </div>
         </div>
         <Link to="/manage-event">
-          <div className="bg-blue-500 text-[20px]  w-[200px] flex justify-center text-white rounded-[15px] p-[20px] ">
+          <div className="bg-blue-500 text-[20px]  w-[200px] flex justify-center text-white rounded-[15px] p-[10px] ">
             <button>Save</button>
           </div>
         </Link>

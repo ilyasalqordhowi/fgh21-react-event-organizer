@@ -1,10 +1,19 @@
 import React from "react";
 import People from "../img/people.png";
 import Logo from "../component/Logoo";
+import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const [pass, setPass] = React.useState("password");
+  function password() {
+    if (pass === "password") {
+      setPass("text");
+    } else {
+      setPass("password");
+    }
+  }
   return (
     <div className="flex h-[100vh]">
       <div className="bg-[#3366FF] w-8/12 flex items-center justify-center">
@@ -24,29 +33,39 @@ function SignUp() {
         <form className="w-full flex flex-col gap-5">
           <div className="w-full flex flex-col gap-5">
             <input
-              className="w-full border rounded-2xl p-[10px]"
+              className="w-full border  outline-none rounded-2xl p-[10px]"
               name="name"
               type="text"
               placeholder="Full Name"
             ></input>
             <input
-              className="w-full border rounded-2xl p-[10px]"
+              className="w-full border outline-none rounded-2xl p-[10px]"
               name="email"
               type="email"
               placeholder="Email"
             ></input>
-            <input
-              className="w-full border rounded-2xl p-[10px]"
-              name="password"
-              type="password"
-              placeholder="Password"
-            ></input>
-            <input
-              className="w-full border rounded-2xl p-[10px]"
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-            ></input>
+            <div className="flex justify-center rounded-2xl p-[10px] border">
+              <input
+                className="flex-1 outline-none "
+                name="password"
+                type={pass}
+                placeholder="Password"
+              ></input>
+              <button onClick={password} type="button">
+                <FaEye />
+              </button>
+            </div>
+            <div className="flex justify-center rounded-2xl p-[10px] border">
+              <input
+                className="flex-1 outline-none "
+                name="password"
+                type={pass}
+                placeholder="Confirm Password"
+              ></input>
+              <button onClick={password} type="button">
+                <FaEye />
+              </button>
+            </div>
           </div>
           <div className="flex w-full gap-5">
             <input type="checkbox" className="border-sky-500"></input>

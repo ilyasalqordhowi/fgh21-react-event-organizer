@@ -9,6 +9,35 @@ import LogoBookingThree from "../img/logo3.png";
 import { Link } from "react-router-dom";
 
 function Booking() {
+  const [num1, setNum1] = React.useState(0);
+  const [numNew, setNew1] = React.useState(0);
+  const [quantity1, setQuantity1] = React.useState(0);
+  const [payment1, setPayment1] = React.useState(0);
+  function plus1() {
+    setNew1(numNew + 1);
+    setNum1(num1 + 1);
+    setQuantity1(quantity1 + 1);
+    setPayment1(payment1 + 1 * 15);
+  }
+  function minus1() {
+    setNew1(numNew - 1);
+    setNum1(num1 - 1);
+    setQuantity1(quantity1 - 1);
+    setPayment1(payment1 - 1 * 15);
+  }
+  // function plus2() {
+  //   setNum2(num2 + 1);
+  // }
+  // function minus2() {
+  //   setNum2(num2 - 1);
+  // }
+  // function plus3() {
+  //   setNum3(num3 + 1);
+  // }
+  // function minus3() {
+  //   setNum3(num3 - 1);
+  // }
+
   return (
     <div className="">
       <NavbarProfile />
@@ -35,7 +64,7 @@ function Booking() {
                   </div>
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
-                      <h2>Section reg, Row 1</h2>
+                      <h2>Section REG, ROW 1</h2>
                       <p className="text-[#BDC0C4]">12 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
@@ -47,12 +76,22 @@ function Booking() {
                 <div className="flex w-full items-center pl-[60px]  gap-[137px]">
                   <div>Quantity</div>
                   <div className="flex items-center gap-[20px]">
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button>—</button>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
+                        onClick={minus1}
+                      >
+                        —
+                      </button>
                     </div>
-                    <div className="text-[12px]">0</div>
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button>+</button>
+                    <div className="text-[12px]">{numNew}</div>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
+                        onClick={plus1}
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -64,7 +103,7 @@ function Booking() {
                   </div>
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
-                      <h2>Section vip, Row 2</h2>
+                      <h2>Section VIP, ROW 2</h2>
                       <p className="text-[#BDC0C4]">9 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
@@ -76,12 +115,22 @@ function Booking() {
                 <div className="flex w-full items-center pl-[60px]  gap-[137px]">
                   <div>Quantity</div>
                   <div className="flex items-center gap-[20px]">
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button>—</button>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
+                        // onClick={minus2}
+                      >
+                        —
+                      </button>
                     </div>
-                    <div className="text-[12px]">2</div>
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button className="text-black">+</button>
+                    <div className="text-[12px]"></div>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black "
+                        // onClick={plus2}
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -93,7 +142,7 @@ function Booking() {
                   </div>
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
-                      <h2>Section vvip, Row 3 1</h2>
+                      <h2>Section VVIP, ROW 3 </h2>
                       <p className="text-[#BDC0C4]">6 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
@@ -105,12 +154,22 @@ function Booking() {
                 <div className="flex w-full items-center pl-[60px]  gap-[137px]">
                   <div>Quantity</div>
                   <div className="flex items-center gap-[20px]">
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button>—</button>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
+                        // onClick={minus3}
+                      >
+                        —
+                      </button>
                     </div>
-                    <div className="text-[12px]">0</div>
-                    <div className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px]">
-                      <button>+</button>
+                    <div className="text-[12px]"></div>
+                    <div className="">
+                      <button
+                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
+                        // onClick={plus3}
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -120,15 +179,15 @@ function Booking() {
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
                 <div className="font-bold">Ticket Section</div>
-                <div className="text-blue-500">VIP</div>
+                <div className="text-blue-500">{"REG (" + num1 + ")"}</div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Quantity</div>
-                <div className="text-blue-500">2</div>
+                <div className="text-blue-500">{quantity1}</div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Total Payment</div>
-                <div className="text-blue-500">$70</div>
+                <div className="text-blue-500">{payment1}$</div>
               </div>
             </div>
             <Link to="/payment">

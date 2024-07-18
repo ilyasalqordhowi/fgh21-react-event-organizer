@@ -35,11 +35,11 @@ function Login() {
   }
 
   return (
-    <div className="flex h-[100vh]">
-      <div className="bg-[#3366FF] w-8/12 flex items-center justify-center">
+    <div className="flex  h-[100vh]">
+      <div className="bg-[#3366FF]  md:block md:w-[60%] hidden md:flex items-center md:justify-center">
         <img src={People}></img>
       </div>
-      <div className="w-4/12 flex items-center justify-center flex-col gap-5 p-[100px]">
+      <div className=" flex items-center md:w-[30%] justify-center flex-col gap-5 p-[100px]">
         <div className="w-full">
           <Logo />
         </div>
@@ -52,20 +52,20 @@ function Login() {
         <form className="w-full flex flex-col gap-5" onSubmit={doLogin}>
           <div className="w-full flex flex-col gap-5">
             <input
-              className="w-full border rounded-2xl p-[10px]"
+              className="w-full outline-none border rounded-2xl p-[10px]"
               name="name"
               type="text"
               placeholder="Full Name"
             ></input>
             <input
-              className="w-full border rounded-2xl p-[10px]"
+              className="w-full outline-none border rounded-2xl p-[10px]"
               name="email"
               type="email"
               placeholder="Email"
             ></input>
-            <div className="flex items-center">
+            <div className="flex justify-center rounded-2xl p-[10px] border">
               <input
-                className="w-full border rounded-2xl p-[10px]"
+                className="flex-1 outline-none "
                 name="password"
                 type={pass}
                 placeholder="Password"
