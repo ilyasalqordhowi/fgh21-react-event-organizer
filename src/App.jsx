@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../src/assets/page/Login";
+import SignUp from "./assets/page/SignUp";
 import Home from "../src/assets/page/Home";
 import Event from "./assets/page/Event";
 import Booking from "./assets/page/Booking";
@@ -10,6 +10,7 @@ import MyBooking from "./assets/page/MyBooking";
 import MyWihslist from "./assets/page/MyWihslist";
 import ManageEvent from "./assets/page/ManageEvent";
 import CreateEvent from "./assets/component/CreateEvent";
+import Login from "./assets/page/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const page = createBrowserRouter([
@@ -22,7 +23,11 @@ const page = createBrowserRouter([
     element: <Event />,
   },
   {
-    path: "/login",
+    path: "/sign-up",
+    element: <SignUp />,
+  },
+  {
+    path: "/sign-in",
     element: <Login />,
   },
   {

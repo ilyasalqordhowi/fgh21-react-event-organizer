@@ -15,8 +15,8 @@ function Payment() {
     <div className="">
       <NavbarProfile />
       <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
-          <div className="flex flex-col  w-[60%] gap-[10px]">
+        <div className="flex w-full gap-[46px] h-auto p-[70px] bg-white rounded-[20px] ">
+          <div className="flex flex-col  w-[50%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
             <div className="w-full">
               <div className="flex gap-[162px] w-full items-center">
@@ -78,7 +78,7 @@ function Payment() {
             </div>
           </div>
           <hr></hr>
-          <div className="w-[40%]">
+          <div className="w-[50%]">
             <h2 className="text-[30px] mb-[50px] font-bold">Ticket Detail</h2>
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
@@ -98,11 +98,11 @@ function Payment() {
                 <div className="text-blue-500">$70</div>
               </div>
             </div>
-            <div className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
-              <Link to="/payment">
+            <Link to="/payment">
+              <div className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
                 <button>Checkout</button>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col  gap-[144px]">

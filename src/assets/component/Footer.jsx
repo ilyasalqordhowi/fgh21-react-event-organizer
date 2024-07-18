@@ -7,7 +7,7 @@ import Twitter from "../img/twitter.png";
 
 function Footer() {
   return (
-    <div className="flex mt-[170px] justify-center gap-[40px]">
+    <div className="flex mt-[170px]  justify-center gap-[200px]">
       <div>
         <Logo />
         <div>Find events you love with our</div>

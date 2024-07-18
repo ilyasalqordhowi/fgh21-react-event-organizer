@@ -29,7 +29,7 @@ function Event() {
             <h1 className="font-bold w-44 text-[20px]">
               Sights & Sounds Exhibition
             </h1>
-            <div className="flex text-[15px] w-full gap-[89px]">
+            <div className="flex text-[15px] w-full gap-[8px]">
               <div className="flex gap-[10px]">
                 <img src={Location}></img>
                 <div>Jakarta, Indonesia</div>
@@ -71,11 +71,11 @@ function Event() {
               <div className="font-bold text-[20px]">Location</div>
               <img className="w-[315px]" src={Map}></img>
             </div>
-            <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] w-[375px]">
-              <Link to="/booking">
+            <Link to="/booking">
+              <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] w-[375px]">
                 <button className="p-[20px]">Buy Tickets</button>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col  gap-[144px]">

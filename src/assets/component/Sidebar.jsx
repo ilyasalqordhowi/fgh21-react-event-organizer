@@ -27,12 +27,12 @@ function Sidebar() {
             <img src={SidebarOne}></img>
             <div>Profile</div>
           </div>
+          
         </Link>
         <div className="flex flex-col  ml-[49px] gap-[32px]">
-          <div className="flex hover:text-blue-700 relative items-center gap-[20px] ">
+          <div className="flex hover:text-blue-700 line-through relative items-center gap-[20px] ">
             <img src={SidebarTwo}></img>
-            <div className="relative">Card</div>
-            <div className="font-bold text-[20px] absolute">————</div>
+            <div>Card</div>
           </div>
           <div className="flex hover:text-blue-700  gap-[20px]">
             <img src={SidebarThree}></img>

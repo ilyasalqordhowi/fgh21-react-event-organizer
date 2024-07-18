@@ -63,10 +63,11 @@ function CreateEvent() {
             ></input>
           </div>
         </div>
-
-        <div className="bg-blue-500 text-[20px]  w-[200px] flex justify-center text-white rounded-[15px] p-[20px] ">
-          <button>Save</button>
-        </div>
+        <Link to="/manage-event">
+          <div className="bg-blue-500 text-[20px]  w-[200px] flex justify-center text-white rounded-[15px] p-[20px] ">
+            <button>Save</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

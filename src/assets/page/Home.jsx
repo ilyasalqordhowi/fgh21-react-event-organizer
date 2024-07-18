@@ -65,169 +65,254 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex  gap-[30px] mb-[50px] ml-[100px] relative overflow-x-scroll">
-          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-            <img src={EventOne} alt="" className="w-full h-full" />
-            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds Exhibition
-                </h1>
-                <div className="flex mt-[30px] ">
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
+        <div className="flex gap-[30px] mb-[50px] ml-[100px] relative  overflow-x-scroll">
+          <Link to="/detail">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    Sights & Sounds Exhibition
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
 
-                  <img
-                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
-                  ></img>
-                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                    +62
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-            <img src={EventTwo} alt="" className="w-full h-full" />
-            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
-                <h1 className="font-bold  text-[30px]">See it in Gold Class</h1>
-                <div className="flex mt-[30px] ">
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
+          </Link>
+          <Link>
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventTwo} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    See it in Gold Class
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
 
-                  <img
-                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
-                  ></img>
-                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                    +62
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-            <img src={EventOne} alt="" className="w-full h-full" />
-            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds Exhibition
-                </h1>
-                <div className="flex mt-[30px] ">
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
+          </Link>
+          <Link to="/detail">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    Sights & Sounds Exhibition
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
 
-                  <img
-                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
-                  ></img>
-                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                    +62
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-            <img src={EventTwo} alt="" className="w-full h-full" />
-            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
-                <h1 className="font-bold  text-[30px]">See it in Gold Class</h1>
-                <div className="flex mt-[30px] ">
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
+          </Link>
+          <Link>
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventTwo} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    See it in Gold Class
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
 
-                  <img
-                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
-                  ></img>
-                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                    +62
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-            <img src={EventOne} alt="" className="w-full h-full" />
-            <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-              <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                <h1 className="font-bold  text-[30px]">
-                  Sights & Sounds Exhibition
-                </h1>
-                <div className="flex mt-[30px] ">
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleOne}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleTwo}
-                  ></img>
-                  <img
-                    className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleThree}
-                  ></img>
+          </Link>
+          <Link to="/detail">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    Sights & Sounds Exhibition
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
 
-                  <img
-                    className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                    src={PeopleFour}
-                  ></img>
-                  <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                    +62
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
+          <Link>
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventTwo} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    See it in Gold Class
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
+
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link to="/detail">
+            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
+              <img src={EventOne} alt="" className="w-full h-full" />
+              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                  <h1 className="font-bold  text-[30px]">
+                    Sights & Sounds Exhibition
+                  </h1>
+                  <div className="flex mt-[30px] ">
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleOne}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleTwo}
+                    ></img>
+                    <img
+                      className="rounded-full w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleThree}
+                    ></img>
+
+                    <img
+                      className="rounded-full  w-8 ml-[-10px] border border-slate-300"
+                      src={PeopleFour}
+                    ></img>
+                    <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
+                      +62
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
+
         <div className="items-center  gap-[50px]  justify-center flex mb-[40px]">
           <div className=" ">
             <button className="shadow-black flex rounded-[5px] h-[30px] bg-[#1A3C4414] justify-center w-[50px]">

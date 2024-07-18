@@ -131,11 +131,11 @@ function Booking() {
                 <div className="text-blue-500">$70</div>
               </div>
             </div>
-            <div className="mt-[50px] bg-blue-500 w-[315px] font-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
-              <Link to="/payment">
+            <Link to="/payment">
+              <div className="mt-[50px] bg-blue-500 w-[315px] font-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
                 <button>Checkout</button>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col  gap-[144px]">
