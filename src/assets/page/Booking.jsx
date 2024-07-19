@@ -11,14 +11,35 @@ import { Link } from "react-router-dom";
 
 function Booking() {
   const [num1, setNum1] = React.useState(0);
-  const [numNew, setNew1] = React.useState(0);
-  const [quantity1, setQuantity1] = React.useState(0);
-  const [payment1, setPayment1] = React.useState(0);
+  const [num2, setNum2] = React.useState(0);
+  const [num3, setNum3] = React.useState(0);
+  const [section, setSection] = React.useState("-");
+  const [quantity1, setQuantity1] = React.useState("-");
+  const [payment1, setPayment1] = React.useState("-");
+  const [tampung1, setTampung1] = React.useState("");
+  const [tampung2, setTampung2] = React.useState("");
+  const [tampung3, setTampung3] = React.useState("");
+
   function plus1() {
-    setNew1(numNew + 1);
+    setSection("REG (" + (num1 + 1) + ")" + tampung2 + tampung3);
     setNum1(num1 + 1);
-    setQuantity1(quantity1 + 1);
-    setPayment1(payment1 + 1 * 15);
+    setQuantity1(num1 + 1 + num2);
+    setPayment1((num1 + 1) * 15 + num2 * 35 + num3 * 50);
+    setTampung1("REG (" + (num1 + 1) + ")");
+  }
+  function plus2() {
+    setSection(tampung1 + "VIP (" + (num2 + 1) + ")" + tampung3);
+    setNum2(num2 + 1);
+    setQuantity1(num1 + num2 + 1);
+    setPayment1(num1 * 15 + (num2 + 1) * 35 + num3 * 50);
+    setTampung2("VIP (" + (num2 + 1) + ")");
+  }
+  function plus3() {
+    setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
+    setNum3(num3 + 1);
+    setQuantity1(num1 + num2 + num3 + 1);
+    setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
+    setTampung3("VVIP (" + (num3 + 1) + ")");
   }
   function minus1() {
     setNew1(numNew - 1);
@@ -26,9 +47,6 @@ function Booking() {
     setQuantity1(quantity1 - 1);
     setPayment1(payment1 - 1 * 15);
   }
-  // function plus2() {
-  //   setNum2(num2 + 1);
-  // }
   // function minus2() {
   //   setNum2(num2 - 1);
   // }
@@ -91,7 +109,7 @@ function Booking() {
                         —
                       </button>
                     </div>
-                    <div className="text-[12px]">{numNew}</div>
+                    <div className="text-[12px]">{num1}</div>
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
@@ -134,7 +152,7 @@ function Booking() {
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black "
-                        // onClick={plus2}
+                        onClick={plus2}
                       >
                         +
                       </button>
@@ -173,7 +191,7 @@ function Booking() {
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        // onClick={plus3}
+                        onClick={plus3}
                       >
                         +
                       </button>
@@ -186,7 +204,7 @@ function Booking() {
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
                 <div className="font-bold">Ticket Section</div>
-                <div className="text-blue-500">{"REG (" + num1 + ")"}</div>
+                <div className="text-blue-500">{section}</div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Quantity</div>
