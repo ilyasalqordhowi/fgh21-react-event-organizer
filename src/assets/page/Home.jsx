@@ -318,14 +318,12 @@ function Home() {
         </div>
 
         <div className="items-center  gap-[50px]  justify-center flex mb-[40px]">
-          <div className=" ">
-            <button className="shadow-black flex rounded-[5px] h-[30px] bg-[#1A3C4414] justify-center w-[50px]">
-              ←
-            </button>
-          </div>
-          <div className="bg-blue-600 text-white flex rounded-[5px] h-[30px] items-center justify-center w-[50px]">
-            <button>→</button>
-          </div>
+          <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]">
+            <FaArrowLeft />
+          </button>
+          <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-blue-500 text-white flex flex-col items-center justify-center w-[45px] h-[45px]">
+            <FaArrowRight />
+          </button>
         </div>
         <div className="flex justify-center">
           <div className="bg-blue-600  mb-[175px] md:w-[1300px] w-full rounded-[30px] flex flex-col justify-center p-[30px] h-auto">
@@ -380,16 +378,14 @@ function Home() {
           </div>
           <div className="font-bold text-[50px]">Browse Events By Category</div>
         </div>
-        <div className="md:flex grid grid-cols-3 text-gray-400 justify-center list-none gap-[40px]">
-          <li className="text-sky-400 font-bold underline underline-offset-2">
-            Music
-          </li>
-          <li>Arts</li>
-          <li>Outdoors</li>
-          <li>Workshop</li>
-          <li>Sport</li>
-          <li>Festival</li>
-          <li>Fashion</li>
+        <div className=" md:flex grid grid-cols-3 text-gray-400 justify-center list-none gap-[40px]">
+          <li className="hover:text-blue-400 ">Music</li>
+          <li className="hover:text-blue-400 ">Arts</li>
+          <li className="hover:text-blue-400 ">Outdoors</li>
+          <li className="hover:text-blue-400 ">Workshop</li>
+          <li className="hover:text-blue-400 ">Sport</li>
+          <li className="hover:text-blue-400 ">Festival</li>
+          <li className="hover:text-blue-400 ">Fashion</li>
         </div>
         <div className="flex gap-[30px] mb-[50px]  mt-[30px] relative justify-center overflow-x-scroll">
           <div className="flex items-center">

@@ -8,15 +8,15 @@ function ManageEvent() {
   return (
     <div className="">
       <NavbarProfile />
-      <div className="flex   p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-[242px] h-[508px] w-[242px] h-[508px]">
+      <div className="flex  md:p-[50px] bg-[#F4F7FF]">
+        <div className="flex  md:w-[242px] h-[508px]  h-[508px]">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
-          <div className="flex justify-between">
+        <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
+          <div className="md:flex mt-[100px] justify-between">
             <div className="font-bold text-[20px]">Manage Event</div>
             <Link to="/create-event">
-              <div className="flex  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
+              <div className="md:flex w-[100px] md:w-full items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
                 <button>Create</button>
               </div>
             </Link>
@@ -68,7 +68,7 @@ function ManageEvent() {
               </div>
             </div>
             <hr></hr>
-            <div className="flex gap-[25px]">
+            <div className="md:flex hidden gap-[25px]">
               <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
                 <h1 className="text-yellow-500">15</h1>
                 <p>Wed</p>
@@ -90,8 +90,8 @@ function ManageEvent() {
                 </div>
               </div>
             </div>
-            <hr></hr>
-            <div className="flex gap-[25px]">
+            <hr className="md:flex hidden"></hr>
+            <div className="md:flex hidden gap-[25px]">
               <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
                 <h1 className="text-yellow-500">15</h1>
                 <p>Wed</p>
@@ -113,11 +113,11 @@ function ManageEvent() {
                 </div>
               </div>
             </div>
-            <hr></hr>
+            <hr className="md:flex hidden"></hr>
           </div>
         </div>
       </div>
-      <div className="flex flex-col bg-[#F4F7FF] gap-[144px]">
+      <div className="flex flex-col md:bg-[#F4F7FF] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>

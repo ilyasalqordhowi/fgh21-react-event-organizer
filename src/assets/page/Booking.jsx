@@ -6,6 +6,7 @@ import LogoBooking from "../img/Logo-booking.png";
 import LogoBookingOne from "../img/logo1.png";
 import LogoBookingTwo from "../img/logo2.png";
 import LogoBookingThree from "../img/logo3.png";
+import BookingTwo from "../img/booking2.png";
 import { Link } from "react-router-dom";
 
 function Booking() {
@@ -41,13 +42,19 @@ function Booking() {
   return (
     <div className="">
       <NavbarProfile />
-      <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
-          <div className="flex flex-col items-center w-[60%] gap-[10px]">
-            <img className="w-full rounded-[20px]" src={BookingOne}></img>
+      <div className="flex flex-col justify-center bg-white mt-[70px] md:mt-[0] items-center md:p-[50px] md:bg-[#F4F7FF]">
+        <div className="md:flex flex flex-col md:flex-row items-center  md:w-full gap-[46px] h-auto md:p-[50px] bg-white rounded-[20px] ">
+          <div className="md:flex flex-col flex items-center w-[60%] gap-[10px]">
+            <img
+              className=" hidden md:flex w-full rounded-[20px]"
+              src={BookingOne}
+            ></img>
           </div>
-          <div className="w-[40%]">
-            <div className="flex gap-[200px]">
+          <div className="md:hidden">
+            <img src={BookingTwo}></img>
+          </div>
+          <div className="flex flex-col  justify-center md:w-[40%]">
+            <div className="flex gap-[100px] md:gap-[200px]">
               <h1 className="font-bold text-[40px]">Tickets</h1>
               <div className="flex gap-[11px] items-center ">
                 <h1 className="text-[#FC1055]">BY PRICE</h1>
@@ -191,7 +198,7 @@ function Booking() {
               </div>
             </div>
             <Link to="/payment">
-              <div className="mt-[50px] bg-blue-500 w-[315px] font-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
+              <div className="mt-[50px]  bg-blue-500 md:w-[315px] font-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
                 <button>Checkout</button>
               </div>
             </Link>

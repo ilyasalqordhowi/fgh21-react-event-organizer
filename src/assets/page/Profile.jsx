@@ -11,13 +11,13 @@ function Profile() {
     <div className="">
       <NavbarProfile />
       <div className="flex  md:p-[50px] bg-[#F4F7FF]">
-        <div className="md:flex w-[242px] h-[508px] w-[242px] hidden h-[508px]">
+        <div className="md:flex md:w-[242px] h-[508px] h-[508px]">
           <Sidebar />
         </div>
         <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-white rounded-[20px] ">
-          <div className="w-[60%] md:pt-[0]  pt-[50px] gap-[10px]">
-            <h1 className="font-bold text-[30px]">Profile</h1>
-            <div className="md:hidden flex gap-[200px]">
+          <div className="w-[60%]   md:pt-[0]  pt-[50px] gap-[10px]">
+            <h1 className="font-bold  text-[30px]">Profile</h1>
+            <div className="md:hidden justify-center  flex gap-[200px]">
               <img src={ProfilePhoto}></img>
             </div>
             <div className="flex flex-col gap-[50px] mt-[50px]">
@@ -71,10 +71,10 @@ function Profile() {
               </div>
               <div className="md:flex w-[70%] justify-between">
                 <div>Profession</div>
-                <div className=" flex border border-[#C1C5D0] items-center justify-end p-[30p] rounded-[5px]">
+                <div className=" flex  items-center justify-end p-[30p] ">
                   <input
                     type=""
-                    className="p-[5px]"
+                    className="border border-[#C1C5D0] rounded-[5px] p-[5px]"
                     placeholder="Entrepreneur"
                   ></input>
                   <FaChevronDown className="text-gray-400" />
@@ -82,10 +82,10 @@ function Profile() {
               </div>
               <div className="md:flex w-[70%] justify-between">
                 <div>Nationality</div>
-                <div className=" flex border border-[#C1C5D0] items-center justify-end p-[30p] rounded-[5px]">
+                <div className=" flex items-center justify-end p-[30p] ">
                   <input
                     type=""
-                    className="p-[5px]"
+                    className="border border-[#C1C5D0] rounded-[5px] p-[5px]"
                     placeholder="Indonesia"
                   ></input>
                   <FaChevronDown className="text-gray-400" />

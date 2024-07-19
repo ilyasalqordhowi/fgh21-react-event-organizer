@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="flex flex-col w-[242px] h-[508px] w-[242px] h-[508px]">
+    <div className="md:flex flex-col hidden w-[242px] h-[508px] w-[242px] h-[508px]">
       <div className="flex text-center gap-[15px]">
         <img className="w-[55px] h-[55px]" src={ProfileOne}></img>
         <div>
@@ -27,7 +27,6 @@ function Sidebar() {
             <img src={SidebarOne}></img>
             <div>Profile</div>
           </div>
-          
         </Link>
         <div className="flex flex-col  ml-[49px] gap-[32px]">
           <div className="flex hover:text-blue-700 line-through relative items-center gap-[20px] ">

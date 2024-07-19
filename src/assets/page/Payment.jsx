@@ -14,9 +14,9 @@ function Payment() {
   return (
     <div className="">
       <NavbarProfile />
-      <div className="flex flex-col justify-center items-center p-[50px] bg-[#F4F7FF]">
-        <div className="flex w-full gap-[46px] h-auto p-[70px] bg-white rounded-[20px] ">
-          <div className="flex flex-col  w-[50%] gap-[10px]">
+      <div className="flex flex-col justify-center items-center md:p-[50px] md:bg-[#F4F7FF]">
+        <div className="md:flex flex-row w-full gap-[46px] h-auto p-[70px] bg-white md:rounded-[20px] ">
+          <div className="flex flex-col  md:w-[50%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
             <div className="w-full">
               <div className="flex gap-[162px] w-full items-center">
@@ -46,7 +46,7 @@ function Payment() {
                         <img src={LogoPaymentTwo}></img>
                       </div>
                     </div>
-                    <h2>Card</h2>
+                    <h2>Bank Transfer</h2>
                   </div>
                   <FaChevronDown className="text-gray-400" />
                 </div>
@@ -58,7 +58,7 @@ function Payment() {
                         <img src={LogoPaymentThree}></img>
                       </div>
                     </div>
-                    <h2>Card</h2>
+                    <h2>Retail</h2>
                   </div>
                   <FaChevronDown className="text-gray-400" />
                 </div>
@@ -70,7 +70,7 @@ function Payment() {
                         <img src={LogoPaymentFour}></img>
                       </div>
                     </div>
-                    <h2>Card</h2>
+                    <h2>E-Money</h2>
                   </div>
                   <FaChevronDown className="text-gray-400" />
                 </div>
@@ -78,7 +78,7 @@ function Payment() {
             </div>
           </div>
           <hr></hr>
-          <div className="w-[50%]">
+          <div className="md:w-[50%]">
             <h2 className="text-[30px] mb-[50px] font-bold">Ticket Detail</h2>
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
@@ -105,7 +105,7 @@ function Payment() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col  gap-[144px]">
+        <div className="flex flex-col  md: gap-[144px]">
           <Footer />
           <div>© 2020 Wetick All Rights Reserved</div>
         </div>
