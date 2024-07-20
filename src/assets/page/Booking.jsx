@@ -41,20 +41,26 @@ function Booking() {
     setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
     setTampung3("VVIP (" + (num3 + 1) + ")");
   }
-  function minus1() {
-    setNew1(numNew - 1);
-    setNum1(num1 - 1);
-    setQuantity1(quantity1 - 1);
-    setPayment1(payment1 - 1 * 15);
-  }
-  // function minus2() {
-  //   setNum2(num2 - 1);
+  // function minus1() {
+  //   setSection("REG (" + (num1 - 1) + ")" - tampung2 - tampung3);
+  //   setNum1(num1 - 1);
+  //   setQuantity1(num1 - 1 - num2);
+  //   setPayment1((num1 - 1) * 15 - num2 * 35 - num3 * 50);
+  //   setTampung1("REG (" - (num1 - 1) - ")");
   // }
-  // function plus3() {
-  //   setNum3(num3 + 1);
+  // function minus2() {
+  //   setSection(tampung1 + "VIP (" + (num2 + 1) + ")" + tampung3);
+  //   setNum2(num2 + 1);
+  //   setQuantity1(num1 + num2 + 1);
+  //   setPayment1(num1 * 15 + (num2 + 1) * 35 + num3 * 50);
+  //   setTampung2("VIP (" + (num2 + 1) + ")");
   // }
   // function minus3() {
-  //   setNum3(num3 - 1);
+  //   setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
+  //   setNum3(num3 + 1);
+  //   setQuantity1(num1 + num2 + num3 + 1);
+  //   setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
+  //   setTampung3("VVIP (" + (num3 + 1) + ")");
   // }
 
   return (

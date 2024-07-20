@@ -45,7 +45,7 @@ function Home() {
               Events For You
             </div>
           </div>
-          <div className="flex w-full gap-[60px] text-[#C1C5D0] text-center justify-center">
+          <div className="flex w-full gap-[40px] text-[#C1C5D0] text-center justify-center">
             <div className="flex flex-col list-none">
               <li>13</li>
               <li>Mon</li>
@@ -394,10 +394,16 @@ function Home() {
             </button>
           </div>
           <Link to="/detail">
-            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
-              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
-                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+            <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
+              <div className="h-1/2">
+                <img
+                  src={EventOne}
+                  alt=""
+                  className="w-full bg-[rgba(0,0,0,0.5)]  h-full"
+                />
+              </div>
+              <div className="absolute top-0 text-white left-0  w-full h-full">
+                <div className=" text-white  top-20 pl-[20px] pt-[170px] md:flex md:flex-col  justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
                     Sights & Sounds Exhibition
@@ -429,9 +435,11 @@ function Home() {
             </div>
           </Link>
           <Link>
-            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventTwo} alt="" className="w-full h-full" />
-              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+            <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
+              <div className="h-1/2 ">
+                <img src={EventTwo} alt="" className="w-full h-full" />
+              </div>
+              <div className=" absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
@@ -464,9 +472,11 @@ function Home() {
             </div>
           </Link>
           <Link to="/detail">
-            <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
-              <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
+            <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
+              <div className="h-1/2 ">
+                <img src={EventOne} alt="" className="w-full h-full" />
+              </div>
+              <div className=" absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
