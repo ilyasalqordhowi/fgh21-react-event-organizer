@@ -110,7 +110,7 @@ function Booking() {
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={minus1}
+                        // onClick={minus1}
                       >
                         —
                       </button>
