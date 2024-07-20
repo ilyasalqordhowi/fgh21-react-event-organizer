@@ -19,14 +19,14 @@ function Event() {
       <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#F4F7FF]">
         <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-white rounded-[20px] ">
           <div className="flex flex-col items-center gap-[10px]  w-full">
-            <img className="w-full rounded-[20px]" src={EventOne}></img>
+            <img className="w-full md:rounded-[20px]" src={EventOne}></img>
             <div className="md:flex hidden">
               <img className="w-[20px]" src={Heart}></img>
               <div>Add to Wishlist</div>
             </div>
           </div>
-          <div className="flex flex-col md:relative absolute w-[40%] gap-[30px]">
-            <div className="flex flex-col md:text-black text-white md:mt-[0] md:mb-[0] mt-[100px] mb-[200px] ">
+          <div className="flex flex-col md:relative absolute md:w-[40%] gap-[30px]">
+            <div className="flex flex-col md:text-black text-white md:mt-[0] md:mb-[0] md:mt-[100px] mb-[200px] ">
               <h1 className="font-bold w-full md:text-[30px] text-[40px]">
                 Sights & Sounds Exhibition
               </h1>
@@ -81,7 +81,7 @@ function Event() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:mt-[0] mt-[700px] gap-[144px]">
+      <div className="flex flex-col md:mt-[0] mt-[500px] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>
