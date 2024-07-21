@@ -8,7 +8,7 @@ function Logo() {
         <img src={Wetick}></img>
       </div>
       <span className="text-[#3366FF]">We</span>
-      <span className="text-rose-600">tick</span>
+      <span className="text-rose-600">Tick</span>
     </div>
   );
 }

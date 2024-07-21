@@ -88,9 +88,11 @@ function Login() {
         <div className="flex flex-col justify-center items-center gap-[20px]">
           <div>or sign in with</div>
           <div className="flex gap-[16px]">
-            <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
-              <img src={GoogleOne}></img>
-            </button>
+            <a href="https://accounts.google.com">
+              <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
+                <img src={GoogleOne}></img>
+              </button>
+            </a>
             <a href="https://www.facebook.com/login.php">
               <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
                 <img src={FacebookTWo}></img>
