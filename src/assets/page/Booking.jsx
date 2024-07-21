@@ -21,47 +21,59 @@ function Booking() {
   const [tampung3, setTampung3] = React.useState("");
 
   function plus1() {
-    setSection("REG (" + (num1 + 1) + ")" + tampung2 + tampung3);
-    setNum1(num1 + 1);
-    setQuantity1(num1 + 1 + num2);
-    setPayment1((num1 + 1) * 15 + num2 * 35 + num3 * 50);
-    setTampung1("REG (" + (num1 + 1) + ")");
+    if (num1 < 5) {
+      setSection("REG (" + (num1 + 1) + ")" + tampung2 + tampung3);
+      setNum1(num1 + 1);
+      setQuantity1(num1 + 1 + num2);
+      setPayment1((num1 + 1) * 15 + num2 * 35 + num3 * 50);
+      setTampung1("REG (" + (num1 + 1) + ")");
+    }
   }
   function plus2() {
-    setSection(tampung1 + "VIP (" + (num2 + 1) + ")" + tampung3);
-    setNum2(num2 + 1);
-    setQuantity1(num1 + num2 + 1);
-    setPayment1(num1 * 15 + (num2 + 1) * 35 + num3 * 50);
-    setTampung2("VIP (" + (num2 + 1) + ")");
+    if (num2 < 5) {
+      setSection(tampung1 + "VIP (" + (num2 + 1) + ")" + tampung3);
+      setNum2(num2 + 1);
+      setQuantity1(num1 + num2 + 1);
+      setPayment1(num1 * 15 + (num2 + 1) * 35 + num3 * 50);
+      setTampung2("VIP (" + (num2 + 1) + ")");
+    }
   }
   function plus3() {
-    setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
-    setNum3(num3 + 1);
-    setQuantity1(num1 + num2 + num3 + 1);
-    setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
-    setTampung3("VVIP (" + (num3 + 1) + ")");
+    if (num3 < 5) {
+      setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
+      setNum3(num3 + 1);
+      setQuantity1(num1 + num2 + num3 + 1);
+      setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
+      setTampung3("VVIP (" + (num3 + 1) + ")");
+    }
   }
   function minus1() {
-    setSection("REG (" + (num1 - 1) + ")" + tampung2 + tampung3);
-    setNum1(num1 - 1);
-    setQuantity1(num1 - 1 - num2);
-    setPayment1((num1 - 1) * 15 - num2 * 35 - num3 * 50);
-    setTampung1("REG (" - (num1 - 1) - ")");
+    if (num1 > 0) {
+      setSection("REG (" + (num1 - 1) + ")" + tampung2 + tampung3);
+      setNum1(num1 - 1);
+      setQuantity1(num1 - 1 + num2);
+      setPayment1((num1 - 1) * 15 + num2 * 35 + num3 * 50);
+      setTampung1("REG (" + (num1 - 1) + ")");
+    }
   }
-  // function minus2() {
-  //   setSection(tampung1 + "VIP (" + (num2 - 1) + ")" + tampung3);
-  //   setNum2(num2 - 1);
-  //   setQuantity1(num1 - num2 - 1);
-  //   setPayment1(num1 * 15 - (num2 - 1) * 35 - num3 * 50);
-  //   setTampung2("VIP (" - (num2 - 1) - ")");
-  // }
-  // function minus3() {
-  //   setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
-  //   setNum3(num3 + 1);
-  //   setQuantity1(num1 + num2 + num3 + 1);
-  //   setPayment1(num1 * 15 + num2 * 35 + (num3 + 1) * 50);
-  //   setTampung3("VVIP (" + (num3 + 1) + ")");
-  // }
+  function minus2() {
+    if (num2 > 0) {
+      setSection(tampung1 + "VIP (" + (num2 - 1) + ")" + tampung3);
+      setNum2(num2 - 1);
+      setQuantity1(num1 + num2 - 1);
+      setPayment1(num1 * 15 + (num2 - 1) * 35 + num3 * 50);
+      setTampung2("VIP (" + (num2 - 1) + ")");
+    }
+  }
+  function minus3() {
+    if (num3 > 0) {
+      setSection(tampung1 + tampung2 + "VVIP (" + (num3 - 1) + ")");
+      setNum3(num3 - 1);
+      setQuantity1(num1 + num2 + num3 - 1);
+      setPayment1(num1 * 15 + num2 * 35 + (num3 - 1) * 50);
+      setTampung3("VVIP (" + (num3 - 1) + ")");
+    }
+  }
 
   return (
     <div className="">
@@ -149,12 +161,12 @@ function Booking() {
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        // onClick={minus2}
+                        onClick={minus2}
                       >
                         —
                       </button>
                     </div>
-                    <div className="text-[12px]"></div>
+                    <div className="text-[12px]">{num2}</div>
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black "
@@ -188,12 +200,12 @@ function Booking() {
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        // onClick={minus3}
+                        onClick={minus3}
                       >
                         —
                       </button>
                     </div>
-                    <div className="text-[12px]"></div>
+                    <div className="text-[12px]">{num3}</div>
                     <div className="">
                       <button
                         className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
