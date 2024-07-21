@@ -27,6 +27,13 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Home() {
+  function scrollLeft() {
+    console.log("test....");
+    document.getElementById("scroll").scrollLeft -= 50;
+  }
+  function scrollRight() {
+    document.getElementById("scroll").scrollLeft += 50;
+  }
   return (
     <div>
       <Navbar />
@@ -69,7 +76,10 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex gap-[30px] mb-[50px] ml-[20px] md:ml-[100px] relative  overflow-x-scroll">
+        <div
+          className="flex gap-[30px] mb-[50px] ml-[20px] md:ml-[100px] relative overflow-x-scroll no-scrollbar"
+          id="scroll"
+        >
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
               <img src={EventOne} alt="" className="w-full h-full" />
@@ -318,10 +328,16 @@ function Home() {
         </div>
 
         <div className="items-center  gap-[50px]  justify-center flex mb-[40px]">
-          <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]">
+          <button
+            className="shadow-lg shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]"
+            onClick={scrollLeft}
+          >
             <FaArrowLeft />
           </button>
-          <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-blue-500 text-white flex flex-col items-center justify-center w-[45px] h-[45px]">
+          <button
+            className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-blue-500 text-white flex flex-col items-center justify-center w-[45px] h-[45px]"
+            onClick={scrollRight}
+          >
             <FaArrowRight />
           </button>
         </div>

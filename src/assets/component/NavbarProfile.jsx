@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
 import Profile from "../img/profile.png";
+import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 
 function NavbarProfile() {
@@ -11,6 +12,14 @@ function NavbarProfile() {
       setNavbar(false);
     } else {
       setNavbar(true);
+    }
+  }
+  const [sidebar, setSidebar] = React.useState(true);
+  function btnsidebar() {
+    if (sidebar === true) {
+      setSidebar(false);
+    } else {
+      setSidebar(true);
     }
   }
   return (
@@ -37,12 +46,17 @@ function NavbarProfile() {
             Location
           </li>
         </div>
-        <Link to="/profile">
-          <div className="flex gap-5 w-[226px] items-center">
-            <img src={Profile}></img>
-            <div>Jhon Tomson</div>
-          </div>
-        </Link>
+        <div className="flex  justify-between">
+          <Link to="/profile">
+            <div className="flex gap-5 w-[226px] items-center">
+              <img src={Profile}></img>
+              <div>Jhon Tomson</div>
+            </div>
+          </Link>
+          <button className="md:hidden" type="button" onClick={btnsidebar}>
+            <FaBars />
+          </button>
+        </div>
       </div>
     </div>
   );
