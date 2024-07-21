@@ -27,7 +27,7 @@ function Event() {
             </div>
           </div>
           <div className="flex flex-col md:relative absolute md:w-[40%] md:gap-[30px]">
-            <div className="flex flex-col md:text-black mt-[100px] text-white md:mt-[0] md:mb-[0] md:mt-[0px] mb-[50px] ">
+            <div className="flex flex-col md:text-black mt-[100px] text-white md:mt-[0] md:mb-[0] md:mt-[0px] mb-[100px] ">
               <h1 className="flex font-bold w-full md:text-[30px] text-[40px]">
                 Sights & Sounds Exhibition
                 <div className="flex items-center md:hidden">
