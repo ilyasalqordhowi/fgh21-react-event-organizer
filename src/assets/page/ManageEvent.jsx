@@ -2,24 +2,23 @@ import React from "react";
 import NavbarProfile from "../component/NavbarProfile";
 import Footer from "../component/Footer";
 import Sidebar from "../component/Sidebar";
+import CreateEvent from "../component/CreateEvent";
 import { Link } from "react-router-dom";
 
 function ManageEvent() {
   return (
     <div className="">
       <NavbarProfile />
-      <div className="flex  md:p-[50px] bg-[#F4F7FF]">
+      <div className="flex reltive  md:p-[50px] bg-[#F4F7FF]">
         <div className="flex  md:w-[242px] h-[508px]  h-[508px]">
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
           <div className="md:flex md:mt-[30px] mt-[100px]  justify-between">
             <div className="font-bold text-[20px]">Manage Event</div>
-            <Link to="/create-event">
-              <div className="md:flex w-[100px] md:w-full items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
-                <button>Create</button>
-              </div>
-            </Link>
+            <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
+              <button>Create</button>
+            </div>
           </div>
           <div className="flex flex-col gap-[25px]">
             <div className="flex gap-[25px]">
