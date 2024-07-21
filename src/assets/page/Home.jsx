@@ -69,7 +69,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex gap-[30px] mb-[50px] ml-[100px] relative  overflow-x-scroll">
+        <div className="flex gap-[30px] mb-[50px] ml-[20px] md:ml-[100px] relative  overflow-x-scroll">
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
               <img src={EventOne} alt="" className="w-full h-full" />
@@ -343,23 +343,23 @@ function Home() {
                 <img src={Bandung}></img>
                 <div>Bandung</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="md:flex hidden flex-col items-center">
                 <img src={Bali}></img>
                 <div>Bali</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="md:flex hidden flex-col items-center">
                 <img src={Aceh}></img>
                 <div>Aceh</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="md:flex hidden flex-col items-center">
                 <img src={Solo}></img>
                 <div>Solo</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="md:flex hidden flex-col items-center">
                 <img src={Yogyakarta}></img>
                 <div>Yogyakarta</div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="md:flex hidden flex-col items-center">
                 <img src={Semarang}></img>
                 <div>Semarang</div>
               </div>
@@ -378,7 +378,7 @@ function Home() {
           </div>
           <div className="font-bold text-[50px]">Browse Events By Category</div>
         </div>
-        <div className=" md:flex grid grid-cols-3 text-gray-400 justify-center list-none gap-[40px]">
+        <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-[10px] text-gray-400 justify-center list-none gap-[40px]">
           <li className="hover:text-blue-400 ">Music</li>
           <li className="hover:text-blue-400 ">Arts</li>
           <li className="hover:text-blue-400 ">Outdoors</li>
@@ -387,27 +387,25 @@ function Home() {
           <li className="hover:text-blue-400 ">Festival</li>
           <li className="hover:text-blue-400 ">Fashion</li>
         </div>
-        <div className="flex gap-[30px] mb-[50px]  mt-[30px] relative justify-center overflow-x-scroll">
-          <div className="flex items-center">
+        <div className="flex gap-[30px] mb-[50px] md:w-full  mt-[30px]  relative justify-center overflow-x-scroll">
+          <div className="md:flex hidden items-center">
             <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]">
               <FaArrowLeft />
             </button>
           </div>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
-              <div className="h-1/2">
-                <img
-                  src={EventOne}
-                  alt=""
-                  className="w-full bg-[rgba(0,0,0,0.5)]  h-full"
-                />
+              <div className="h-1/2 ">
+                <img src={EventOne} alt="" className="w-full h-full" />
               </div>
-              <div className="absolute top-0 text-white left-0  w-full h-full">
-                <div className=" text-white  top-20 pl-[20px] pt-[170px] md:flex md:flex-col  justify-center gap-[5px] ">
-                  <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
-                  <h1 className="font-bold  text-[30px]">
-                    Sights & Sounds Exhibition
-                  </h1>
+              <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
+                <div className=" text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
+                  <div>
+                    <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
+                    <h1 className="font-bold  text-[30px]">
+                      Sights & Sounds Exhibition
+                    </h1>
+                  </div>
                   <div className="flex mt-[30px] ">
                     <img
                       className="rounded-full w-8 ml-[-10px] border border-slate-300"
@@ -439,12 +437,14 @@ function Home() {
               <div className="h-1/2 ">
                 <img src={EventTwo} alt="" className="w-full h-full" />
               </div>
-              <div className=" absolute top-0 text-white left-0  w-full h-full">
-                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                  <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
-                  <h1 className="font-bold  text-[30px]">
-                    See it in Gold Class
-                  </h1>
+              <div className=" absolute top-0 text-white left-0 flex  w-full h-full">
+                <div className=" text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px]  gap-[20px]">
+                  <div>
+                    <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
+                    <h1 className="font-bold  text-[30px]">
+                      See it in Gold Class
+                    </h1>
+                  </div>
                   <div className="flex mt-[30px] ">
                     <img
                       className="rounded-full w-8 ml-[-10px] border border-slate-300"
@@ -476,8 +476,8 @@ function Home() {
               <div className="h-1/2 ">
                 <img src={EventOne} alt="" className="w-full h-full" />
               </div>
-              <div className=" absolute top-0 text-white left-0  w-full h-full">
-                <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
+              <div className=" absolute top-0 text-white left-0 flex  w-full h-full">
+                <div className="text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px]  gap-[20px]">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                   <h1 className="font-bold  text-[30px]">
                     Sights & Sounds Exhibition
@@ -508,7 +508,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <div className="flex items-center">
+          <div className="md:flex hidden items-center">
             <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-blue-500 text-white flex flex-col items-center justify-center w-[45px] h-[45px]">
               <FaArrowRight />
             </button>

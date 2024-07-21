@@ -10,6 +10,7 @@ import PeopleThree from "../img/people3.png";
 import PeopleFour from "../img/people4.png";
 import Map from "../img/map.png";
 import Footer from "../component/Footer";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Event() {
@@ -25,10 +26,13 @@ function Event() {
               <div>Add to Wishlist</div>
             </div>
           </div>
-          <div className="flex flex-col md:relative absolute md:w-[40%] gap-[30px]">
-            <div className="flex flex-col md:text-black text-white md:mt-[0] md:mb-[0] md:mt-[100px] mb-[200px] ">
-              <h1 className="font-bold w-full md:text-[30px] text-[40px]">
+          <div className="flex flex-col md:relative absolute md:w-[40%] md:gap-[30px]">
+            <div className="flex flex-col md:text-black mt-[100px] text-white md:mt-[0] md:mb-[0] md:mt-[0px] mb-[50px] ">
+              <h1 className="flex font-bold w-full md:text-[30px] text-[40px]">
                 Sights & Sounds Exhibition
+                <div className="flex items-center md:hidden">
+                  <FaHeart />
+                </div>
               </h1>
               <div className="md:flex flex flex-col md:text-[15px] text-[13px] w-full gap-[8px]">
                 <div className="flex gap-[10px]">

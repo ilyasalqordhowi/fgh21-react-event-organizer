@@ -13,7 +13,7 @@ function ManageEvent() {
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
-          <div className="md:flex mt-[100px] justify-between">
+          <div className="md:flex md:mt-[30px] mt-[100px]  justify-between">
             <div className="font-bold text-[20px]">Manage Event</div>
             <Link to="/create-event">
               <div className="md:flex w-[100px] md:w-full items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">

@@ -91,9 +91,11 @@ function Login() {
             <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
               <img src={GoogleOne}></img>
             </button>
-            <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
-              <img src={FacebookTWo}></img>
-            </button>
+            <a href="https://www.facebook.com/login.php">
+              <button className="border border-2 border-sky-500 w-[96px] flex justify-center p-[10px] rounded-[6px]">
+                <img src={FacebookTWo}></img>
+              </button>
+            </a>
           </div>
         </div>
       </div>

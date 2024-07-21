@@ -1,14 +1,15 @@
 import React from "react";
-import SidebarOne from "../img/sidebar1.png";
-import SidebarTwo from "../img/sidebar2.png";
-import SidebarThree from "../img/sidebar3.png";
-import SidebarFour from "../img/sidebar4.png";
-import SidebarFive from "../img/sidebar5.png";
-import SidebarSix from "../img/sidebar6.png";
-import SidebarSeven from "../img/sidebar7.png";
-import SidebarEight from "../img/sidebar8.png";
-import SidebarNine from "../img/sidebar9.png";
+
 import ProfileOne from "../img/profile.png";
+import { FaUser } from "react-icons/fa";
+import { FaCreditCard } from "react-icons/fa6";
+import { FaPenToSquare } from "react-icons/fa6";
+import { FaLock } from "react-icons/fa";
+import { FaCirclePlus } from "react-icons/fa6";
+import { FaListCheck } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
@@ -22,53 +23,57 @@ function Sidebar() {
         </div>
       </div>
       <div className="flex flex-col gap-[30px] mt-[50px]">
-        <Link to="/profile">
-          <div className="flex hover:text-blue-700  gap-[25px]">
-            <img src={SidebarOne}></img>
+        <Link>
+          <div className="flex hover:text-blue-700 items-center  gap-[25px]">
+            <div className="bg-[#C1C5D0] w-[40px]  p-[10px] justify-center  flex items-center rounded-full">
+              <FaUser />
+            </div>
             <div>Profile</div>
           </div>
         </Link>
         <div className="flex flex-col  ml-[49px] gap-[32px]">
           <div className="flex hover:text-blue-700 line-through relative items-center gap-[20px] ">
-            <img src={SidebarTwo}></img>
+            <FaCreditCard />
             <div>Card</div>
           </div>
-          <div className="flex hover:text-blue-700  gap-[20px]">
-            <img src={SidebarThree}></img>
-            <div className="text-blue-500">Edit Profile</div>
-          </div>
+          <Link to="/profile">
+            <div className="flex hover:text-blue-700  gap-[20px]">
+              <FaPenToSquare />
+              <div>Edit Profile</div>
+            </div>
+          </Link>
           <Link to="/change-password">
             <div className="flex hover:text-blue-700 gap-[20px]">
-              <img src={SidebarFour}></img>
+              <FaLock />
               <div>Change Password</div>
             </div>
           </Link>
         </div>
         <Link to="/manage-event">
           <div className="flex hover:text-blue-700  gap-[20px]">
-            <img src={SidebarNine}></img>
+            <FaCirclePlus />
             <div>Create Event</div>
           </div>
         </Link>
         <Link to="/my-booking">
           <div className="flex hover:text-blue-700  gap-[20px]">
-            <img src={SidebarFive}></img>
+            <FaListCheck />
             <div>My Booking</div>
           </div>
         </Link>
         <Link to="/my-wihslist">
           <div className="flex hover:text-blue-700  gap-[20px]">
-            <img src={SidebarSix}></img>
+            <FaHeart />
             <div>My Wishlist</div>
           </div>
         </Link>
         <div className="flex hover:text-blue-700  gap-[20px]">
-          <img src={SidebarSeven}></img>
+          <FaGear />
           <div>Settings</div>
         </div>
-        <div className="flex hover:text-blue-700  gap-[20px]">
-          <img src={SidebarEight}></img>
-          <div className="text-red-500">Logout</div>
+        <div className="flex hover:text-red-700  gap-[20px]">
+          <FaArrowRightFromBracket />
+          <div>Logout</div>
         </div>
       </div>
     </div>
