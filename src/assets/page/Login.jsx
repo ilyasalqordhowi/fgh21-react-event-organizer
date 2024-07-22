@@ -23,11 +23,7 @@ function Login() {
     const password = event.target.password.value;
     const email = event.target.email.value;
 
-    if (
-      name === "Admin" &&
-      email === "Admin@mail.com" &&
-      password === "Admin1234"
-    ) {
+    if (email === "Admin@mail.com" && password === "Admin1234") {
       navigate("/");
     } else {
       window.alert("salah");
@@ -35,11 +31,11 @@ function Login() {
   }
 
   return (
-    <div className="flex  h-[100vh]">
-      <div className="bg-[#3366FF]  md:block md:w-[60%] hidden md:flex items-center md:justify-center">
+    <div className="flex w-full h-[100vh]">
+      <div className="bg-[#3366FF]  md:block w-full hidden md:flex items-center md:justify-center">
         <img src={People}></img>
       </div>
-      <div className=" flex items-center md:w-[30%] justify-center flex-col gap-5 p-[100px]">
+      <div className=" flex items-center md:w-[40%] w-full justify-center flex-col gap-5 p-[100px]">
         <div className="w-full">
           <Logo />
         </div>
@@ -53,19 +49,13 @@ function Login() {
           <div className="w-full flex flex-col gap-5">
             <input
               className="w-full outline-none border rounded-2xl p-[10px]"
-              name="name"
-              type="text"
-              placeholder="Full Name"
-            ></input>
-            <input
-              className="w-full outline-none border rounded-2xl p-[10px]"
               name="email"
               type="email"
               placeholder="Email"
             ></input>
-            <div className="flex justify-center rounded-2xl p-[10px] border">
+            <div className="flex justify-center w-full rounded-2xl p-[10px] border">
               <input
-                className="flex-1 outline-none "
+                className="flex-1 w-full outline-none "
                 name="password"
                 type={pass}
                 placeholder="Password"

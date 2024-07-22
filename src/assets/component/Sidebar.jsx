@@ -71,10 +71,12 @@ function Sidebar() {
           <FaGear />
           <div>Settings</div>
         </div>
-        <div className="flex hover:text-red-700  gap-[20px]">
-          <FaArrowRightFromBracket />
-          <div>Logout</div>
-        </div>
+        <Link to="/">
+          <div className="flex hover:text-red-700  gap-[20px]">
+            <FaArrowRightFromBracket />
+            <div>Logout</div>
+          </div>
+        </Link>
       </div>
     </div>
   );

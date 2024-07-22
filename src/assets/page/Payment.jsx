@@ -19,7 +19,7 @@ function Payment() {
           <div className="flex flex-col  md:w-[50%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
             <div className="w-full">
-              <div className="flex gap-[162px] w-full items-center">
+              <div className="flex justify-between w-full items-center">
                 <div className="flex gap-[15px] items-center">
                   <div className="flex gap-[15px]">
                     <input type="radio"></input>
@@ -38,7 +38,7 @@ function Payment() {
                 </div>
               </div>
               <div className="flex flex-col mt-[40px] gap-[40px]">
-                <div className="flex gap-[162px] w-full items-center">
+                <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
                       <input type="radio"></input>
@@ -50,7 +50,7 @@ function Payment() {
                   </div>
                   <FaChevronDown className="text-gray-400" />
                 </div>
-                <div className="flex gap-[162px] w-full items-center">
+                <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
                       <input type="radio"></input>
@@ -62,7 +62,7 @@ function Payment() {
                   </div>
                   <FaChevronDown className="text-gray-400" />
                 </div>
-                <div className="flex gap-[162px] w-full items-center">
+                <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
                       <input type="radio"></input>
@@ -107,7 +107,7 @@ function Payment() {
         </div>
         <div className="flex flex-col  md: gap-[144px]">
           <Footer />
-          <div>© 2020 Wetick All Rights Reserved</div>
+          <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
     </div>

@@ -341,7 +341,7 @@ function Home() {
             <FaArrowRight />
           </button>
         </div>
-        <div className="flex justify-center">
+        <div className="flex p-[10px] justify-center">
           <div className="bg-blue-600  mb-[175px] md:w-[1300px] w-full rounded-[30px] flex flex-col justify-center p-[30px] h-auto">
             <div className="flex  font-bold gap-2 p-[10px] text-[12px] ml-[20px] mb-[50px] text-white bg-sky-400 h-[35px] w-[130px] justify-center rounded-2xl">
               <div>——</div>
@@ -411,11 +411,13 @@ function Home() {
           </div>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
-              <div className="h-1/2 ">
-                <img src={EventOne} alt="" className="w-full h-full" />
-              </div>
+              <img
+                src={EventOne}
+                alt=""
+                className="w-full h-1/2 object-cover"
+              />
               <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
-                <div className=" text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
+                <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
                   <div>
                     <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
                     <h1 className="font-bold  text-[30px]">
@@ -451,7 +453,11 @@ function Home() {
           <Link>
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
               <div className="h-1/2 ">
-                <img src={EventTwo} alt="" className="w-full h-full" />
+                <img
+                  src={EventTwo}
+                  alt=""
+                  className="w-full object-cover h-full"
+                />
               </div>
               <div className=" absolute top-0 text-white left-0 flex  w-full h-full">
                 <div className=" text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px]  gap-[20px]">
@@ -490,7 +496,11 @@ function Home() {
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
               <div className="h-1/2 ">
-                <img src={EventOne} alt="" className="w-full h-full" />
+                <img
+                  src={EventOne}
+                  alt=""
+                  className="w-full object-cover h-full"
+                />
               </div>
               <div className=" absolute top-0 text-white left-0 flex  w-full h-full">
                 <div className="text-white  top-20 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px]  gap-[20px]">
@@ -564,7 +574,7 @@ function Home() {
         </div>
         <div className="flex flex-col  gap-[144px]">
           <Footer />
-          <div>© 2020 Wetick All Rights Reserved</div>
+          <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
     </div>

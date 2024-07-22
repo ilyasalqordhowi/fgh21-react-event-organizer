@@ -27,10 +27,10 @@ function SignUp() {
   }
   return (
     <div className="flex h-[100vh]">
-      <div className="bg-[#3366FF]  md:block md:w-[60%] hidden md:flex items-center md:justify-center">
+      <div className="bg-[#3366FF] w-full md:block hidden md:flex items-center md:justify-center">
         <img src={People}></img>
       </div>
-      <div className=" flex items-center justify-center flex-col gap-5 p-[100px]">
+      <div className=" flex items-center md:w-[40%] w-full justify-center flex-col gap-5 p-[100px]">
         <div className="w-full">
           <Logo />
         </div>
@@ -57,7 +57,7 @@ function SignUp() {
             ></input>
             <div className="flex justify-center rounded-2xl p-[10px] border">
               <input
-                className="flex-1 outline-none "
+                className="flex-1 w-full outline-none "
                 name="password"
                 type={pass}
                 placeholder="Password"
@@ -68,7 +68,7 @@ function SignUp() {
             </div>
             <div className="flex justify-center rounded-2xl p-[10px] border">
               <input
-                className="flex-1 outline-none "
+                className="flex-1 w-full outline-none "
                 name="confirmPassword"
                 type={pass}
                 placeholder="Confirm Password"
