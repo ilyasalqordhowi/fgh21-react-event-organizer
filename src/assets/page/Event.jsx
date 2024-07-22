@@ -67,7 +67,7 @@ function Event() {
               </div>
             </div>
             <hr className="md:flex hidden"></hr>
-            <div className="flex flex-col w-full gap-[12px]">
+            <div className="flex flex-col w-full p-[10px] gap-[12px]">
               <h1 className="font-bold text-[20px]">Event Detail</h1>
               <p className="text-[#373A42BF] ">
                 After his controversial art exhibition "Tear and Consume" back
@@ -78,7 +78,7 @@ function Event() {
               <img className="w-[315px]" src={Map}></img>
             </div>
             <Link to="/booking">
-              <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  text-white font-[20px] md:w-[375px]">
+              <div className="bg-[#3366FF] rounded-[15px] mt-[50px] text-center  p-[10px] text-white font-[20px] md:w-[375px]">
                 <button className="p-[20px]">Buy Tickets</button>
               </div>
             </Link>
@@ -87,7 +87,7 @@ function Event() {
       </div>
       <div className="flex flex-col md:mt-[0] mt-[500px] gap-[144px]">
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
+        <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
       </div>
     </div>
   );
