@@ -20,7 +20,7 @@ function SignUp() {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     if (password !== confirmPassword) {
-      window.alert("salah bangsat kontollll");
+      window.alert("salah");
     } else {
       navigate("/sign-in");
     }
