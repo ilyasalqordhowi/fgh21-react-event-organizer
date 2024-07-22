@@ -13,7 +13,7 @@ function Navbar() {
     }
   }
   return (
-    <div className="flex md:flex-row  flex-col md:gap-[500px] md:p-[10px]  ">
+    <div className="flex md:flex-row  flex-col justify-between md:p-[10px]  ">
       <div className="flex items-center justify-between ">
         <Logo />
         <button className="md:hidden" type="button" onClick={btnNav}>
@@ -36,6 +36,8 @@ function Navbar() {
             Location
           </li>
         </div>
+      </div>
+      <div className={navbar ? "hidden md:flex gap-[300px]" : ""}>
         <div className=" gap-5 md:flex w-full md:w-auto flex-col md:flex-row items-center">
           <Link to="/sign-in">
             <div className="bg-white text-center  md:w-[100px] md:rounded-2xl ">
