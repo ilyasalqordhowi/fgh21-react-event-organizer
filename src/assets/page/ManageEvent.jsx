@@ -16,9 +16,11 @@ function ManageEvent() {
         <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
           <div className="md:flex md:mt-[30px] mt-[100px]  justify-between">
             <div className="font-bold text-[20px]">Manage Event</div>
-            <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
-              <button>Create</button>
-            </div>
+            <Link to="/create-event">
+              <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
+                <button>Create</button>
+              </div>
+            </Link>
           </div>
           <div className="flex flex-col gap-[25px]">
             <div className="flex gap-[25px]">
