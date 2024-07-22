@@ -1,9 +1,11 @@
 import React from "react";
 import Navbar from "../component/Navbar";
-import Buble from "../img/buble.png";
 import People from "../img/people.png";
-import EventOne from "../img/event1.png";
-import EventTwo from "../img/event2.png";
+import filmOne from "../img/film-avatar.jpeg";
+import filmTwo from "../img/film-moana.jpeg";
+import filmThree from "../img/film-toy-story.jpeg";
+import filmFour from "../img/film-coco.jpeg";
+import filmFive from "../img/film-up.jpeg";
 import PeopleOne from "../img/people1.png";
 import PeopleTwo from "../img/people2.png";
 import PeopleThree from "../img/people3.png";
@@ -27,12 +29,20 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Home() {
+  const [navbar, setNavbar] = React.useState(true);
   function scrollLeft() {
     console.log("test....");
     document.getElementById("scroll").scrollLeft -= 50;
   }
   function scrollRight() {
     document.getElementById("scroll").scrollLeft += 50;
+  }
+  function btnSeeAll() {
+    if (navbar === true) {
+      setNavbar(false);
+    } else {
+      setNavbar(true);
+    }
   }
   return (
     <div>
@@ -82,7 +92,7 @@ function Home() {
         >
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
+              <img src={filmOne} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
@@ -117,7 +127,7 @@ function Home() {
           </Link>
           <Link>
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventTwo} alt="" className="w-full h-full" />
+              <img src={filmTwo} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
@@ -152,7 +162,7 @@ function Home() {
           </Link>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
+              <img src={filmThree} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
@@ -187,7 +197,7 @@ function Home() {
           </Link>
           <Link>
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventTwo} alt="" className="w-full h-full" />
+              <img src={filmFour} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
@@ -222,7 +232,7 @@ function Home() {
           </Link>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
+              <img src={filmFive} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
@@ -257,7 +267,7 @@ function Home() {
           </Link>
           <Link>
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventTwo} alt="" className="w-full h-full" />
+              <img src={filmThree} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Thu, 16 Nov, 7:00 PM</p>
@@ -292,7 +302,7 @@ function Home() {
           </Link>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
-              <img src={EventOne} alt="" className="w-full h-full" />
+              <img src={filmTwo} alt="" className="w-full h-full" />
               <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                 <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                   <p className="text-[15px]">Wed, 15 Nov, 4:00 PM</p>
@@ -343,11 +353,11 @@ function Home() {
         </div>
         <div className="flex p-[10px] justify-center">
           <div className="bg-blue-600  mb-[175px] md:w-[1300px] w-full rounded-[30px] flex flex-col justify-center p-[30px] h-auto">
-            <div className="flex  font-bold gap-2 p-[10px] text-[12px] ml-[20px] mb-[50px] text-white bg-sky-400 h-[35px] w-[130px] justify-center rounded-2xl">
+            <div className="flex  font-bold gap-2 p-[10px] text-[12px] ml-[100px] mb-[50px] text-white bg-sky-400 h-[35px] w-[130px] justify-center rounded-2xl">
               <div>——</div>
               <div>Location</div>
             </div>
-            <div className="flex flex-wrap w-full text-white justify-center mb-[50px]  gap-[86px]">
+            <div className="flex flex-wrap w-full text-white justify-center mb-[50px]  gap-[50px]">
               <div className="md:w-[280px] w-full  text-[50px] text-white">
                 Discover Events Near You
               </div>
@@ -359,29 +369,36 @@ function Home() {
                 <img src={Bandung}></img>
                 <div>Bandung</div>
               </div>
-              <div className="md:flex hidden flex-col items-center">
+              <div className="md:flex  flex-col items-center">
                 <img src={Bali}></img>
-                <div>Bali</div>
+                <div className="text-center">Bali</div>
               </div>
-              <div className="md:flex hidden flex-col items-center">
-                <img src={Aceh}></img>
-                <div>Aceh</div>
-              </div>
-              <div className="md:flex hidden flex-col items-center">
-                <img src={Solo}></img>
-                <div>Solo</div>
-              </div>
-              <div className="md:flex hidden flex-col items-center">
-                <img src={Yogyakarta}></img>
-                <div>Yogyakarta</div>
-              </div>
-              <div className="md:flex hidden flex-col items-center">
-                <img src={Semarang}></img>
-                <div>Semarang</div>
+              <div className={navbar ? "hidden" : ""}>
+                <div className="flex flex-wrap w-full text-white justify-center mb-[50px]  gap-[50px]">
+                  <div className="md:flex  flex-col items-center">
+                    <img src={Aceh}></img>
+                    <div className="text-center">Aceh</div>
+                  </div>
+                  <div className="md:flex  flex-col items-center">
+                    <img src={Solo}></img>
+                    <div className="text-center">Solo</div>
+                  </div>
+                  <div className="md:flex  flex-col items-center">
+                    <img src={Yogyakarta}></img>
+                    <div className="text-center">Yogyakarta</div>
+                  </div>
+                  <div className="md:flex  flex-col items-center">
+                    <img src={Semarang}></img>
+                    <div className="text-center">Semarang</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex justify-center ">
-              <button className="bg-white text-blue-600 w-[200px] p-[10px] rounded-[20px]">
+              <button
+                onClick={btnSeeAll}
+                className="bg-white text-blue-600 w-[200px] p-[10px] rounded-[20px]"
+              >
                 See All
               </button>
             </div>
@@ -411,11 +428,7 @@ function Home() {
           </div>
           <Link to="/detail">
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
-              <img
-                src={EventOne}
-                alt=""
-                className="w-full h-1/2 object-cover"
-              />
+              <img src={filmOne} alt="" className="w-full h-1/2 object-cover" />
               <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
                 <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
                   <div>
@@ -454,7 +467,7 @@ function Home() {
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
               <div className="h-1/2 ">
                 <img
-                  src={EventTwo}
+                  src={filmThree}
                   alt=""
                   className="w-full object-cover h-full"
                 />
@@ -497,7 +510,7 @@ function Home() {
             <div className="w-[260px] h-[376px] rounded-xl bg-blue-600 overflow-hidden relative">
               <div className="h-1/2 ">
                 <img
-                  src={EventOne}
+                  src={filmFour}
                   alt=""
                   className="w-full object-cover h-full"
                 />

@@ -14,23 +14,16 @@ function NavbarProfile() {
       setNavbar(true);
     }
   }
-  const [sidebar, setSidebar] = React.useState(true);
-  function btnsidebar() {
-    if (sidebar === true) {
-      setSidebar(false);
-    } else {
-      setSidebar(true);
-    }
-  }
+
   return (
-    <div className="flex md:flex-row bg-white flex-col md:gap-[500px] md:p-[10px]  ">
+    <div className="flex md:flex-row bg-white flex-col justify-between md:p-[10px]  ">
       <div className="flex items-center justify-between ">
         <Logo />
         <button className="md:hidden" type="button" onClick={btnNav}>
           <FaBars />
         </button>
       </div>
-      <div className={navbar ? "hidden md:flex  gap-[350px] " : ""}>
+      <div className={navbar ? "hidden md:flex   " : ""}>
         <div className="md:flex md:flex-row list-none flex flex-col items-center gap-5">
           <Link to="/">
             <li className="hover:text-blue-400 hover:underline flex gap-[10px]">
@@ -46,6 +39,8 @@ function NavbarProfile() {
             Location
           </li>
         </div>
+      </div>
+      <div className={navbar ? "hidden md:flex  " : ""}>
         <div className="flex  justify-between">
           <Link to="/profile">
             <div className="flex gap-5 w-[226px] items-center">
@@ -53,9 +48,6 @@ function NavbarProfile() {
               <div>Jhon Tomson</div>
             </div>
           </Link>
-          <button className="md:hidden" type="button" onClick={btnsidebar}>
-            <FaBars />
-          </button>
         </div>
       </div>
     </div>

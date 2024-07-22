@@ -9,6 +9,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 import { FaListCheck } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
@@ -21,6 +22,9 @@ function Sidebar() {
           <h2>Jhon Tomson</h2>
           <p className="text-[12px] text-[#373A42BF]">Entrepreneur, ID</p>
         </div>
+        <button className="md:hidden" type="button">
+          <FaBars />
+        </button>
       </div>
       <div className="flex flex-col gap-[30px] mt-[50px]">
         <Link>
@@ -71,7 +75,7 @@ function Sidebar() {
           <FaGear />
           <div>Settings</div>
         </div>
-        <Link to="/">
+        <Link to="/ ">
           <div className="flex hover:text-red-700  gap-[20px]">
             <FaArrowRightFromBracket />
             <div>Logout</div>

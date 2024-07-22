@@ -14,7 +14,7 @@ function Profile() {
         <div className="md:flex md:w-[242px] h-[508px] h-[508px]">
           <Sidebar />
         </div>
-        <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-white rounded-[20px] ">
+        <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-white md:rounded-[20px] ">
           <div className="w-[60%]   md:pt-[0]  pt-[50px] gap-[10px]">
             <h1 className="font-bold  text-[30px]">Profile</h1>
             <div className="md:hidden justify-center  flex gap-[200px]">
@@ -71,10 +71,10 @@ function Profile() {
               </div>
               <div className="md:flex w-[70%] justify-between">
                 <div>Profession</div>
-                <div className=" flex  items-center justify-end p-[30p] ">
+                <div className=" flex border-2 border-[#C1C5D0]  rounded-[5px] items-center  justify-end p-[30p] ">
                   <input
                     type=""
-                    className="border border-[#C1C5D0] rounded-[5px] p-[5px]"
+                    className=" w-full outline-none p-[5px]"
                     placeholder="Entrepreneur"
                   ></input>
                   <FaChevronDown className="text-gray-400" />
@@ -82,10 +82,10 @@ function Profile() {
               </div>
               <div className="md:flex w-[70%] justify-between">
                 <div>Nationality</div>
-                <div className=" flex items-center justify-end p-[30p] ">
+                <div className=" flex border-2 border-[#C1C5D0]  rounded-[5px]  items-center justify-end p-[30p] ">
                   <input
                     type=""
-                    className="border border-[#C1C5D0] rounded-[5px] p-[5px]"
+                    className=" outline-none w-full p-[5px]"
                     placeholder="Indonesia"
                   ></input>
                   <FaChevronDown className="text-gray-400" />
@@ -101,7 +101,7 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <div className="mt-[67px] bg-blue-500 w-[315px] text-white font-bold text-[16px] flex items-center justify-center rounded-[15px] p-[17px]">
+            <div className="mt-[67px] bg-blue-500 md:w-[315px] w-full text-white font-bold text-[16px] flex items-center justify-center rounded-[15px] p-[17px]">
               <button>Save</button>
             </div>
           </div>
