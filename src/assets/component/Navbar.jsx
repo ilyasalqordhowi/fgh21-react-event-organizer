@@ -43,7 +43,7 @@ function Navbar() {
             </div>
           </Link>
           <Link to="/sign-up">
-            <div className=" bg-[#3366FF] w-full  md:w-[150px] text-white rounded-[5px] text-center p-[5px]">
+            <div className=" bg-[#3366FF] w-full  md:w-[150px] text-white rounded-2xl text-center p-[5px]">
               <button>Sign Up</button>
             </div>
           </Link>
