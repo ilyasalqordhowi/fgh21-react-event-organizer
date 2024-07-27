@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarProfile from "../component/NavbarProfile";
+import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import Sidebar from "../component/Sidebar";
 import { Link } from "react-router-dom";
@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 function ChangePassword() {
   return (
     <div className="">
-      <NavbarProfile />
-      <div className="flex md:p-[50px] bg-[#F4F7FF]">
+      <Navbar />
+      <div className="flex md:p-[50px] bg-[#27005D]">
         <div className="flex w-[242px] h-[508px] w-[242px] h-[508px]">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-white rounded-[20px] ">
+        <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-[#AED2FF] rounded-[20px] ">
           <div className="font-bold text-[20px]">Change Password</div>
           <div className="w-full flex  md:flex gap-[40px]">
             <div className="md:flex hidden flex-col gap-[50px]">
@@ -24,17 +24,17 @@ function ChangePassword() {
               <label className="md:hidden">Old Password</label>
               <input
                 placeholder="Input Old Password ..."
-                className="border  md:w-[619px] p-[6px] rounded-[10px]"
+                className="border  md:w-full p-[6px] rounded-[10px]"
               ></input>
               <label className="md:hidden">New Password</label>
               <input
                 placeholder="input New Password"
-                className="border md:w-[619px] p-[6px] rounded-[10px]"
+                className="border md:w-full p-[6px] rounded-[10px]"
               ></input>
               <label className="md:hidden">Confirm Password</label>
               <input
                 placeholder="Input Confirm Password ..."
-                className="border md:w-[619px] p-[6px] rounded-[10px]"
+                className="border md:w-full p-[6px] rounded-[10px]"
               ></input>
             </div>
           </div>
@@ -43,7 +43,7 @@ function ChangePassword() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:bg-[#F4F7FF] gap-[144px]">
+      <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>

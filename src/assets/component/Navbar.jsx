@@ -2,6 +2,9 @@ import React from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import { login } from "../../redux/reducers/auth";
+import { addProfile } from "../../redux/reducers/profile";
 
 function Navbar() {
   const [navbar, setNavbar] = React.useState(true);
@@ -12,8 +15,14 @@ function Navbar() {
       setNavbar(true);
     }
   }
+  const dispatch = useDispatch();
+  const forms = useSelector((state) => state.auth.token);
+
+  dispatch(login(forms));
+  const profile = useSelector((state) => state.profile.data);
+
   return (
-    <div className="flex md:flex-row  flex-col justify-between md:p-[10px]  ">
+    <div className="flex md:flex-row text-[#E4F1FF] bg-[#9400FF] flex-col justify-between md:p-[10px]  ">
       <div className="flex items-center justify-between ">
         <Logo />
         <button className="md:hidden" type="button" onClick={btnNav}>
@@ -38,15 +47,35 @@ function Navbar() {
         </div>
       </div>
       <div className={navbar ? "hidden md:flex gap-[300px]" : ""}>
-        <div className=" gap-5 md:flex w-full md:w-auto flex-col md:flex-row items-center">
-          <Link to="/sign-in">
-            <div className="bg-white text-center  md:w-[100px] md:rounded-2xl ">
-              <button>Log in</button>
-            </div>
-          </Link>
-          <Link to="/sign-up">
-            <div className=" bg-[#3366FF] w-full  md:w-[150px] text-white rounded-2xl text-center p-[5px]">
-              <button>Sign Up</button>
+        <div
+          className={
+            forms
+              ? "hidden"
+              : "gap-5 md:flex w-full  flex-col md:flex-row items-center"
+          }
+        >
+          <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
+            <Link to="/sign-in">
+              <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
+                <button>Log in</button>
+              </div>
+            </Link>
+            <Link to="/sign-up">
+              <div className=" bg-[#3366FF] w-full  md:w-[150px] font-bold  text-white md:rounded-2xl text-center p-[10px]">
+                <button>Sign Up</button>
+              </div>
+            </Link>
+          </div>
+        </div>
+        <div
+          className={
+            forms ? "flex  md:flex-row justify-center items-center" : "hidden"
+          }
+        >
+          <Link to="/profile">
+            <div className="flex gap-5 w-full items-center">
+              <img className="w-[50px] rounded-full" src={profile.picture} />
+              <div>{profile.name}</div>
             </div>
           </Link>
         </div>

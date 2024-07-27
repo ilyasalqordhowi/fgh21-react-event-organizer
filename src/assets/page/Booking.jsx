@@ -1,7 +1,8 @@
 import React from "react";
-import NavbarProfile from "../component/NavbarProfile";
+
 import BookingOne from "../img/Booking1.png";
 import Footer from "../component/Footer";
+import Navbar from "../component/Navbar";
 import LogoBooking from "../img/Logo-booking.png";
 import LogoBookingOne from "../img/logo1.png";
 import LogoBookingTwo from "../img/logo2.png";
@@ -77,9 +78,9 @@ function Booking() {
 
   return (
     <div className="">
-      <NavbarProfile />
-      <div className="flex flex-col justify-center bg-white mt-[70px] md:mt-[0] items-center md:p-[50px] md:bg-[#F4F7FF]">
-        <div className="md:flex flex flex-col md:flex-row items-center  md:w-full gap-[46px] h-auto md:p-[50px] bg-white rounded-[20px] ">
+      <Navbar />
+      <div className="flex flex-col justify-center   md:mt-[0] items-center md:p-[50px] bg-[#27005D]">
+        <div className="md:flex flex flex-col md:flex-row items-center p-[50px]  md:w-full gap-[46px] h-auto md:p-[50px] bg-[#AED2FF] w-full md:rounded-[20px] ">
           <div className="md:flex flex-col flex items-center w-[60%] gap-[10px]">
             <img
               className=" hidden md:flex w-full rounded-[20px]"
@@ -108,11 +109,11 @@ function Booking() {
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
                       <h2>Section REG, ROW 1</h2>
-                      <p className="text-[#BDC0C4]">12 Seats available</p>
+                      <p className="text-white">12 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
                       <h3>$15</h3>
-                      <p className="text-[#BDC0C4]">per person</p>
+                      <p className="text-white">per person</p>
                     </div>
                   </div>
                 </div>
@@ -147,11 +148,11 @@ function Booking() {
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
                       <h2>Section VIP, ROW 2</h2>
-                      <p className="text-[#BDC0C4]">9 Seats available</p>
+                      <p className="text-white">9 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
                       <h3>$35</h3>
-                      <p className="text-[#BDC0C4]">per person</p>
+                      <p className="text-white">per person</p>
                     </div>
                   </div>
                 </div>
@@ -186,11 +187,11 @@ function Booking() {
                   <div className="flex pl-[10px] gap-[96px]">
                     <div>
                       <h2>Section VVIP, ROW 3 </h2>
-                      <p className="text-[#BDC0C4]">6 Seats available</p>
+                      <p className="text-white">6 Seats available</p>
                     </div>
                     <div className="flex flex-col items-center">
                       <h3>$50</h3>
-                      <p className="text-[#BDC0C4]">per person</p>
+                      <p className="text-white">per person</p>
                     </div>
                   </div>
                 </div>

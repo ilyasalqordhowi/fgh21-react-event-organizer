@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarProfile from "../component/NavbarProfile";
+import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import Sidebar from "../component/Sidebar";
 import CreateEvent from "../component/CreateEvent";
@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 function ManageEvent() {
   return (
     <div className="">
-      <NavbarProfile />
-      <div className="flex reltive  md:p-[50px] bg-[#F4F7FF]">
+      <Navbar />
+      <div className="flex reltive  md:p-[50px] bg-[#27005D]">
         <div className="flex  md:w-[242px] h-[508px]  h-[508px]">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
+        <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-[#AED2FF] md:rounded-[20px] ">
           <div className="md:flex md:mt-[30px] mt-[100px]  justify-between">
             <div className="font-bold text-[20px]">Manage Event</div>
             <Link to="/create-event">
-              <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
+              <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#27005D] text-blue-500">
                 <button>Create</button>
               </div>
             </Link>
@@ -32,10 +32,8 @@ function ManageEvent() {
                 <div className="text-[24px] mb-[15px]">
                   Sights & Sounds Exhibition
                 </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
+                <div className="text-white text-[12px]">Jakarta, Indonesia</div>
+                <div className="text-white    text-[12px]">
                   Wed, 15 Nov, 4:00 PM
                 </div>
                 <div className="flex mt-[10px] gap-[14px]">
@@ -55,10 +53,8 @@ function ManageEvent() {
                 <div className="text-[24px] mb-[15px]">
                   Sights & Sounds Exhibition
                 </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
+                <div className="text-white text-[12px]">Jakarta, Indonesia</div>
+                <div className="text-white text-[12px]">
                   Wed, 15 Nov, 4:00 PM
                 </div>
                 <div className="flex mt-[10px] gap-[14px]">
@@ -78,10 +74,8 @@ function ManageEvent() {
                 <div className="text-[24px] mb-[15px]">
                   Sights & Sounds Exhibition
                 </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
+                <div className="text-white text-[12px]">Jakarta, Indonesia</div>
+                <div className="text-white text-[12px]">
                   Wed, 15 Nov, 4:00 PM
                 </div>
                 <div className="flex mt-[10px] gap-[14px]">
@@ -101,10 +95,8 @@ function ManageEvent() {
                 <div className="text-[24px] mb-[15px]">
                   Sights & Sounds Exhibition
                 </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
+                <div className="text-white text-[12px]">Jakarta, Indonesia</div>
+                <div className="text-white text-[12px]">
                   Wed, 15 Nov, 4:00 PM
                 </div>
                 <div className="flex mt-[10px] gap-[14px]">
@@ -118,7 +110,7 @@ function ManageEvent() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:bg-[#F4F7FF] gap-[144px]">
+      <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>

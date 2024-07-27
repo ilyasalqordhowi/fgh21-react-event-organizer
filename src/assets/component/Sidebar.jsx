@@ -1,5 +1,4 @@
 import React from "react";
-
 import ProfileOne from "../img/profile.png";
 import { FaUser } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa6";
@@ -10,17 +9,30 @@ import { FaListCheck } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
+import { logout } from "../../redux/reducers/auth";
+import { addProfile } from "../../redux/reducers/profile";
+import { Provider, useSelector, useDispatch } from "react-redux";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
+  const dispatch = useDispatch();
+  const forms = useSelector((state) => state.auth.token);
+  function btnlogout() {
+    dispatch(logout(forms));
+  }
+
+  const profile = useSelector((state) => state.profile.data);
   return (
-    <div className="md:flex flex-col hidden w-[242px] h-[508px] w-[242px] h-[508px]">
+    <div className="md:flex flex-col text-white hidden w-[242px] h-[508px] w-[242px] h-[508px]">
       <div className="flex text-center gap-[15px]">
-        <img className="w-[55px] h-[55px]" src={ProfileOne}></img>
+        <img
+          className="w-[55px] rounded-full h-[55px]"
+          src={profile.picture}
+        ></img>
         <div>
-          <h2>Jhon Tomson</h2>
-          <p className="text-[12px] text-[#373A42BF]">Entrepreneur, ID</p>
+          <h2>{profile.name}</h2>
+          <p className="text-[12px] text-[#AED2FF]">Entrepreneur, ID</p>
         </div>
         <button className="md:hidden" type="button">
           <FaBars />
@@ -75,10 +87,10 @@ function Sidebar() {
           <FaGear />
           <div>Settings</div>
         </div>
-        <Link to="/ ">
+        <Link to="/sign-in">
           <div className="flex hover:text-red-700  gap-[20px]">
             <FaArrowRightFromBracket />
-            <div>Logout</div>
+            <button onClick={btnlogout}>Logout</button>
           </div>
         </Link>
       </div>

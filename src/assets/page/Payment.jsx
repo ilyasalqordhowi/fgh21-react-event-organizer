@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarProfile from "../component/NavbarProfile";
+import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import LogoPaymentOne from "../img/payment1.png";
 import LogoPaymentTwo from "../img/payment2.png";
@@ -13,16 +13,16 @@ import { Link } from "react-router-dom";
 function Payment() {
   return (
     <div className="">
-      <NavbarProfile />
-      <div className="flex flex-col justify-center items-center md:p-[50px] md:bg-[#F4F7FF]">
-        <div className="md:flex flex-row w-full gap-[46px] h-auto p-[70px] bg-white md:rounded-[20px] ">
+      <Navbar />
+      <div className="flex flex-col justify-center items-center md:p-[50px] bg-[#27005D]">
+        <div className="md:flex flex-row w-full gap-[46px] h-auto p-[70px] bg-[#AED2FF] md:rounded-[20px] ">
           <div className="flex flex-col  md:w-[50%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
             <div className="w-full">
               <div className="flex justify-between w-full items-center">
                 <div className="flex gap-[15px] items-center">
                   <div className="flex gap-[15px]">
-                    <input type="radio"></input>
+                    <input type="radio" name="method"></input>
                     <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#884DFF33]">
                       <img src={LogoPaymentOne}></img>
                     </div>
@@ -33,7 +33,7 @@ function Payment() {
               </div>
               <div className="flex items-center gap-[15px] mt-[15px] ml-[30px]">
                 <img src={Card}></img>
-                <div className="border border-2 border-sky-500 border-dashed bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-blue-500 font-bold flex justify-center rounded-[7px]">
+                <div className="border border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
                   <button>+</button>
                 </div>
               </div>
@@ -41,7 +41,7 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio"></input>
+                      <input type="radio" name="method"></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#FC105533]">
                         <img src={LogoPaymentTwo}></img>
                       </div>
@@ -53,7 +53,7 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio"></input>
+                      <input type="radio" name="method"></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#FF890033]">
                         <img src={LogoPaymentThree}></img>
                       </div>
@@ -65,7 +65,7 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio"></input>
+                      <input type="radio" name="method"></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#3366FF33]">
                         <img src={LogoPaymentFour}></img>
                       </div>

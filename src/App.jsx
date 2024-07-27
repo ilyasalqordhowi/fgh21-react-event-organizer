@@ -12,6 +12,9 @@ import ManageEvent from "./assets/page/ManageEvent";
 import CreateEvent from "./assets/component/CreateEvent";
 import Login from "./assets/page/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from "./redux/store.js";
+import { Provider } from "react-redux";
+import { ImPointDown } from "react-icons/im";
 
 const page = createBrowserRouter([
   {
@@ -63,8 +66,13 @@ const page = createBrowserRouter([
     element: <CreateEvent />,
   },
 ]);
+
 function App() {
-  return <RouterProvider router={page} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={page} />
+    </Provider>
+  );
 }
 
 export default App;

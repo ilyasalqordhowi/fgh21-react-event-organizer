@@ -1,9 +1,8 @@
 import React from "react";
-import NavbarProfile from "../component/NavbarProfile";
-import EventOne from "../img/event1.png";
+import Navbar from "../component/Navbar";
 import Location from "../img/location.png";
 import Clock from "../img/clock.png";
-import Heart from "../img/heart.png";
+import filmOne from "../img/film-avatar.jpeg";
 import PeopleOne from "../img/people1.png";
 import PeopleTwo from "../img/people2.png";
 import PeopleThree from "../img/people3.png";
@@ -15,12 +14,12 @@ import { Link } from "react-router-dom";
 
 function Event() {
   return (
-    <div className="flex flex-col bg-[#F4F7FF]">
-      <NavbarProfile />
-      <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#F4F7FF]">
-        <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-white rounded-[20px] ">
+    <div className="flex flex-col bg-[#27005D]">
+      <Navbar />
+      <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#27005D]">
+        <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-[#AED2FF]  rounded-[20px] ">
           <div className="flex flex-col items-center gap-[10px]  w-full">
-            <img className="w-full md:rounded-[20px]" src={EventOne}></img>
+            <img className="w-full md:rounded-[20px]" src={filmOne}></img>
             <div className="md:flex items-center text-[30px] hidden">
               <FaHeart />
               <div>Add to Wishlist</div>
