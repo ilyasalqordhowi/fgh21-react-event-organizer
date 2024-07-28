@@ -115,8 +115,6 @@ function Home() {
           id="scroll"
         >
           {event.map((element) => {
-            {
-            }
             return (
               <Link to="/detail">
                 <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
@@ -130,32 +128,21 @@ function Home() {
                       <p className="text-[15px]">
                         {new Date(element.time).toLocaleDateString("en-CA")}
                       </p>
+
                       <h1 className="font-bold  text-[30px]">
                         {element.title}
                       </h1>
                       <div className="flex mt-[30px] ">
-                        <img
-                          className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                          src={
-                            "https://wsw6zh-8888.csb.app/assets/" +
-                            console.log(element.attendees)
-                          }
-                        ></img>
-                        <img
-                          className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                          src={PeopleTwo}
-                        ></img>
-                        <img
-                          className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                          src={PeopleThree}
-                        ></img>
-                        <img
-                          className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                          src={PeopleFour}
-                        ></img>
-                        <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                          +62
-                        </div>
+                        {element.attendees.map((items) => {
+                          return (
+                            <img
+                              className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
+                              src={
+                                "https://wsw6zh-8888.csb.app/" + items.picture
+                              }
+                            ></img>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -275,27 +262,17 @@ function Home() {
                             {element.title}
                           </h1>
                         </div>
-                        <div className="flex mt-[30px] ">
-                          <img
-                            className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                            src={PeopleOne}
-                          ></img>
-                          <img
-                            className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                            src={PeopleTwo}
-                          ></img>
-                          <img
-                            className="rounded-full w-8 ml-[-10px] border border-slate-300"
-                            src={PeopleThree}
-                          ></img>
-
-                          <img
-                            className="rounded-full  w-8 ml-[-10px] border border-slate-300"
-                            src={PeopleFour}
-                          ></img>
-                          <div className="bg-orange-400/50  text-white rounded-full  w-10 ml-[-10px] border border-slate-300">
-                            +62
-                          </div>
+                        <div className="relative top-0 left-0 flex pl-4">
+                          {element.attendees.map((items) => {
+                            return (
+                              <img
+                                className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
+                                src={
+                                  "https://wsw6zh-8888.csb.app/" + items.picture
+                                }
+                              ></img>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
