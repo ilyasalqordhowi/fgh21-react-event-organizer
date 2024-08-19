@@ -1,28 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../component/Navbar";
 import People from "../img/peopleWeb.png";
-import filmOne from "../img/film-avatar.jpeg";
-import filmTwo from "../img/film-moana.jpeg";
-import filmThree from "../img/film-toy-story.jpeg";
-import filmFour from "../img/film-coco.jpeg";
-import filmFive from "../img/film-up.jpeg";
-import PeopleOne from "../img/people1.png";
-import PeopleTwo from "../img/people2.png";
-import PeopleThree from "../img/people3.png";
-import PeopleFour from "../img/people4.png";
-import Aceh from "../img/aceh.png";
-import Jakarta from "../img/jakarta.png";
-import Bali from "../img/bali.png";
-import Bandung from "../img/bandung.png";
-import Semarang from "../img/semarang.png";
-import Solo from "../img/solo.png";
-import Yogyakarta from "../img/yogyakarta.png";
-import HomeOne from "../img/home1.png";
-import HomeTwo from "../img/home2.png";
-import HomeThree from "../img/home3.png";
-import HomeFour from "../img/home4.png";
-import HomeFive from "../img/home5.png";
-import HomeSix from "../img/home6.png";
 import Footer from "../component/Footer";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -31,12 +9,14 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import { json, Link } from "react-router-dom";
 import { login } from "../../redux/reducers/auth";
 import { data } from "autoprefixer";
+import Partner from "../component/partner";
 
 function Home() {
   const [navbar, setNavbar] = React.useState(true);
+  const [location, setLocation] = React.useState([]);
   const dispatch = useDispatch();
   const event = useSelector((state) => state.event.listEvent);
-
+  console.log(event);
   function scrollLeft() {
     console.log("test....");
     document.getElementById("scroll").scrollLeft -= 50;
@@ -54,20 +34,33 @@ function Home() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch("https://wsw6zh-8888.csb.app/events");
+        const response = await fetch("http://localhost:8888/events");
+        console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
         }
         const json = await response.json();
-
         dispatch(events(json.results));
       } catch (error) {
         console.error(error.message);
       }
     }
     dataEvent();
+    async function dataLocation() {
+      try {
+        const response = await fetch("http://localhost:8888/locations");
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(`response status ${response.status}`);
+        }
+        const json = await response.json();
+        setLocation(json.results);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    dataLocation();
   }, []);
-  console.log(event);
 
   return (
     <div className="bg-[#9400FF]">
@@ -116,33 +109,33 @@ function Home() {
         >
           {event.map((element) => {
             return (
-              <Link to="/detail">
+              <Link to={"/detail/" + element.id}>
                 <div className="w-[260px] h-[376px] rounded-xl overflow-hidden relative">
                   <img
-                    src={"https://wsw6zh-8888.csb.app/" + element.picture}
+                    src={element.image}
                     alt=""
                     className="object-fit h-full w-full"
                   />
                   <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                     <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
                       <p className="text-[15px]">
-                        {new Date(element.time).toLocaleDateString("en-CA")}
+                        {new Date(element.date).toLocaleDateString("en-CA")}
                       </p>
 
                       <h1 className="font-bold  text-[30px]">
                         {element.title}
                       </h1>
                       <div className="flex mt-[30px] ">
-                        {element.attendees.map((items) => {
-                          return (
-                            <img
+                        {/* {element.attendees.map((items) => {
+                          return ( */}
+                        {/* <img
                               className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
                               src={
                                 "https://wsw6zh-8888.csb.app/" + items.picture
                               }
                             ></img>
                           );
-                        })}
+                        })} */}
                       </div>
                     </div>
                   </div>
@@ -175,38 +168,14 @@ function Home() {
               <div className="md:w-[280px] w-full  text-[50px] text-white">
                 Discover Events Near You
               </div>
-              <div className="flex flex-col items-center">
-                <img src={Jakarta}></img>
-                <div>Jakarta</div>
-              </div>
-              <div className="flex flex-col items-center">
-                <img src={Bandung}></img>
-                <div>Bandung</div>
-              </div>
-              <div className="md:flex  flex-col items-center">
-                <img src={Bali}></img>
-                <div className="text-center">Bali</div>
-              </div>
-              <div className={navbar ? "hidden" : ""}>
-                <div className="flex flex-wrap w-full text-white justify-center mb-[50px]  gap-[50px]">
-                  <div className="md:flex  flex-col items-center">
-                    <img src={Aceh}></img>
-                    <div className="text-center">Aceh</div>
+              {location.map((items) => {
+                return (
+                  <div className="flex flex-col w-[270px] items-center rounded-xl">
+                    <img className="rounded-xl" src={items.img}></img>
+                    <div>{items.name}</div>
                   </div>
-                  <div className="md:flex  flex-col items-center">
-                    <img src={Solo}></img>
-                    <div className="text-center">Solo</div>
-                  </div>
-                  <div className="md:flex  flex-col items-center">
-                    <img src={Yogyakarta}></img>
-                    <div className="text-center">Yogyakarta</div>
-                  </div>
-                  <div className="md:flex  flex-col items-center">
-                    <img src={Semarang}></img>
-                    <div className="text-center">Semarang</div>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
             <div className="flex justify-center ">
               <button
@@ -226,13 +195,13 @@ function Home() {
           <div className="font-bold text-[50px]">Browse Events By Category</div>
         </div>
         <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-[10px] text-[#E4F1FF] justify-center list-none gap-[40px]">
-          <li className="hover:text-blue-400 ">Music</li>
-          <li className="hover:text-blue-400 ">Arts</li>
-          <li className="hover:text-blue-400 ">Outdoors</li>
-          <li className="hover:text-blue-400 ">Workshop</li>
-          <li className="hover:text-blue-400 ">Sport</li>
-          <li className="hover:text-blue-400 ">Festival</li>
-          <li className="hover:text-blue-400 ">Fashion</li>
+          <button className="hover:text-blue-400 ">Music</button>
+          <button className="hover:text-blue-400 ">Arts</button>
+          <button className="hover:text-blue-400 ">Outdoors</button>
+          <button className="hover:text-blue-400 ">Workshop</button>
+          <button className="hover:text-blue-400 ">Sport</button>
+          <button className="hover:text-blue-400 ">Festival</button>
+          <button className="hover:text-blue-400 ">Fashion</button>
         </div>
         <div className="flex items-center  justify-center">
           <div className="md:flex hidden items-center">
@@ -242,13 +211,11 @@ function Home() {
           </div>
           <div className="flex  gap-[30px] mb-[50px]  md:w-[600px] items-center mt-[30px]  relative justify-center  rounded-xl overflow-x-scroll">
             {event.map((element) => {
-              {
-              }
               return (
                 <Link to="/detail">
                   <div className="w-[260px] h-[376px] rounded-xl bg-[#27005D] overflow-hidden relative">
                     <img
-                      src={"https://wsw6zh-8888.csb.app/" + element.picture}
+                      src={element.image}
                       alt=""
                       className="w-full h-1/2 object-cover"
                     />
@@ -256,14 +223,14 @@ function Home() {
                       <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
                         <div>
                           <p className="text-[15px]">
-                            {new Date(element.time).toLocaleDateString("en-CA")}
+                            {new Date(element.date).toLocaleDateString("en-CA")}
                           </p>
                           <h1 className="font-bold  text-[30px]">
                             {element.title}
                           </h1>
                         </div>
                         <div className="relative top-0 left-0 flex pl-4">
-                          {element.attendees.map((items) => {
+                          {/* {element.attendees.map((items) => {
                             return (
                               <img
                                 className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
@@ -272,7 +239,7 @@ function Home() {
                                 }
                               ></img>
                             );
-                          })}
+                          })} */}
                         </div>
                       </div>
                     </div>
@@ -298,26 +265,7 @@ function Home() {
             </div>
             <p className="text-[#C1C5D0]">By companies like :</p>
           </div>
-          <div className="md:flex grid grid-cols-2 gap-[30px] justify-center mt-[93px]">
-            <div>
-              <img src={HomeOne}></img>
-            </div>
-            <div>
-              <img src={HomeTwo}></img>
-            </div>
-            <div>
-              <img src={HomeThree}></img>
-            </div>
-            <div>
-              <img src={HomeFour}></img>
-            </div>
-            <div>
-              <img src={HomeFive}></img>
-            </div>
-            <div>
-              <img src={HomeSix}></img>
-            </div>
-          </div>
+          <Partner />
         </div>
         <div className="flex flex-col  gap-[144px]">
           <Footer />

@@ -4,9 +4,19 @@ import Logo from "../component/Logoo";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import loadingDino from "../img/dino.gif";
+import { FaRectangleXmark } from "react-icons/fa6";
+import { data } from "autoprefixer";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [pass, setPass] = React.useState("password");
+  const [confPass, setConfPass] = React.useState("password");
+  const [alert, setAlert] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+
   function password() {
     if (pass === "password") {
       setPass("text");
@@ -14,17 +24,43 @@ function SignUp() {
       setPass("password");
     }
   }
-  const navigate = useNavigate();
-  function doLogin(event) {
+  function confPassword() {
+    if (confPass === "password") {
+      setConfPass("text");
+    } else {
+      setConfPass("password");
+    }
+  }
+  function signUp(event) {
     event.preventDefault();
+    const fullName = event.target.fullname.value;
+    const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-    if (password !== confirmPassword) {
-      window.alert("password tidak sama");
+
+    console.log(fullName);
+    console.log(email);
+    console.log(password);
+    console.log(confirmPassword);
+
+    const formData = new URLSearchParams();
+    formData.append("full_name", fullName);
+    formData.append("email", email);
+    formData.append("password", password);
+    setLoading(true);
+    const dataRegis = fetch("http://localhost:8888/auth/register", {
+      method: "POST",
+      body: formData,
+    });
+    if (password != confirmPassword && email == email) {
+      setLoading(false);
+      setMessage(dataRegis.message);
+      setAlert(true);
     } else {
       navigate("/sign-in");
     }
   }
+
   return (
     <div className="flex bg-[#9400FF] h-[100vh]">
       <div className="bg-[#27005D] w-full md:block hidden md:flex items-center md:justify-center">
@@ -41,20 +77,20 @@ function SignUp() {
             <span className="text-[#27005D]">Log In</span>
           </div>
         </div>
-        <form className="w-full flex flex-col gap-5" onSubmit={doLogin}>
+        <form className="w-full flex flex-col gap-5" onSubmit={signUp}>
           <div className="w-full flex flex-col gap-5">
             <input
               className="w-full border  outline-none rounded-2xl p-[10px]"
-              name="name"
+              name="fullname"
               type="text"
               placeholder="Full Name"
-            ></input>
+            />
             <input
               className="w-full border outline-none rounded-2xl p-[10px]"
               name="email"
               type="email"
               placeholder="Email"
-            ></input>
+            />
             <div className="flex justify-center bg-white rounded-2xl p-[10px] border">
               <input
                 className="flex-1 w-full outline-none "
@@ -70,10 +106,10 @@ function SignUp() {
               <input
                 className="flex-1 w-full outline-none "
                 name="confirmPassword"
-                type={pass}
+                type={confPass}
                 placeholder="Confirm Password"
-              ></input>
-              <button onClick={password} type="button">
+              />
+              <button onClick={confPassword} type="button">
                 <FaEye />
               </button>
             </div>
@@ -90,6 +126,31 @@ function SignUp() {
           </button>
         </form>
       </div>
+      {alert ? (
+        <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
+          <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
+            <div>password yang anda masukkan salah</div>
+            <button
+              className="flex gap-[10px] items-center justify-center"
+              onClick={() => setAlert()}
+            >
+              <FaRectangleXmark />
+              <p>Cancel</p>
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {loading ? (
+        <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
+          <div className="bg-[#AED2FF] flex items-center gap-[20px] rounded-md p-[10px]">
+            <img className="w-[100px] " src={loadingDino}></img>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -12,8 +12,11 @@ const event = createSlice({
     events: (state, action) => {
       state.listEvent = action.payload;
     },
+    eventsId: (state, action) => {
+      state.listEvent = action.payload;
+    },
   },
 });
 
-export const { events } = event.actions;
+export const { events, eventsId } = event.actions;
 export default event.reducer;

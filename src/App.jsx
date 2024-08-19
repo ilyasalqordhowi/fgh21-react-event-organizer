@@ -4,13 +4,14 @@ import Home from "../src/assets/page/Home";
 import Event from "./assets/page/Event";
 import Booking from "./assets/page/Booking";
 import Payment from "./assets/page/Payment";
-import Profile from "./assets/page/Profile";
+import EditProfile from "./assets/page/EditProfile.jsx";
 import ChangePassword from "./assets/page/ChangePassword";
 import MyBooking from "./assets/page/MyBooking";
 import MyWihslist from "./assets/page/MyWihslist";
 import ManageEvent from "./assets/page/ManageEvent";
 import CreateEvent from "./assets/component/CreateEvent";
 import Login from "./assets/page/Login";
+import Profile from "./assets/page/Profile.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
@@ -22,7 +23,7 @@ const page = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/detail",
+    path: "/detail/:id",
     element: <Event />,
   },
   {
@@ -34,12 +35,16 @@ const page = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/booking",
+    path: "/events/section/:id",
     element: <Booking />,
   },
   {
     path: "/payment",
     element: <Payment />,
+  },
+  {
+    path: "/editProfile",
+    element: <EditProfile />,
   },
   {
     path: "/profile",

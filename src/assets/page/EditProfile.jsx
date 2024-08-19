@@ -10,7 +10,7 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import { ImGift } from "react-icons/im";
 import loadingDino from "../img/dino.gif";
 
-function Profile() {
+function EditProfile() {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile.data);
   console.log(profile);
@@ -22,6 +22,14 @@ function Profile() {
 
   const [dataNationality, setNationality] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [edit, setEdit] = React.useState(true);
+  function btnEdit() {
+    if (edit === true) {
+      setEdit(false);
+    } else {
+      setEdit(true);
+    }
+  }
   function btnSave() {
     if (loading === true) {
       setLoading(false);
@@ -81,7 +89,7 @@ function Profile() {
         </div>
         <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-[#AED2FF] md:rounded-[20px] ">
           <div className="w-[60%]   md:pt-[0]  pt-[50px] gap-[10px]">
-            <h1 className="font-bold  text-[30px]">Profile</h1>
+            <h1 className="font-bold  text-[30px]">Edit Profile</h1>
             <div className="md:hidden justify-center  flex gap-[200px]">
               <img src={profile.profile[0].picture}></img>
             </div>
@@ -99,9 +107,20 @@ function Profile() {
                 <div>Username</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
-                    <div>{profile.user.username}</div>
-
-                    <button className="text-blue-400" type="button">
+                    {edit ? (
+                      <input
+                        type="text"
+                        className="border border-[#C1C5D0] p-[5px] rounded-[5px] w-[170px]"
+                        defaultValue={profile.user.username}
+                      />
+                    ) : (
+                      <div>{profile.user.username}</div>
+                    )}
+                    <button
+                      className="text-blue-400"
+                      type="button"
+                      onClick={btnEdit}
+                    >
                       Edit
                     </button>
                   </div>
@@ -111,10 +130,21 @@ function Profile() {
                 <div>Email</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
-                    <div>{profile.user.email}</div>
-
+                    {edit ? (
+                      <input
+                        type="text"
+                        className="border border-[#C1C5D0] p-[5px] rounded-[5px] w-[150px]"
+                        defaultValue={profile.user.email}
+                      />
+                    ) : (
+                      <div>{profile.user.email}</div>
+                    )}
                     <div></div>
-                    <button className="text-blue-400" type="button">
+                    <button
+                      className="text-blue-400"
+                      type="button"
+                      onClick={btnEdit}
+                    >
                       Edit
                     </button>
                   </div>
@@ -124,10 +154,21 @@ function Profile() {
                 <div>Phone Number</div>
                 <div className="flex items-start">
                   <div className="flex gap-[15px]">
-                    <div>{profile.profile[0].phoneNumber}</div>
-
+                    {edit ? (
+                      <input
+                        type="text"
+                        className="border border-[#C1C5D0] p-[5px] rounded-[5px] w-[150px]"
+                        defaultValue={profile.profile[0].phoneNumber}
+                      />
+                    ) : (
+                      <div>{profile.profile[0].phoneNumber}</div>
+                    )}
                     <div></div>
-                    <button className="text-blue-400" type="button">
+                    <button
+                      className="text-blue-400"
+                      type="button"
+                      onClick={btnEdit}
+                    >
                       Edit
                     </button>
                   </div>
@@ -152,19 +193,23 @@ function Profile() {
                 <div>Profession</div>
                 <div className=" flex border-2 border-[#C1C5D0]  rounded-[5px] items-center  justify-end p-[30p] ">
                   <select name="" id="">
+                    {/* {dataProfession.map((items) => {
+                        return ( */}
                     <option value="" selected>
                       {profile.profile[0].profession}
                     </option>
+                    {/* //   );
+                      // })} */}
                   </select>
                 </div>
               </div>
               <div className="md:flex w-[70%] justify-between">
                 <div>Nationality</div>
-                <div className=" flex border-2 border-[#C1C5D0]  rounded-[5px]  items-center justify-end p-[30p] ">
-                  <select name="" id="">
+                <div className=" flex  rounded-[5px]  items-center justify-end p-[30p] ">
+                  <select className="p-[10px] rounded-xl" name="" id="">
                     {dataNationality.map((items) => {
                       console.log(dataNationality);
-                      return <option value="">{items.name}</option>;
+                      return <option value="">{items.nationalities}</option>;
                     })}
                   </select>
                 </div>
@@ -176,6 +221,7 @@ function Profile() {
                     <input
                       type="date"
                       id="birthday"
+                      className="p-[10px] rounded-xl"
                       name="birthday"
                       defaultValue={defaultValue}
                     />
@@ -223,4 +269,4 @@ function Profile() {
     </div>
   );
 }
-export default Profile;
+export default EditProfile;

@@ -11,6 +11,22 @@ import { FaChevronDown } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function Payment() {
+  const [card, setCard] = React.useState(true);
+  function btnCard() {
+    if (card === true) {
+      setCard(false);
+    } else {
+      setCard(true);
+    }
+  }
+  // const [ArrCard, setArrCard] = React.useState(true);
+  // function btnArrow() {
+  //   if (ArrCard === true) {
+  //     setArrCard(false);
+  //   } else {
+  //     setArrCard(true);
+  //   }
+  // }
   return (
     <div className="">
       <Navbar />
@@ -29,13 +45,36 @@ function Payment() {
                   </div>
                   <h2>Card</h2>
                 </div>
-                <FaChevronUp className="text-gray-400" />
+                {card ? (
+                  <button>
+                    <FaChevronUp
+                      className="text-gray-400"
+                      type="button"
+                      onClick={btnCard}
+                    />
+                  </button>
+                ) : (
+                  <button>
+                    <FaChevronDown
+                      className="text-gray-400"
+                      type="button"
+                      onClick={btnCard}
+                    />
+                  </button>
+                )}
               </div>
-              <div className="flex items-center gap-[15px] mt-[15px] ml-[30px]">
+              <div
+                className={
+                  card
+                    ? "flex items-center gap-[15px] mt-[15px] ml-[30px]"
+                    : "hidden"
+                }
+              >
                 <img src={Card}></img>
-                <div className="border border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
-                  <button>+</button>
-                </div>
+
+                <button className="border border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
+                  +
+                </button>
               </div>
               <div className="flex flex-col mt-[40px] gap-[40px]">
                 <div className="flex justify-between w-full items-center">
@@ -48,7 +87,9 @@ function Payment() {
                     </div>
                     <h2>Bank Transfer</h2>
                   </div>
-                  <FaChevronDown className="text-gray-400" />
+                  <button>
+                    <FaChevronDown className="text-gray-400" />
+                  </button>
                 </div>
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
@@ -60,7 +101,9 @@ function Payment() {
                     </div>
                     <h2>Retail</h2>
                   </div>
-                  <FaChevronDown className="text-gray-400" />
+                  <button>
+                    <FaChevronDown className="text-gray-400" />
+                  </button>
                 </div>
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
@@ -72,7 +115,9 @@ function Payment() {
                     </div>
                     <h2>E-Money</h2>
                   </div>
-                  <FaChevronDown className="text-gray-400" />
+                  <button>
+                    <FaChevronDown className="text-gray-400" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -98,7 +143,7 @@ function Payment() {
                 <div className="text-blue-500">$70</div>
               </div>
             </div>
-            <Link to="/payment">
+            <Link to="/my-booking">
               <div className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
                 <button>Checkout</button>
               </div>

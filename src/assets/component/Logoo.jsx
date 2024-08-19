@@ -7,8 +7,8 @@ function Logo() {
       <div>
         <img className="w-[100px]" src={logoWeb} alt="" />
       </div>
-      <span className="font-bold text-[20px] text-[#E4F1FF]">lo</span>
-      <span className="font-bold text-[20px] text-fuchsia-300">go</span>
+      <span className="font-bold text-[20px] text-[#E4F1FF]">Snag</span>
+      <span className="font-bold text-[20px] text-fuchsia-300">Tick</span>
     </div>
   );
 }

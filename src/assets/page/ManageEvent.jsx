@@ -114,6 +114,7 @@ function ManageEvent() {
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>
+      <CreateEvent />
     </div>
   );
 }

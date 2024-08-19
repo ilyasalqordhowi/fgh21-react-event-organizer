@@ -1,195 +1,147 @@
 import React from "react";
-import NavbarProfile from "./NavbarProfile";
-import Sidebar from "./Sidebar";
-import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 function CreateEvent() {
-  return (
-    <div className="">
-      <NavbarProfile />
-      <div className="flex relative  md:p-[50px] bg-[#F4F7FF]">
-        <div
-          className="flex  md:w-
-        [242px] h-[508px]  h-[508px]"
-        >
-          <Sidebar />
-        </div>
-        <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-white md:rounded-[20px] ">
-          <div className="md:flex md:mt-[30px] mt-[100px]  justify-between">
-            <div className="font-bold text-[20px]">Manage Event</div>
+  function createEvent(event) {
+    event.preventDefault();
 
-            <div className="md:flex w-[100px]  items-center rounded-[15px] p-[10px] bg-[#EAF1FF] text-blue-500">
-              <button>Create</button>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[25px]">
-            <div className="flex gap-[25px]">
-              <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                <h1 className="text-yellow-500">15</h1>
-                <p>Wed</p>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-[24px] mb-[15px]">
-                  Sights & Sounds Exhibition
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Wed, 15 Nov, 4:00 PM
-                </div>
-                <div className="flex mt-[10px] gap-[14px]">
-                  <div className="text-[#3366FF]  text-[12px]">Detail</div>
-                  <div className="text-[#3366FF]  text-[12px]">Update</div>
-                  <div className="text-[#3366FF]  text-[12px]">Delete</div>
-                </div>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="flex gap-[25px]">
-              <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                <h1 className="text-yellow-500">15</h1>
-                <p>Wed</p>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-[24px] mb-[15px]">
-                  Sights & Sounds Exhibition
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Wed, 15 Nov, 4:00 PM
-                </div>
-                <div className="flex mt-[10px] gap-[14px]">
-                  <div className="text-[#3366FF]  text-[12px]">Detail</div>
-                  <div className="text-[#3366FF]  text-[12px]">Update</div>
-                  <div className="text-[#3366FF]  text-[12px]">Delete</div>
-                </div>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="md:flex hidden gap-[25px]">
-              <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                <h1 className="text-yellow-500">15</h1>
-                <p>Wed</p>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-[24px] mb-[15px]">
-                  Sights & Sounds Exhibition
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Wed, 15 Nov, 4:00 PM
-                </div>
-                <div className="flex mt-[10px] gap-[14px]">
-                  <div className="text-[#3366FF]  text-[12px]">Detail</div>
-                  <div className="text-[#3366FF]  text-[12px]">Update</div>
-                  <div className="text-[#3366FF]  text-[12px]">Delete</div>
-                </div>
-              </div>
-            </div>
-            <hr className="md:flex hidden"></hr>
-            <div className="md:flex hidden gap-[25px]">
-              <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                <h1 className="text-yellow-500">15</h1>
-                <p>Wed</p>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-[24px] mb-[15px]">
-                  Sights & Sounds Exhibition
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Jakarta, Indonesia
-                </div>
-                <div className="text-gray-400 text-[12px]">
-                  Wed, 15 Nov, 4:00 PM
-                </div>
-                <div className="flex mt-[10px] gap-[14px]">
-                  <div className="text-[#3366FF]  text-[12px]">Detail</div>
-                  <div className="text-[#3366FF]  text-[12px]">Update</div>
-                  <div className="text-[#3366FF]  text-[12px]">Delete</div>
-                </div>
-              </div>
-            </div>
-            <hr className="md:flex hidden"></hr>
-          </div>
+    const nameEvent = event.target.name.value;
+    // const categoryEvent = event.target.category.value;
+    const locationEvent = event.target.location.value;
+    const dateEvent = event.target.date.value;
+    const priceEvent = event.target.price.value;
+    const imageEvent = event.target.image.value;
+    const detailEvent = event.target.detail.value;
+
+    const formData = new URLSearchParams();
+    formData.append("title", nameEvent);
+    // formData.append("title", categoryEvent);
+    formData.append("date", dateEvent);
+    formData.append("image", imageEvent);
+    formData.append("descriptions", detailEvent);
+
+    fetch("http://localhost:8888/events", {
+      method: "POST",
+      body: formData,
+    });
+  }
+  createEvent;
+  return (
+    <div className="flex items-center justify-center bg-black/25 w-full h-screen top-0 ">
+      <form className="bg-white pr-[52px] w-4/5 rounded-[30px] pl-[52px] absolute ">
+        <div className="pt-[32px] font-semibold tracking-[1px] mb-[44px]">
+          Create Event
         </div>
-      </div>
-      <div className="flex flex-col md:bg-[#F4F7FF] gap-[144px]">
-        <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
-      </div>
-      <div className="flex justify-center absolute top-[0] left-[0] right-[0] items-center h-[100vh] bg-black/50">
-        <div className="w-[1135px] h-auto bg-white p-[30px] rounded-[30px]">
-          <div className="font-bold text-[20px]">Create Event</div>
-          <div className="flex gap-[64px] p-[30px]">
-            <div className=" w-[50%]">
-              <div>Name</div>
+        <div className="w-full flex gap-[60px]">
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Name
+            </label>
+            <div>
               <input
-                className="border w-full p-[10px] rounded-[15px]"
+                type="text"
+                name="name"
+                id="name"
                 placeholder="Input Name Event ..."
-              ></input>
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
             </div>
-            <div className=" w-[50%]">
-              <div>Category</div>
+          </div>
+
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Category
+            </label>
+            <div className="">
               <input
-                className="border w-full p-[10px] rounded-[15px]"
+                type="text"
+                name="category"
+                id="name"
                 placeholder="Select Category"
-              ></input>
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
             </div>
           </div>
-          <div className="flex gap-[64px] p-[30px]">
-            <div className=" w-[50%]">
-              <div>Location</div>
-              <input
-                className="border w-full p-[10px] rounded-[15px]"
-                placeholder="Select Location"
-              ></input>
-            </div>
-            <div className=" w-[50%]">
-              <div>Date Time Show</div>
-              <input
-                className="border w-full p-[10px] rounded-[15px]"
-                placeholder="01/01/2022"
-              ></input>
-            </div>
-          </div>
-          <div className="flex gap-[64px] p-[30px]">
-            <div className=" w-[50%]">
-              <div>Price</div>
-              <input
-                className="border w-full p-[10px] rounded-[15px]"
-                placeholder="Input Price ..."
-              ></input>
-            </div>
-            <div className=" w-[50%]">
-              <div>Image</div>
-              <input
-                className="border w-full p-[10px] rounded-[15px]"
-                placeholder="Chose File "
-              ></input>
-            </div>
-          </div>
-          <div className="flex gap-[64px] p-[30px]">
-            <div className=" w-full">
-              <div>Detail</div>
-              <input
-                className="border w-full p-[10px] rounded-[15px]"
-                placeholder="Input Detail "
-              ></input>
-            </div>
-          </div>
-          <Link to="/manage-event">
-            <div className="bg-blue-500 text-[20px]  w-[200px] flex justify-center text-white rounded-[15px] p-[10px] ">
-              <button>Save</button>
-            </div>
-          </Link>
         </div>
-      </div>
+        <div className="w-full flex gap-[60px]">
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Location
+            </label>
+            <div>
+              <input
+                type="text"
+                name="location"
+                id="name"
+                placeholder="Select Location"
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
+            </div>
+          </div>
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Date Time Show
+            </label>
+            <div className="">
+              <input
+                type="text"
+                name="date"
+                id="name"
+                placeholder="01/01/2022"
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex gap-[60px]">
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Price
+            </label>
+            <div className="">
+              <input
+                type="number"
+                name="price"
+                id="name"
+                placeholder="Input Price ..."
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
+            </div>
+          </div>
+          <div className="w-1/2">
+            <label htmlFor="name" className="mb-[10px]">
+              Image
+            </label>
+            <div>
+              <input
+                type="text"
+                name="image"
+                id="name"
+                placeholder="Chose File ..."
+                className="h-[55px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full">
+          <div className="mb-[10px]">Detail</div>
+          <input
+            type="text"
+            name="detail"
+            id=""
+            placeholder="Input Detail ..."
+            className="h-[95px] border border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[46px] "
+          />
+        </div>
+        <div className="w-full text-right mb-[42px]">
+          <button
+            type="submit"
+            className="h-[60px] w-full text-white bg-[#3366FF] max-w-[310px] rounded-[15px]"
+          >
+            Save
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

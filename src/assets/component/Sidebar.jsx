@@ -28,10 +28,10 @@ function Sidebar() {
       <div className="flex text-center gap-[15px]">
         <img
           className="w-[55px] rounded-full h-[55px]"
-          src={profile.picture}
+          src={profile.profile[0].picture}
         ></img>
         <div>
-          <h2>{profile.name}</h2>
+          <h2>{profile.profile[0].full_name}</h2>
           <p className="text-[12px] text-[#AED2FF]">Entrepreneur, ID</p>
         </div>
         <button className="md:hidden" type="button">
@@ -39,7 +39,7 @@ function Sidebar() {
         </button>
       </div>
       <div className="flex flex-col gap-[30px] mt-[50px]">
-        <Link>
+        <Link to="/profile">
           <div className="flex hover:text-blue-700 items-center  gap-[25px]">
             <div className="bg-[#C1C5D0] w-[40px]  p-[10px] justify-center  flex items-center rounded-full">
               <FaUser />
@@ -52,7 +52,7 @@ function Sidebar() {
             <FaCreditCard />
             <div>Card</div>
           </div>
-          <Link to="/profile">
+          <Link to="/editProfile">
             <div className="flex hover:text-blue-700  gap-[20px]">
               <FaPenToSquare />
               <div>Edit Profile</div>

@@ -1,24 +1,25 @@
 import React from "react";
 import People from "../img/peopleWeb.png";
 import Logo from "../component/Logoo";
-import GoogleOne from "../img/google2.png";
-import FacebookTWo from "../img/facebook2.png";
 import { FaEye } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+
+import { Link, useParams } from "react-router-dom";
 import { FaRectangleXmark } from "react-icons/fa6";
 import { Provider, useSelector, useDispatch } from "react-redux";
-import { FaSpinner } from "react-icons/fa6";
 import { login } from "../../redux/reducers/auth";
 import loadingDino from "../img/dino.gif";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa6";
 import { addProfile } from "../../redux/reducers/profile";
+import { data } from "autoprefixer";
 
 function Login() {
+  let { id } = useParams();
   const navigate = useNavigate();
   const [alert, setAlert] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [message, setMessage] = React.useState("");
   const [pass, setPass] = React.useState("password");
   function password() {
     if (pass === "password") {
@@ -40,7 +41,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("password", password);
     formData.append("email", email);
-    fetch("https://wsw6zh-8888.csb.app/auth/login", {
+    fetch("http://localhost:8888/auth/login", {
       method: "POST",
       body: formData,
     }).then((response) => {
@@ -48,25 +49,24 @@ function Login() {
         if (data.success) {
           dispatch(login(data.results.token));
           async function dataUpdate() {
-            const response = await fetch(
-              "https://wsw6zh-8888.csb.app/profile",
-              {
-                headers: {
-                  Authorization: "Bearer " + data.results.token,
-                },
-              }
-            );
+            const response = await fetch("http://localhost:8888/profile/", {
+              headers: {
+                Authorization: "Bearer " + data.results.token,
+              },
+            });
             const json = await response.json();
+            console.log(json);
+
             dispatch(addProfile(json.results));
           }
-
           dataUpdate();
           navigate("/");
-          // window.alert(data.message);
         } else {
           setLoading(false);
+          setMessage(data.message);
           setAlert(true);
           // window.alert;
+          // window.alert(data.message);
         }
       });
     });
@@ -138,7 +138,7 @@ function Login() {
       {alert ? (
         <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
           <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
-            <div>INPUT YANG ANDA MASUKAN SALAH / TIDAK TERISI</div>
+            <div>{message}</div>
             <button
               className="flex gap-[10px] items-center justify-center"
               onClick={() => setAlert()}

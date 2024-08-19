@@ -17,6 +17,7 @@ function Navbar() {
   }
   const dispatch = useDispatch();
   const forms = useSelector((state) => state.auth.token);
+  console.log(forms);
 
   dispatch(login(forms));
   const profile = useSelector((state) => state.profile.data);
@@ -72,11 +73,14 @@ function Navbar() {
             forms ? "flex  md:flex-row justify-center items-center" : "hidden"
           }
         >
-          <Link to="/profile">
-            <div className="flex gap-5 w-full items-center">
-              <img className="w-[50px] rounded-full" src={profile.picture} />
-              <div>{profile.name}</div>
-            </div>
+          <Link to="/editProfile">
+            {/* <div className="flex gap-5 w-full items-center">
+              <img
+                className="w-[100px] rounded-full"
+                src={profile.profile[0].picture}
+              />
+              <div>{profile.profile[0].name}</div>
+            </div> */}
           </Link>
         </div>
       </div>
