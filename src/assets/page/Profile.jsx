@@ -27,6 +27,7 @@ function Profile() {
       setLoading(false);
     } else {
       setLoading(true);
+      
     }
   }
 

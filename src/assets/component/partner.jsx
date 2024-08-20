@@ -21,7 +21,12 @@ function Partner() {
   return (
     <div className="md:flex grid grid-cols-2 gap-[30px] items-center justify-center mt-[93px]">
       {partner.map((items) => {
-        return <img className="w-[100px]" src={items.img}></img>;
+        return (
+          <img
+            className="w-[100px] bg-white p-[20px] rounded-xl"
+            src={items.img}
+          ></img>
+        );
       })}
     </div>
   );
