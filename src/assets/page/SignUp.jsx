@@ -52,7 +52,7 @@ function SignUp() {
       method: "POST",
       body: formData,
     });
-    if (password != confirmPassword && email == email) {
+    if (password != confirmPassword && email != email) {
       setLoading(false);
       setMessage(dataRegis.message);
       setAlert(true);
@@ -72,9 +72,11 @@ function SignUp() {
         </div>
         <div className="flex flex-col justify-center w-full">
           <h1 className="font-bold text-[#E4F1FF] text-[20px]">Sign Up</h1>
-          <div className="flex ">
+          <div className="flex gap-[10px]">
             <p className="text-white">Already have an account?</p>
-            <span className="text-[#27005D]">Log In</span>
+            <Link to="/sign-in">
+              <span className="text-[#27005D]">Log In</span>
+            </Link>
           </div>
         </div>
         <form className="w-full flex flex-col gap-5" onSubmit={signUp}>

@@ -11,8 +11,11 @@ const profile = createSlice({
     addProfile: (state, action) => {
       state.data = action.payload;
     },
+    editProfile: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
-export const { addProfile } = profile.actions;
+export const { addProfile, editProfile } = profile.actions;
 export default profile.reducer;

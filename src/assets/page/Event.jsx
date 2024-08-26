@@ -9,9 +9,11 @@ import PeopleFour from "../img/people4.png";
 import Map from "../img/map.png";
 import Footer from "../component/Footer";
 import { FaHeart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 function Event() {
+  const datatoken = useSelector((state) => state.auth.token);
   let { id } = useParams();
   console.log(id);
   const [data, setData] = React.useState({});
@@ -32,21 +34,33 @@ function Event() {
     }
     dataEvent();
   }, []);
-
+  async function Whishlist() {
+    const response = await fetch("http://localhost:8888/whislist/" + id, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+    });
+    console.log(response);
+  }
   return (
     <div className="flex flex-col bg-[#27005D]">
       <Navbar />
+      <Link to={"/events/section/" + data.id} />
       <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#27005D]">
         <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-[#AED2FF]  rounded-[20px] ">
           <div className="flex flex-col items-center gap-[10px]  w-full">
             <img className="w-full md:rounded-[20px]" src={data.image}></img>
-            <div className="md:flex items-center text-[30px] hidden">
+            <button
+              onClick={Whishlist}
+              className="md:flex items-center text-[30px] hidden"
+            >
               <FaHeart />
               <div>Add to Wishlist</div>
-            </div>
+            </button>
           </div>
           <div className="flex flex-col md:relative absolute md:w-[40%] md:gap-[30px]">
-            <div className="flex flex-col md:text-black mt-[100px] text-white md:mt-[0] md:mb-[0] gap-[10px] md:mt-[0px] mb-[100px] ">
+            <div className="flex flex-col md:text-black mt-[100px] text-white md:mb-[0] gap-[10px] md:mt-[0px] ">
               <h1 className="flex font-bold w-full md:text-[30px] text-[40px]">
                 {data.title}
                 <div className="flex items-center md:hidden">
@@ -65,7 +79,7 @@ function Event() {
               </div>
               <div className="w-[40px]">
                 <div>Attendees</div>
-                <div className="flex mb-[100px] mt-[30px] ">
+                <div className="flex  mt-[30px] ">
                   <img
                     className="rounded-full w-8  border border-slate-300"
                     src={PeopleOne}

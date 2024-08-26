@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import LogoPaymentOne from "../img/payment1.png";
@@ -72,7 +73,7 @@ function Payment() {
               >
                 <img src={Card}></img>
 
-                <button className="border border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
+                <button className="border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
                   +
                 </button>
               </div>
@@ -140,7 +141,7 @@ function Payment() {
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Total Payment</div>
-                <div className="text-blue-500">$70</div>
+                <div className="text-blue-500">Rp.100000</div>
               </div>
             </div>
             <Link to="/my-booking">
@@ -155,6 +156,7 @@ function Payment() {
           <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

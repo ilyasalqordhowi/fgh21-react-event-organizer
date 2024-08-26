@@ -24,10 +24,10 @@ function Sidebar() {
 
   const profile = useSelector((state) => state.profile.data);
   return (
-    <div className="md:flex flex-col text-white hidden w-[242px] h-[508px] w-[242px] h-[508px]">
-      <div className="flex text-center gap-[15px]">
+    <div className="md:flex flex-col text-white hidden w-[242px] h-[508px]">
+      <div className="flex items-center text-center gap-[15px]">
         <img
-          className="w-[55px] rounded-full h-[55px]"
+          className="w-[55px] h-[55px]  p-[30px] rounded-[50%] border-white-950 border-[5px]"
           src={profile.profile[0].picture}
         ></img>
         <div>

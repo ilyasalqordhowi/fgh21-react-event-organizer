@@ -105,7 +105,7 @@ function Booking() {
       setSection(tampung1 + "VIP (" + (num2 - 1) + ")" + tampung3);
       setNum2(num2 - 1);
       setQuantity1(num1 + num2 - 1);
-      setPayment1(num1 * 100000 + (num2 - 1) * 500000 + num3 * 1000000);
+      setPayment1(num1 * 100000 + (num2 - 1) * 500000 + num3 * 10000000);
       setTampung2("VIP (" + (num2 - 1) + ")");
     }
   }
@@ -280,7 +280,7 @@ function Booking() {
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Total Payment</div>
-                <div className="text-blue-500">{payment1}$</div>
+                <div className="text-blue-500">Rp.{payment1}</div>
               </div>
             </div>
             <Link to="/payment">

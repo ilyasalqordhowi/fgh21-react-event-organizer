@@ -27,7 +27,6 @@ function Profile() {
       setLoading(false);
     } else {
       setLoading(true);
-      
     }
   }
 
@@ -77,7 +76,7 @@ function Profile() {
     <div className="bg-[#27005D]">
       <Navbar />
       <div className="flex  md:p-[50px] bg-[#27005D]">
-        <div className="md:flex md:w-[242px] h-[508px] h-[508px]">
+        <div className="md:flex md:w-[242px] h-[508px]">
           <Sidebar />
         </div>
         <div className="md:flex md:flex-row flex-row-reverse  justify-center flex w-full gap-[46px] h-auto md:p-[100px] bg-[#AED2FF] md:rounded-[20px] ">

@@ -111,6 +111,9 @@ function Login() {
             <div className="flex justify-end text-[#C4E4FF]">
               Forgot Password?
             </div>
+            <Link to="/sign-up" className="flex justify-end text-[#C4E4FF]">
+              <button type="button">Dont Have an Account?</button>
+            </Link>
             <button
               type="submit"
               className="bg-[#27005D]  rounded-2xl w-full text-[#7BC9FF] h-[40px]"

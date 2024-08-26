@@ -10,7 +10,7 @@ function MyBooking() {
     <div className="">
       <Navbar />
       <div className="flex  md:p-[50px] bg-[#27005D]">
-        <div className="flex h-[508px] md:w-[242px] h-[508px]">
+        <div className="flex md:w-[242px] h-[508px]">
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-[#AED2FF] md:rounded-[20px] ">

@@ -80,11 +80,11 @@ function Home() {
             </div>
           </div>
           <div className="flex w-full gap-[40px] text-[#E4F1FF] text-center justify-center">
-            <div className="flex flex-col list-none">
+            <div className="flex hover:text-[#FF8900] hover:h-[80px] hover:border-solid hover:border-2 hover:border-[#FF8900] p-[10px] rounded-2xl flex-col list-none">
               <li>13</li>
               <li>Mon</li>
             </div>
-            <div className="flex flex-col list-none">
+            <div className="flex hover:text-[#FF8900] hover:h-[80px] hover:border-solid hover:border-2 hover:border-[#FF8900] p-[10px] rounded-2xl flex-col list-none">
               <li>14</li>
               <li>Tue</li>
             </div>
@@ -93,11 +93,11 @@ function Home() {
               <li>Wed</li>
               <li className="text-[#FF8900]">•</li>
             </div>
-            <div className="flex flex-col list-none">
+            <div className="flex hover:text-[#FF8900] hover:h-[80px] hover:border-solid hover:border-2 hover:border-[#FF8900] p-[10px] rounded-2xl flex-col list-none">
               <li>16</li>
               <li>Thu</li>
             </div>
-            <div className="flex flex-col list-none">
+            <div className="flex hover:text-[#FF8900] hover:h-[80px] hover:border-solid hover:border-2 hover:border-[#FF8900] p-[10px] rounded-2xl flex-col list-none">
               <li>17</li>
               <li>Fri</li>
             </div>
@@ -118,9 +118,7 @@ function Home() {
                   />
                   <div className="bg-[rgba(0,0,0,0.5)] absolute top-0 text-white left-0  w-full h-full">
                     <div className="a text-white  top-20 pl-[20px] pt-[170px] flex flex-col justify-center gap-[5px] ">
-                      <p className="text-[15px]">
-                        {new Date(element.date).toLocaleDateString("en-CA")}
-                      </p>
+                      <p className="text-[15px]">{element.date}</p>
 
                       <h1 className="font-bold  text-[30px]">
                         {element.title}
@@ -222,9 +220,7 @@ function Home() {
                     <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
                       <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
                         <div>
-                          <p className="text-[15px]">
-                            {new Date(element.date).toLocaleDateString("en-CA")}
-                          </p>
+                          <p className="text-[15px]">{element.date}</p>
                           <h1 className="font-bold  text-[30px]">
                             {element.title}
                           </h1>

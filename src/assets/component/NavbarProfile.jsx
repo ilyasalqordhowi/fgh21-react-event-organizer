@@ -50,6 +50,18 @@ function NavbarProfile() {
           </Link>
         </div>
       </div>
+      <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
+        <Link to="/sign-in">
+          <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
+            <button>Log in</button>
+          </div>
+        </Link>
+        <Link to="/sign-up">
+          <div className=" bg-[#3366FF] w-full  md:w-[150px] font-bold  text-white md:rounded-2xl text-center p-[10px]">
+            <button>Sign Up</button>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/auth";
 import { addProfile } from "../../redux/reducers/profile";
@@ -47,14 +47,8 @@ function Navbar() {
           </li>
         </div>
       </div>
-      <div className={navbar ? "hidden md:flex gap-[300px]" : ""}>
-        <div
-          className={
-            forms
-              ? "hidden"
-              : "gap-5 md:flex w-full  flex-col md:flex-row items-center"
-          }
-        >
+      <div className="flex">
+        {forms === null ? (
           <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
             <Link to="/sign-in">
               <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
@@ -67,23 +61,21 @@ function Navbar() {
               </div>
             </Link>
           </div>
-        </div>
-        <div
-          className={
-            forms ? "flex  md:flex-row justify-center items-center" : "hidden"
-          }
-        >
-          <Link to="/editProfile">
-            {/* <div className="flex gap-5 w-full items-center">
-              <img
-                className="w-[100px] rounded-full"
-                src={profile.profile[0].picture}
-              />
-              <div>{profile.profile[0].name}</div>
-            </div> */}
-          </Link>
-        </div>
+        ) : (
+          <div className="flex justify-between items-center">
+            <Link to="/editProfile">
+              <div className="flex gap-5 w-[226px] items-center">
+                <img
+                  className=" rounded-full p-[30px] border-blue-950 border-[5px]"
+                  src={profile}
+                ></img>
+                <div>ilyas nazhif</div>
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
+      <ScrollRestoration />
     </div>
   );
 }

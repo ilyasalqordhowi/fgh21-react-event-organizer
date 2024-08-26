@@ -3,12 +3,13 @@ import auth from "./auth";
 import event from "./event";
 import profile from "./profile";
 import booking from "./booking";
+import bookingReducer from "./booking";
 
 const reducer = combineReducers({
   auth,
   event,
   profile,
-  booking,
+  booking: bookingReducer,
 });
 
 export default reducer;
