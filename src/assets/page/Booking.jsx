@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BookingOne from "../img/Booking1.png";
 import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
@@ -7,117 +7,96 @@ import LogoBookingOne from "../img/logo1.png";
 import LogoBookingTwo from "../img/logo2.png";
 import LogoBookingThree from "../img/logo3.png";
 import BookingTwo from "../img/booking2.png";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import booking from "../../redux/reducers/booking";
+import {
+  addQty,
+  addEventId,
+  addEventTitle,
+  addTotalPayment,
+  addTicketSection,
+  addSectionId,
+  addQuantity,
+} from "../../redux/reducers/booking";
+import Transactions from "../component/transaction";
 
 function Booking() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let { id } = useParams();
-  const [data, setData] = React.useState({});
-  const dataBooking = useSelector((state) => state.booking.listBooking);
-  // const [saction, setSaction] = React.useState([]);
-  // console.log(saction, "testtttttttttttttt");
-  const [num1, setNum1] = React.useState(0);
-  const [num2, setNum2] = React.useState(0);
-  const [num3, setNum3] = React.useState(0);
-  const [section, setSection] = React.useState("-");
-  const [quantity1, setQuantity1] = React.useState("-");
-  const [payment1, setPayment1] = React.useState("-");
-  const [tampung1, setTampung1] = React.useState("");
-  const [tampung2, setTampung2] = React.useState("");
-  const [tampung3, setTampung3] = React.useState("");
+  const [section, setSection] = React.useState([]);
+  const [event, setEvent] = React.useState([]);
+  console.log(event);
 
-  async function dataSection() {
-    try {
+  const token = useSelector((state) => state.auth.token);
+  if (token === null) {
+    navigate("/sign-up");
+  }
+
+  React.useEffect(() => {
+    (async function () {
       const response = await fetch(
-        "http://localhost:8888/events/section" + "/" + id
+        "http://localhost:8888/events/section/" + id,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
       );
-      console.log(response, "masuk");
-      if (!response.ok) {
-        throw new Error(`response status ${response.status}`);
-      }
       const json = await response.json();
-      console.log("haloooooo", json.results);
-      dispatch(booking(json.results));
-      // setSaction(json.results);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-  async function dataEvent() {
-    try {
-      const response = await fetch("http://localhost:8888/events" + "/" + id);
-      console.log(response);
-      if (!response.ok) {
-        throw new Error(`response status ${response.status}`);
-      }
+      const results = json.results;
+      setSection(results);
+    })();
+    (async function () {
+      const response = await fetch("http://localhost:8888/events" + "/" + id, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       const json = await response.json();
-      console.log(json.results);
-      setData(json.results);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-  useEffect(() => {
-    dataEvent();
-    dataSection();
+      const results = json.results;
+      console.log(json, "hai");
+      setEvent(results);
+    })();
   }, []);
 
-  function plus1() {
-    if (num1 < 5) {
-      setSection("REG (" + (num1 + 1) + ")" + tampung2 + tampung3);
-      setNum1(num1 + 1);
-      setQuantity1(num1 + 1 + num2);
-      setPayment1((num1 + 1) * 100000 + num2 * 500000 + num3 * 1000000);
-      setTampung1("REG (" + (num1 + 1) + ")");
+  const [selectedSections, setSelectedSections] = useState([]);
+
+  const ticketSection = selectedSections.reduce((prev, curr) => {
+    const arr = prev;
+    if (curr.quantity !== 0) {
+      arr.push(`${curr.name}(${curr.quantity})`);
     }
-  }
-  function plus2() {
-    if (num2 < 5) {
-      setSection(tampung1 + "VIP (" + (num2 + 1) + ")" + tampung3);
-      setNum2(num2 + 1);
-      setQuantity1(num1 + num2 + 1);
-      setPayment1(num1 * 100000 + (num2 + 1) * 500000 + num3 * 1000000);
-      setTampung2("VIP (" + (num2 + 1) + ")");
+    return arr;
+  }, []);
+  const quantity = selectedSections.reduce(
+    (prev, curr) => prev + curr.quantity,
+    0
+  );
+  const price = selectedSections.reduce((prev, curr) => prev + curr.price, 0);
+
+  const sectionId = selectedSections.reduce((prev, curr) => {
+    const arr = prev;
+    if (curr.quantity !== 0) {
+      arr.push(curr.id);
     }
-  }
-  function plus3() {
-    if (num3 < 5) {
-      setSection(tampung1 + tampung2 + "VVIP (" + (num3 + 1) + ")");
-      setNum3(num3 + 1);
-      setQuantity1(num1 + num2 + num3 + 1);
-      setPayment1(num1 * 100000 + num2 * 500000 + (num3 + 1) * 1000000);
-      setTampung3("VVIP (" + (num3 + 1) + ")");
+    return arr;
+  }, []);
+  const quantityArray = selectedSections.reduce((prev, curr) => {
+    const arr = prev;
+    if (curr.quantity !== 0) {
+      arr.push(curr.quantity);
     }
-  }
-  function minus1() {
-    if (num1 > 0) {
-      setSection("REG (" + (num1 - 1) + ")" + tampung2 + tampung3);
-      setNum1(num1 - 1);
-      setQuantity1(num1 - 1 + num2);
-      setPayment1((num1 - 1) * 100000 + num2 * 500000 + num3 * 1000000);
-      setTampung1("REG (" + (num1 - 1) + ")");
-    }
-  }
-  function minus2() {
-    if (num2 > 0) {
-      setSection(tampung1 + "VIP (" + (num2 - 1) + ")" + tampung3);
-      setNum2(num2 - 1);
-      setQuantity1(num1 + num2 - 1);
-      setPayment1(num1 * 100000 + (num2 - 1) * 500000 + num3 * 10000000);
-      setTampung2("VIP (" + (num2 - 1) + ")");
-    }
-  }
-  function minus3() {
-    if (num3 > 0) {
-      setSection(tampung1 + tampung2 + "VVIP (" + (num3 - 1) + ")");
-      setNum3(num3 - 1);
-      setQuantity1(num1 + num2 + num3 - 1);
-      setPayment1(num1 * 100000 + num2 * 500000 + (num3 - 1) * 1000000);
-      setTampung3("VVIP (" + (num3 - 1) + ")");
-    }
-  }
+    return arr;
+  }, []);
+
+  dispatch(addQuantity(quantityArray));
+  dispatch(addQty(quantity));
+  dispatch(addEventId(id));
+  dispatch(addSectionId(sectionId));
+  dispatch(addTotalPayment(price));
+  dispatch(addTicketSection(ticketSection));
+  dispatch(addEventTitle(event.title));
 
   return (
     <div className="">
@@ -127,11 +106,11 @@ function Booking() {
           <div className="md:flex flex-col flex items-center w-[60%] gap-[10px]">
             <img
               className=" hidden md:flex w-full rounded-[20px]"
-              src={data.image}
+              src={event.image}
             ></img>
           </div>
           <div className="md:hidden">
-            <img src={data.image}></img>
+            <img src={event.image}></img>
           </div>
           <div className="flex flex-col  justify-center md:w-[40%]">
             <div className="flex gap-[100px] md:gap-[200px]">
@@ -143,9 +122,21 @@ function Booking() {
                 </div>
               </div>
             </div>
+            {section.map((item, index) => {
+              console.log(`{plus${item.id}}`);
+              return (
+                <Transactions
+                  key={item.id}
+                  data={item}
+                  index={index}
+                  currentData={selectedSections}
+                  onChange={setSelectedSections}
+                />
+              );
+            })}
             {/* {saction.map((items) => {
               return ( */}
-            <div className="mb-[24px]">
+            {/* <div className="mb-[24px]">
               <div>
                 <div className="flex items-center w-full  mt-[50px]">
                   <div className="bg-[#F1EAFF] w-[45px] p-[11px] rounded-[10px]">
@@ -265,22 +256,28 @@ function Booking() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* );
             })} */}
             <hr></hr>
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
                 <div className="font-bold">Ticket Section</div>
-                <div className="text-blue-500">{section}</div>
+                <div className="text-blue-500">
+                  {ticketSection.length == 0 ? "-" : ticketSection.join(", ")}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Quantity</div>
-                <div className="text-blue-500">{quantity1}</div>
+                <div className="text-blue-500">
+                  {quantity === 0 ? "-" : quantity}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Total Payment</div>
-                <div className="text-blue-500">Rp.{payment1}</div>
+                <div className="text-blue-500">
+                  {price === 0 ? "-" : `Rp. ${price.toLocaleString("id")}`}
+                </div>
               </div>
             </div>
             <Link to="/payment">

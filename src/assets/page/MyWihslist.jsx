@@ -9,10 +9,9 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function MyWihslist() {
+  let { id } = useParams();
   const datatoken = useSelector((state) => state.auth.token);
   const [wishlist, setWishlist] = React.useState([]);
-  console.log(wishlist);
-  let { id } = useParams();
 
   useEffect(() => {
     async function Whishlist() {
@@ -21,11 +20,12 @@ function MyWihslist() {
           Authorization: "Bearer " + datatoken,
         },
       });
+      console.log(response);
       const dataNew = await response.json();
-      console.log(dataNew.results);
+      console.log(dataNew);
       setWishlist(dataNew.results);
     }
-    Whishlist;
+    Whishlist();
   }, []);
   return (
     <div className="">
@@ -47,14 +47,16 @@ function MyWihslist() {
               <div className="flex flex-col gap-[25px]">
                 <div className="flex gap-[25px]">
                   <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                    <image></image>
+                    <image>Foto</image>
                   </div>
                   <div className="flex flex-col w-full">
-                    <div className="text-[24px]"></div>
+                    <div className="text-[24px]">{items.event.title}</div>
                     <div className="text-white text-[12px]">
                       Jakarta, Indonesia
                     </div>
-                    <div className="text-white text-[12px]"></div>
+                    <div className="text-white text-[12px]">
+                      {items.event.date}
+                    </div>
                   </div>
                   <div>
                     <img src={HeartBlue}></img>

@@ -1,19 +1,55 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  listBooking: [],
+  data: [],
+  qty: 0,
+  eventId: 0,
+  eventTitle: "",
+  totalPayment: 0,
+  ticketSection: [],
+  sectionId: [],
+  quantity: [],
 };
-console.log(initialState);
 
-const booking = createSlice({
-  name: "booking",
+const section = createSlice({
+  name: "section",
   initialState,
   reducers: {
-    myBooking: (state, action) => {
-      state.listBooking = action.payload;
+    addSection: (state, action) => {
+      state.data = [action.payload];
+    },
+    addQty: (state, action) => {
+      state.qty = action.payload;
+    },
+    addEventId: (state, action) => {
+      state.eventId = action.payload;
+    },
+    addEventTitle: (state, action) => {
+      state.eventTitle = action.payload;
+    },
+    addTotalPayment: (state, action) => {
+      state.totalPayment = action.payload;
+    },
+    addTicketSection: (state, action) => {
+      state.ticketSection = action.payload;
+    },
+    addSectionId: (state, action) => {
+      state.sectionId = action.payload;
+    },
+    addQuantity: (state, action) => {
+      state.quantity = action.payload;
     },
   },
 });
 
-export const { myBooking } = booking.actions;
-export default booking.reducer;
+export const {
+  addSection,
+  addQty,
+  addEventId,
+  addEventTitle,
+  addTotalPayment,
+  addTicketSection,
+  addSectionId,
+  addQuantity,
+} = section.actions;
+export default section.reducer;

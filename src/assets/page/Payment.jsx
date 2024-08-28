@@ -9,7 +9,7 @@ import LogoPaymentFour from "../img/payment4.png";
 import Card from "../img/card.png";
 import { FaChevronUp } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Payment() {
   const [card, setCard] = React.useState(true);
@@ -20,14 +20,59 @@ function Payment() {
       setCard(true);
     }
   }
-  // const [ArrCard, setArrCard] = React.useState(true);
-  // function btnArrow() {
-  //   if (ArrCard === true) {
-  //     setArrCard(false);
-  //   } else {
-  //     setArrCard(true);
-  //   }
-  // }
+  const navigate = useNavigate();
+
+  const datatoken = useSelector((state) => state.auth.token);
+  if (datatoken === null) {
+    navigate("/sign-in");
+  }
+
+  const eventTitle = useSelector((state) => state.booking.eventTitle);
+  const qty = useSelector((state) => state.booking.qty);
+  const eventId = useSelector((state) => state.booking.eventId);
+  const totalPayment = useSelector((state) => state.booking.totalPayment);
+  const ticketSection = useSelector((state) => state.booking.ticketSection);
+  const sectionId = useSelector((state) => state.booking.sectionId);
+  const quan = useSelector((state) => state.booking.quantity);
+  const [payMethod, setPayMethod] = React.useState(0);
+  function tooglePayment(event) {
+    setPayMethod(event.target.value);
+  }
+
+  const id = Math.ceil(Math.random() * 100000000);
+  const body = JSON.stringify({
+    user_id: Math.ceil(Math.random() * 100),
+    amount: parseInt(totalPayment),
+    item_id: `PROD${id}`,
+    item_name: eventTitle,
+  });
+
+  const formData = new URLSearchParams({
+    eventId: parseInt(eventId),
+    paymentId: parseInt(payMethod),
+    sectionId: parseInt(sectionId),
+    ticketQuantity: parseInt(quan),
+  });
+  for (const value of formData.values()) {
+    console.log(value);
+  }
+  async function payment() {
+    try {
+      const response = await fetch("http://localhost:8888/transactions", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: "Bearer " + datatoken,
+        },
+      });
+      console.log(response, "test");
+    } catch (error) {
+      console.error("Error to proceed data");
+      navigate("/sign-up");
+      return;
+    }
+    navigate("/my-booking");
+  }
   return (
     <div className="">
       <Navbar />
@@ -39,7 +84,12 @@ function Payment() {
               <div className="flex justify-between w-full items-center">
                 <div className="flex gap-[15px] items-center">
                   <div className="flex gap-[15px]">
-                    <input type="radio" name="method"></input>
+                    <input
+                      type="radio"
+                      name="method"
+                      value={1}
+                      onChange={tooglePayment}
+                    ></input>
                     <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#884DFF33]">
                       <img src={LogoPaymentOne}></img>
                     </div>
@@ -81,7 +131,12 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio" name="method"></input>
+                      <input
+                        type="radio"
+                        name="method"
+                        value={2}
+                        onChange={tooglePayment}
+                      ></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#FC105533]">
                         <img src={LogoPaymentTwo}></img>
                       </div>
@@ -95,7 +150,12 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio" name="method"></input>
+                      <input
+                        type="radio"
+                        name="method"
+                        value={2}
+                        onChange={tooglePayment}
+                      ></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#FF890033]">
                         <img src={LogoPaymentThree}></img>
                       </div>
@@ -109,7 +169,12 @@ function Payment() {
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
-                      <input type="radio" name="method"></input>
+                      <input
+                        type="radio"
+                        name="method"
+                        value={2}
+                        onChange={tooglePayment}
+                      ></input>
                       <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#3366FF33]">
                         <img src={LogoPaymentFour}></img>
                       </div>
@@ -129,24 +194,32 @@ function Payment() {
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
                 <div className="font-bold">Event</div>
-                <div className="text-blue-500">Sights & Sounds Exhibition</div>
+                <div className="text-blue-500">
+                  {eventId === 0 ? "-" : eventTitle}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Ticket Section</div>
-                <div className="text-blue-500">VIP</div>
+                <div className="text-blue-500">
+                  {ticketSection.length === 0 ? "-" : ticketSection.join(", ")}
+                </div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Quantity</div>
-                <div className="text-blue-500">2</div>
+                <div className="text-blue-500">{qty === 0 ? "-" : qty}</div>
               </div>
               <div className="flex justify-between">
                 <div className="font-bold">Total Payment</div>
-                <div className="text-blue-500">Rp.100000</div>
+                <div className="text-blue-500">
+                  {totalPayment === 0
+                    ? "-"
+                    : `Rp.${totalPayment.toLocaleString("id")}`}
+                </div>
               </div>
             </div>
             <Link to="/my-booking">
               <div className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
-                <button>Checkout</button>
+                <button onClick={payment}>Checkout</button>
               </div>
             </Link>
           </div>
