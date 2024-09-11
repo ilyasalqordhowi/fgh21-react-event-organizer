@@ -5,11 +5,12 @@ import Sidebar from "../component/Sidebar";
 import { Form, Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import loadingDino from "../img/dino.gif";
 
 function ChangePassword() {
   const datatoken = useSelector((state) => state.auth.token);
   console.log(datatoken);
-
+  const [loading, setLoading] = React.useState(true);
   const [oldPass, setOldPass] = React.useState("password");
   const [newPass, setNewPass] = React.useState("password");
   const [confPass, setConfPass] = React.useState("password");
@@ -44,10 +45,11 @@ function ChangePassword() {
     const newPassword = event.target.password.value;
     const confPassword = event.target.confPass.value;
 
+    setLoading(false);
     const formData = new URLSearchParams();
     formData.append("oldPassword", oldPassword);
     formData.append("newPassword", newPassword);
-    // console.log(formData.values);
+
     const dataPass = await fetch("http://localhost:8888/users/password", {
       method: "PATCH",
       headers: {
@@ -58,9 +60,15 @@ function ChangePassword() {
     console.log(dataPass);
     const response = await dataPass.json();
     if (response.success) {
-      window.alert("Success Updated");
+      setTimeout(() => {
+        setLoading(true);
+        setMessage(false);
+      }, 3000);
     } else {
-      setMessage(dataPass);
+      setTimeout(() => {
+        setLoading(true);
+        setMessage(dataPass);
+      }, 2000);
     }
   }
 
@@ -138,6 +146,15 @@ function ChangePassword() {
           </div>
         </div>
       </div>
+      {loading ? (
+        ""
+      ) : (
+        <div className=" flex h-full w-full justify-center items-center fixed z-10 top-0 left-0 bg-[rgba(0,0,0,0.5)]">
+          <div className="bg-violet-300 flex  items-center gap-[20px] rounded-md p-[10px]">
+            <img className="w-[100px] " src={loadingDino}></img>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>

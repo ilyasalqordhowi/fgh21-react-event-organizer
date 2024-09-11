@@ -79,7 +79,7 @@ function ManageEvent() {
       </div>
       <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
+        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
       {create ? "" : <CreateEvent />}
     </div>

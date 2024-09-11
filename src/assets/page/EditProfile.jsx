@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../component/Navbar";
-import ProfilePhoto from "../img/profile-photo.png";
+
 import Sidebar from "../component/Sidebar";
 import Footer from "../component/Footer";
-import { FaCameraRetro } from "react-icons/fa6";
-import { FaSpinner } from "react-icons/fa6";
-import loading from "../img/dino.gif";
+import { FaCameraRetro, FaRectangleXmark } from "react-icons/fa6";
+
 import { Provider, useSelector, useDispatch } from "react-redux";
-import { ImGift } from "react-icons/im";
+
 import loadingDino from "../img/dino.gif";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { addProfile } from "../../redux/reducers/profile";
 
 function EditProfile() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const profile = useSelector((state) => state.profile.data);
   const [selectedNationality, setSelectedNationality] = React.useState("");
   const datatoken = useSelector((state) => state.auth.token);
@@ -21,32 +24,12 @@ function EditProfile() {
   const futureDate = date.getDate() + 3;
   date.setDate(futureDate);
   const defaultValue = date.toLocaleDateString("en-CA");
-
+  const [message, setMessage] = React.useState(false);
   const [nationality, setNationality] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  function btnSave() {
-    if (loading === true) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  }
-  // const [dataProfession, setProfession] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [file, setFile] = React.useState(null);
+
   useEffect(() => {
-    //   (async () => {
-    //     const response = await fetch(
-    //       "https://wsw6zh-8888.csb.app/profile/professions",
-    //       {
-    //         headers: {
-    //           Authorization: "Bearer " + token,
-    //         },
-    //       }
-    //     );
-    //     const json = await response.json();
-    //     const dataNew = json.results;
-    //     setProfession(dataNew);
-    //     console.log(dataNew);
-    //   })();
     (async () => {
       const response = await fetch("http://localhost:8888/profile/national", {
         headers: {
@@ -68,18 +51,18 @@ function EditProfile() {
     const phoneNumber = event.target.phoneNumber.value;
     const gender = event.target.gender.value;
     const profession = event.target.profession.value;
-    const nationality = event.target.nationality.value;
+    const nationalityId = event.target.nationality.value;
 
     console.log(fullName);
     console.log(userName);
     console.log(email);
     console.log(phoneNumber);
     console.log(gender);
-    console.log(nationality);
+    console.log(nationalityId);
 
     const genderInt = parseInt(gender, 10);
-    const nationalityInt = parseInt(nationality, 10);
 
+    setLoading(false);
     const formData = new URLSearchParams();
     formData.append("full_name", fullName);
     formData.append("username", userName);
@@ -87,7 +70,7 @@ function EditProfile() {
     formData.append("phone_number", phoneNumber);
     formData.append("gender", genderInt);
     formData.append("profession", profession);
-    formData.append("nationality", nationalityInt);
+    formData.append("nationalityId", nationalityId);
 
     const dataProfile = await fetch("http://localhost:8888/profile/update", {
       method: "PATCH",
@@ -99,11 +82,43 @@ function EditProfile() {
     console.log(dataProfile);
     const response = await dataProfile.json();
     if (response.success) {
-      window.alert("Success Updated");
+      uploadImage();
+      setTimeout(() => {
+        setLoading(true);
+      }, 3000);
     } else {
-      window.alert("tidak berhasil");
+      setTimeout(() => {
+        setLoading(true);
+        setMessage(true);
+      }, 3000);
     }
   }
+
+  async function uploadImage() {
+    const body = new FormData();
+    body.append("profileImg", file);
+
+    const response = await fetch("http://localhost:8888/profile/img", {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+      body,
+    });
+    const json = await response.json();
+    console.log(json);
+  }
+  const handlerChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
+  };
   return (
     <div className="bg-[#27005D]">
       <Navbar />
@@ -117,7 +132,7 @@ function EditProfile() {
         >
           <div className="md:flex md:flex-row  flex-row-reverse ">
             <div className="w-[60%]  md:pt-[0] pt-[50px] gap-[10px]">
-              <h1 className="font-bold  text-[30px]">Edit Profile</h1>
+              <h1 className="font-bold  text-[30px]">Profile</h1>
               <div className="md:hidden justify-center  flex gap-[200px]">
                 <img src={profile.profile[0].picture}></img>
               </div>
@@ -218,8 +233,20 @@ function EditProfile() {
                       className="w-full p-[10px] rounded-xl"
                       name="nationality"
                     >
+                      <option value="0">select your country</option>
                       {nationality.map((items) => {
-                        return <option value="">{items.nationalities}</option>;
+                        return (
+                          <option
+                            value={items.id}
+                            selected={
+                              items.id === profile.profile[0].nationalityId
+                                ? true
+                                : false
+                            }
+                          >
+                            {items.nationalities}
+                          </option>
+                        );
                       })}
                     </select>
                   </div>
@@ -235,51 +262,80 @@ function EditProfile() {
                         name="birthday"
                         defaultValue={defaultValue}
                       />
-                      {/* <div className="text-blue-400">Edit</div> */}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="md:flex flex-col items-center w-[50%] hidden ">
-              <div className="flex gap-[200px]">
-                <img
-                  className="p-[130px] rounded-[50%] border-blue-950 border-[5px]"
-                  src={profile}
-                ></img>
-                <div className="text-[100px] text-white absolute bg-black/50 p-[90px] rounded-[50%]">
-                  <FaCameraRetro />
-                </div>
+            <form
+              onSubmit={uploadImage}
+              className="md:flex flex-col gap-32 items-center w-[50%] pt-56 hidden "
+            >
+              <div className="flex  justify-center items-center">
+                {profile.profile[0].picture == null ? (
+                  <div className="text-[100px]  text-white absolute bg-black/50 p-[90px] rounded-[50%]">
+                    <FaCameraRetro />
+                  </div>
+                ) : (
+                  <img src={profile.profile[0].picture}></img>
+                )}
               </div>
               <div>
-                <button className="mt-[50px] bg-white w-[315px] font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[20px]">
+                <label
+                  htmlFor="img"
+                  className="mt-[50px] bg-white w-[315px] font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[20px]"
+                >
                   Choose Photo
-                </button>
+                </label>
+                <input
+                  type="file"
+                  name="img"
+                  id="img"
+                  className="hidden"
+                  onChange={handlerChange}
+                />
                 <div>
                   <div>Image size: max, 2 MB</div>
                   <div>Image formats: .JPG, .JPEG, .PNG</div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
           <button
             className="mt-[67px] bg-blue-500 md:w-[55%] w-full text-white font-bold text-[16px] flex items-center justify-center rounded-[15px] p-[17px]"
             type="submit"
-            onClick={btnSave}
           >
             Save
           </button>
         </form>
       </div>
       <div className="flex flex-col md:bg-[#bg-[#27005D] gap-[144px]">
-        {loading
-          ? ""
-          : // <div className="absolute flex   w-full h-full top-[350px] left-0 items-center justify-center">
-            //   <div className="bg-violet-300 flex  items-center gap-[20px] rounded-md p-[10px]">
-            //     <img className="w-[100px] " src={loadingDino}></img>
-            //   </div>
-            // </div>
-            ""}
+        {loading ? (
+          ""
+        ) : (
+          <div className=" flex h-full w-full justify-center items-center fixed z-10 top-0 left-0 bg-[rgba(0,0,0,0.5)]">
+            <div className="bg-violet-300 flex  items-center gap-[20px] rounded-md p-[10px]">
+              <img className="w-[100px] " src={loadingDino}></img>
+            </div>
+          </div>
+        )}
+        {message ? (
+          <div className="fixed flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
+            <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
+              <div>profile data not updated</div>
+              <button
+                className="flex gap-[10px] items-center justify-center"
+                onClick={() => setMessage()}
+              >
+                <FaRectangleXmark />
+                <p>Cancel</p>
+              </button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
         <Footer />
         <div>© 2020 Wetick All Rights Reserved</div>
       </div>

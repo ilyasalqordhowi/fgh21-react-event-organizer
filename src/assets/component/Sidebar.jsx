@@ -32,21 +32,21 @@ function Sidebar() {
         ></img>
         <div>
           <h2>{profile.profile[0].full_name}</h2>
-          <p className="text-[12px] text-[#AED2FF]">Entrepreneur, ID</p>
+          <p className="text-[12px] text-[#AED2FF]">
+            {profile.profile[0].profession}, ID
+          </p>
         </div>
         <button className="md:hidden" type="button">
           <FaBars />
         </button>
       </div>
       <div className="flex flex-col gap-[30px] mt-[50px]">
-        <Link to="/profile">
-          <div className="flex hover:text-blue-700 items-center  gap-[25px]">
-            <div className="bg-[#C1C5D0] w-[40px]  p-[10px] justify-center  flex items-center rounded-full">
-              <FaUser />
-            </div>
-            <div>Profile</div>
+        <div className="flex hover:text-blue-700 items-center  gap-[25px]">
+          <div className="bg-[#C1C5D0] w-[40px]  p-[10px] justify-center  flex items-center rounded-full">
+            <FaUser />
           </div>
-        </Link>
+          <div>Profile</div>
+        </div>
         <div className="flex flex-col  ml-[49px] gap-[32px]">
           <div className="flex hover:text-blue-700 line-through relative items-center gap-[20px] ">
             <FaCreditCard />
@@ -83,10 +83,7 @@ function Sidebar() {
             <div>My Wishlist</div>
           </div>
         </Link>
-        <div className="flex hover:text-blue-700  gap-[20px]">
-          <FaGear />
-          <div>Settings</div>
-        </div>
+
         <Link to="/sign-in">
           <div className="flex hover:text-red-700  gap-[20px]">
             <FaArrowRightFromBracket />

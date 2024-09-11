@@ -24,6 +24,13 @@ function Home() {
   function scrollRight() {
     document.getElementById("scroll").scrollLeft += 50;
   }
+  function scrollLeftBottom() {
+    console.log("test....");
+    document.getElementById("scrollBottom").scrollLeft -= 50;
+  }
+  function scrollRightBottom() {
+    document.getElementById("scrollBottom").scrollLeft += 50;
+  }
   function btnSeeAll() {
     if (navbar === true) {
       setNavbar(false);
@@ -104,7 +111,7 @@ function Home() {
           </div>
         </div>
         <div
-          className="flex gap-[30px] mb-[50px] ml-[20px] md:ml-[100px] relative overflow-x-scroll no-scrollbar"
+          className="flex gap-[30px] rounded-xl mb-[50px] ml-10 md:ml-[100px] relative overflow-x-scroll no-scrollbar"
           id="scroll"
         >
           {event.map((element) => {
@@ -185,14 +192,14 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex items-center flex-col gap-[25px] mb-[50px]">
+        <div className="flex ml-10 md:ml-0 items-center flex-col gap-[25px] mb-[50px]">
           <div className="flex font-bold gap-2 p-[10px] text-[12px] text-[#6FDCE3] bg-[#27005D] h-[35px] w-[130px] justify-center rounded-2xl">
             <div>——</div>
             <div>CATEGORY</div>
           </div>
           <div className="font-bold text-[50px]">Browse Events By Category</div>
         </div>
-        <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-[10px] text-[#E4F1FF] justify-center list-none gap-[40px]">
+        <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-10 text-[#E4F1FF] justify-center list-none gap-[40px]">
           <button className="hover:text-blue-400 ">Music</button>
           <button className="hover:text-blue-400 ">Arts</button>
           <button className="hover:text-blue-400 ">Outdoors</button>
@@ -203,11 +210,17 @@ function Home() {
         </div>
         <div className="flex items-center  justify-center">
           <div className="md:flex hidden items-center">
-            <button className="shadow-lg bg-[#AED2FF] shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]">
+            <button
+              onClick={scrollLeftBottom}
+              className="shadow-lg bg-[#AED2FF] shadow-indigo-500/40 rounded-[10px] flex flex-col items-center justify-center w-[45px] h-[45px]"
+            >
               <FaArrowLeft />
             </button>
           </div>
-          <div className="flex  gap-[30px] mb-[50px]  md:w-[600px] items-center mt-[30px]  relative justify-center  rounded-xl overflow-x-scroll">
+          <div
+            className="flex  gap-[30px] mb-[50px]  md:w-[600px] items-center mt-[30px]  relative justify-center ml-10 rounded-xl overflow-x-scroll no-scrollbar"
+            id="scrollBottom"
+          >
             {event.map((element) => {
               return (
                 <Link to="/detail">
@@ -245,7 +258,10 @@ function Home() {
             })}
           </div>
           <div className="md:flex hidden items-center">
-            <button className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-[#27005D] text-white flex flex-col items-center justify-center w-[45px] h-[45px]">
+            <button
+              onClick={scrollRightBottom}
+              className="shadow-lg shadow-indigo-500/40 rounded-[10px] bg-[#27005D] text-white flex flex-col items-center justify-center w-[45px] h-[45px]"
+            >
               <FaArrowRight />
             </button>
           </div>
@@ -254,10 +270,10 @@ function Home() {
           <div className="flex items-center text-white flex-col gap-[25px] mb-[50px]">
             <div className="flex font-bold gap-2 p-[10px] text-[12px] text-[#27005D] bg-[#6FDCE3] h-[35px] w-[130px] justify-center rounded-2xl">
               <div>——</div>
-              <div>CATEGORY</div>
+              <div>PARTNER</div>
             </div>
             <div className="font-bold flex justify-center text-center text-[50px]">
-              Browse Events By Category
+              Browse Events By Partner
             </div>
             <p className="text-[#C1C5D0]">By companies like :</p>
           </div>

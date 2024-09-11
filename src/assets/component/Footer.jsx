@@ -18,21 +18,21 @@ function Footer() {
           <img src={Twitter}></img>
         </div>
       </div>
-      <div className="text-[#C1C5D0] flex flex-col gap-[10px]">
+      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
         <h1 className="text-black font-bold">Wetick</h1>
         <div>About Us</div>
         <div>Blog</div>
         <div>Payment</div>
         <div>Mobile App</div>
       </div>
-      <div className="text-[#C1C5D0] flex flex-col gap-[10px]">
+      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
         <h1 className="font-bold text-black">Features</h1>
         <div>Booking</div>
         <div>Create Event</div>
         <div>Discover</div>
         <div>Register</div>
       </div>
-      <div className="text-[#C1C5D0] flex flex-col gap-[10px]">
+      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
         <h1 className="font-bold text-black">Company</h1>
         <div>Partnership</div>
         <div>Help</div>

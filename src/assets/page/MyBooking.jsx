@@ -34,6 +34,7 @@ function MyBooking() {
 
     return new Date(timestamp).toLocaleString("en-US", options);
   }
+  ``;
 
   const datatoken = useSelector((state) => state.auth.token);
   if (datatoken === null) {
@@ -53,7 +54,7 @@ function MyBooking() {
       }
       const json = await response.json();
       setBooking(json.results);
-      console.log(json.results);
+      console.log(json.results, "hello");
     })();
   }, []);
   let data = true;
@@ -118,7 +119,7 @@ function MyBooking() {
       </div>
       <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
+        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
     </div>
   );

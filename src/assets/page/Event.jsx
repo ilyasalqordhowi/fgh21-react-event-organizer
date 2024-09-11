@@ -49,8 +49,11 @@ function Event() {
       <Link to={"/events/section/" + data.id} />
       <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#27005D]">
         <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-[#AED2FF]  rounded-[20px] ">
-          <div className="flex flex-col items-center gap-[10px]  w-full">
-            <img className="w-full md:rounded-[20px]" src={data.image}></img>
+          <div className="flex flex-col items-center gap-[10px] w-[60%]">
+            <img
+              src={data.image}
+              className="w-full md:rounded-[20px]  object-cover"
+            ></img>
             <button
               onClick={Whishlist}
               className="md:flex items-center text-[30px] hidden"

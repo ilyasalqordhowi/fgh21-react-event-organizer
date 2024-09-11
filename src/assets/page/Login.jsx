@@ -108,9 +108,9 @@ function Login() {
                 </button>
               </div>
             </div>
-            <div className="flex justify-end text-[#C4E4FF]">
+            {/* <div className="flex justify-end text-[#C4E4FF]">
               Forgot Password?
-            </div>
+            </div> */}
             <Link to="/sign-up" className="flex justify-end text-[#C4E4FF]">
               <button type="button">Dont Have an Account?</button>
             </Link>
@@ -125,12 +125,12 @@ function Login() {
             <div>or sign in with</div>
             <div className="flex gap-[16px]">
               <a href="https://accounts.google.com">
-                <button className="border border-2 border-white w-[96px] flex justify-center p-[10px] rounded-[6px]">
+                <button className="border-2 border-white w-[96px] flex justify-center p-[10px] rounded-[6px]">
                   <FaGoogle />
                 </button>
               </a>
               <a href="https://www.facebook.com/login.php">
-                <button className="border border-2 border-white w-[96px] flex justify-center p-[10px] rounded-[6px]">
+                <button className="border-2 border-white w-[96px] flex justify-center p-[10px] rounded-[6px]">
                   <FaFacebook />
                 </button>
               </a>

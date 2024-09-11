@@ -4,14 +4,15 @@ import Footer from "../component/Footer";
 import Sidebar from "../component/Sidebar";
 import Date from "../img/date.png";
 import { Link, useParams } from "react-router-dom";
-import HeartBlue from "../img/heart2.png";
+import { FaHeart } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function MyWihslist() {
   let { id } = useParams();
   const datatoken = useSelector((state) => state.auth.token);
-  const [wishlist, setWishlist] = React.useState([]);
+  const [whislist, setWhislist] = React.useState([]);
+  const [noWhislist, setNoWhislist] = React.useState(false);
 
   useEffect(() => {
     async function Whishlist() {
@@ -22,11 +23,16 @@ function MyWihslist() {
       });
       console.log(response);
       const dataNew = await response.json();
-      console.log(dataNew);
-      setWishlist(dataNew.results);
+      if (dataNew.success) {
+        setNoWhislist(true);
+        setWhislist(dataNew.results);
+      } else {
+        setNoWhislist(false);
+      }
     }
     Whishlist();
   }, []);
+
   return (
     <div className="">
       <Navbar />
@@ -42,7 +48,7 @@ function MyWihslist() {
               <div>March</div>
             </div>
           </div>
-          {wishlist.map((items) => {
+          {whislist.map((items) => {
             return (
               <div className="flex flex-col gap-[25px]">
                 <div className="flex gap-[25px]">
@@ -59,18 +65,34 @@ function MyWihslist() {
                     </div>
                   </div>
                   <div>
-                    <img src={HeartBlue}></img>
+                    <button
+                      // onClick={DeleteWhishlist}
+                      className="text-5xl text-blue-600"
+                    >
+                      <FaHeart />
+                    </button>
                   </div>
                 </div>
                 <hr></hr>
               </div>
             );
           })}
+          {noWhislist ? (
+            ""
+          ) : (
+            <div className="flex flex-col items-center py-40">
+              <div className="font-semibold text-[24px]">No tickets bought</div>
+              <div className="font-medium text-[#B3B8B8] w-[340px] text-center">
+                It appears you haven't bought any tickets yet. Maybe try
+                searching these?
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
+        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
     </div>
   );

@@ -10,14 +10,39 @@ import Card from "../img/card.png";
 import { FaChevronUp } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
+import { data } from "autoprefixer";
 
 function Payment() {
-  const [card, setCard] = React.useState(true);
+  const [card, setCard] = React.useState(false);
+  const [bank, setBank] = React.useState(false);
+  const [retail, setRetail] = React.useState(false);
+  const [eMoney, setEmoney] = React.useState(false);
   function btnCard() {
     if (card === true) {
       setCard(false);
     } else {
       setCard(true);
+    }
+  }
+  function btnBank() {
+    if (bank === true) {
+      setBank(false);
+    } else {
+      setBank(true);
+    }
+  }
+  function btnRetail() {
+    if (retail === true) {
+      setRetail(false);
+    } else {
+      setRetail(true);
+    }
+  }
+  function btnEmoney() {
+    if (eMoney === true) {
+      setEmoney(false);
+    } else {
+      setEmoney(true);
     }
   }
   const navigate = useNavigate();
@@ -35,6 +60,7 @@ function Payment() {
   const sectionId = useSelector((state) => state.booking.sectionId);
   const quan = useSelector((state) => state.booking.quantity);
   const [payMethod, setPayMethod] = React.useState(0);
+
   function tooglePayment(event) {
     setPayMethod(event.target.value);
   }
@@ -48,27 +74,31 @@ function Payment() {
   });
 
   const formData = new URLSearchParams({
-    eventId: parseInt(eventId),
-    paymentId: parseInt(payMethod),
-    sectionId: parseInt(sectionId),
-    ticketQuantity: parseInt(quan),
+    event_id: parseInt(eventId),
+    payment_method_id: parseInt(payMethod),
+    section_id: sectionId,
+    ticket_qty: quan,
   });
+  console.log(eventId);
+  console.log(payMethod);
+  console.log(sectionId);
+  console.log(quan);
   for (const value of formData.values()) {
-    console.log(value);
   }
   async function payment() {
     try {
-      const response = await fetch("http://localhost:8888/transactions", {
+      const response = await fetch("http://localhost:8888/transactions/", {
         method: "POST",
         body: formData,
         headers: {
           Authorization: "Bearer " + datatoken,
         },
       });
-      console.log(response, "test");
+      const json = await response.json();
+      console.log(json.results, "respon transaction");
     } catch (error) {
       console.error("Error to proceed data");
-      navigate("/sign-up");
+      navigate("/sign-in");
       return;
     }
     navigate("/my-booking");
@@ -80,14 +110,14 @@ function Payment() {
         <div className="md:flex flex-row w-full gap-[46px] h-auto p-[70px] bg-[#AED2FF] md:rounded-[20px] ">
           <div className="flex flex-col  md:w-[50%] gap-[10px]">
             <h1 className="text-[30px] mb-[50px] font-bold">Payment Method</h1>
-            <div className="w-full">
+            <div className="w-full flex flex-col gap-[30px]">
               <div className="flex justify-between w-full items-center">
                 <div className="flex gap-[15px] items-center">
                   <div className="flex gap-[15px]">
                     <input
                       type="radio"
                       name="method"
-                      value={1}
+                      value={2}
                       onChange={tooglePayment}
                     ></input>
                     <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#884DFF33]">
@@ -127,7 +157,7 @@ function Payment() {
                   +
                 </button>
               </div>
-              <div className="flex flex-col mt-[40px] gap-[40px]">
+              <div className="flex flex-col  gap-[40px]">
                 <div className="flex justify-between w-full items-center">
                   <div className="flex gap-[15px] items-center">
                     <div className="flex gap-[15px]">
@@ -143,8 +173,35 @@ function Payment() {
                     </div>
                     <h2>Bank Transfer</h2>
                   </div>
-                  <button>
-                    <FaChevronDown className="text-gray-400" />
+                  {bank ? (
+                    <button>
+                      <FaChevronUp
+                        className="text-gray-400"
+                        type="button"
+                        onClick={btnBank}
+                      />
+                    </button>
+                  ) : (
+                    <button>
+                      <FaChevronDown
+                        className="text-gray-400"
+                        type="button"
+                        onClick={btnBank}
+                      />
+                    </button>
+                  )}
+                </div>
+                <div
+                  className={
+                    bank
+                      ? "flex items-center gap-[15px] mt-[15px] ml-[30px]"
+                      : "hidden"
+                  }
+                >
+                  <img src={Card}></img>
+
+                  <button className="border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
+                    +
                   </button>
                 </div>
                 <div className="flex justify-between w-full items-center">
@@ -162,29 +219,83 @@ function Payment() {
                     </div>
                     <h2>Retail</h2>
                   </div>
-                  <button>
-                    <FaChevronDown className="text-gray-400" />
+                  {retail ? (
+                    <button>
+                      <FaChevronUp
+                        className="text-gray-400"
+                        type="button"
+                        onClick={btnRetail}
+                      />
+                    </button>
+                  ) : (
+                    <button>
+                      <FaChevronDown
+                        className="text-gray-400"
+                        type="button"
+                        onClick={btnRetail}
+                      />
+                    </button>
+                  )}
+                </div>
+                <div
+                  className={
+                    retail
+                      ? "flex items-center gap-[15px] mt-[15px] ml-[30px]"
+                      : "hidden"
+                  }
+                >
+                  <img src={Card}></img>
+
+                  <button className="border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
+                    +
                   </button>
                 </div>
-                <div className="flex justify-between w-full items-center">
-                  <div className="flex gap-[15px] items-center">
-                    <div className="flex gap-[15px]">
-                      <input
-                        type="radio"
-                        name="method"
-                        value={2}
-                        onChange={tooglePayment}
-                      ></input>
-                      <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#3366FF33]">
-                        <img src={LogoPaymentFour}></img>
-                      </div>
+              </div>
+              <div className="flex justify-between w-full items-center">
+                <div className="flex gap-[15px] items-center">
+                  <div className="flex gap-[15px]">
+                    <input
+                      type="radio"
+                      name="method"
+                      value={2}
+                      onChange={tooglePayment}
+                    ></input>
+                    <div className="flex justify-center rounded-[10px] p-[10px] h-[45px] w-[45px] bg-[#3366FF33]">
+                      <img src={LogoPaymentFour}></img>
                     </div>
-                    <h2>E-Money</h2>
                   </div>
-                  <button>
-                    <FaChevronDown className="text-gray-400" />
-                  </button>
+                  <h2>E-Money</h2>
                 </div>
+                {eMoney ? (
+                  <button>
+                    <FaChevronUp
+                      className="text-gray-400"
+                      type="button"
+                      onClick={btnEmoney}
+                    />
+                  </button>
+                ) : (
+                  <button>
+                    <FaChevronDown
+                      className="text-gray-400"
+                      type="button"
+                      onClick={btnEmoney}
+                    />
+                  </button>
+                )}
+              </div>
+              <div
+                className={
+                  eMoney
+                    ? "flex items-center gap-[15px] mt-[15px] ml-[30px]"
+                    : "hidden"
+                }
+              >
+                <img src={Card}></img>
+
+                <button className="border-2 border-white border-dashed bg-[#27005D] shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-white font-bold flex justify-center rounded-[7px]">
+                  +
+                </button>
               </div>
             </div>
           </div>
@@ -217,19 +328,20 @@ function Payment() {
                 </div>
               </div>
             </div>
-            <Link to="/my-booking">
-              <div className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center text-white rounded-[15px] p-[20px]">
-                <button onClick={payment}>Checkout</button>
-              </div>
-            </Link>
+
+            <button
+              className="mt-[50px] bg-blue-500 w-fullfont-bold flex items-center justify-center w-full text-white rounded-[15px] p-[20px]"
+              onClick={payment}
+            >
+              Checkout
+            </button>
           </div>
         </div>
         <div className="flex flex-col  md: gap-[144px]">
           <Footer />
-          <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
+          <div className="p-[10px]">© 2024 SnagTick All Rights Reserved</div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

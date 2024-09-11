@@ -30,7 +30,7 @@ function Booking() {
 
   const token = useSelector((state) => state.auth.token);
   if (token === null) {
-    navigate("/sign-up");
+    navigate("/sign-in");
   }
 
   React.useEffect(() => {
@@ -103,9 +103,9 @@ function Booking() {
       <Navbar />
       <div className="flex flex-col justify-center   md:mt-[0] items-center md:p-[50px] bg-[#27005D]">
         <div className="md:flex flex flex-col md:flex-row items-center p-[50px]  md:w-full gap-[46px] h-auto md:p-[50px] bg-[#AED2FF] w-full md:rounded-[20px] ">
-          <div className="md:flex flex-col flex items-center w-[60%] gap-[10px]">
+          <div className="md:flex flex-col flex items-center w-1/2 gap-[10px]">
             <img
-              className=" hidden md:flex w-full rounded-[20px]"
+              className="object-cover hidden md:flex w-1/2 rounded-[20px]"
               src={event.image}
             ></img>
           </div>

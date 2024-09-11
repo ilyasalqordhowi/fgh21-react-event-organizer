@@ -21,6 +21,7 @@ function Navbar() {
 
   dispatch(login(forms));
   const profile = useSelector((state) => state.profile.data);
+  console.log(profile);
 
   return (
     <div className="flex md:flex-row text-[#E4F1FF] bg-[#9400FF] flex-col justify-between md:p-[10px]  ">
@@ -69,7 +70,7 @@ function Navbar() {
                   className=" rounded-full p-[30px] border-blue-950 border-[5px]"
                   src={profile}
                 ></img>
-                <div>ilyas nazhif</div>
+                <div>ilyas</div>
               </div>
             </Link>
           </div>

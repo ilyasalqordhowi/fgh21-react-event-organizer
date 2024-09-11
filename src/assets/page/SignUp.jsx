@@ -52,7 +52,7 @@ function SignUp() {
       method: "POST",
       body: formData,
     });
-    if (password != confirmPassword && email != email) {
+    if (password != confirmPassword) {
       setLoading(false);
       setMessage(dataRegis.message);
       setAlert(true);
@@ -116,10 +116,7 @@ function SignUp() {
               </button>
             </div>
           </div>
-          <div className="flex text-[#AED2FF] w-full gap-5">
-            <input type="checkbox" className="border-sky-500"></input>
-            <p>Accept terms and condition</p>
-          </div>
+
           <button
             type="submit"
             className="bg-[#3366FF]  rounded-2xl w-full text-white h-[40px]"

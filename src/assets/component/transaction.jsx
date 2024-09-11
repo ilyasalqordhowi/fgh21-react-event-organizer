@@ -41,14 +41,14 @@ function Transactions(props) {
           <div className="font-semibold">Quantity</div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setNum(num - 1)}
+              onClick={() => num > 0 && setNum(num - 1)}
               className="border border-gray-500 w-[30px] h-[30px] rounded-lg"
             >
               -
             </button>
             <div className="font-semibold">{num}</div>
             <button
-              onClick={() => setNum(num + 1)}
+              onClick={() => num < 10 && setNum(num + 1)}
               className="border border-gray-500 w-[30px] h-[30px] rounded-lg"
             >
               +

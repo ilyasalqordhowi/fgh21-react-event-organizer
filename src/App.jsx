@@ -11,7 +11,6 @@ import MyWihslist from "./assets/page/MyWihslist";
 import ManageEvent from "./assets/page/ManageEvent";
 import CreateEvent from "./assets/component/CreateEvent";
 import Login from "./assets/page/Login";
-import Profile from "./assets/page/Profile.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
@@ -46,10 +45,7 @@ const page = createBrowserRouter([
     path: "/editProfile",
     element: <EditProfile />,
   },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
+
   {
     path: "/change-password",
     element: <ChangePassword />,
