@@ -46,6 +46,7 @@ function Login() {
     }).then((response) => {
       response.json().then((data) => {
         if (data.success) {
+          console.log(data.success, "KKKKKKK");
           dispatch(login(data.results.token));
           async function dataUpdate() {
             const response = await fetch("http://localhost:8888/profile/", {

@@ -31,7 +31,7 @@ function SignUp() {
       setConfPass("password");
     }
   }
-  function signUp(event) {
+  async function signUp(event) {
     event.preventDefault();
     const fullName = event.target.fullname.value;
     const email = event.target.email.value;
@@ -43,22 +43,26 @@ function SignUp() {
     console.log(password);
     console.log(confirmPassword);
 
+    setLoading(true);
     const formData = new URLSearchParams();
     formData.append("full_name", fullName);
     formData.append("email", email);
     formData.append("password", password);
-    setLoading(true);
-    const dataRegis = fetch("http://localhost:8888/auth/register", {
+    const dataRegis = await fetch("http://localhost:8888/auth/register", {
       method: "POST",
       body: formData,
     });
+    const json = await dataRegis.json();
+    if (json.success) {
+      navigate("/sign-in");
+    }
+
     if (password != confirmPassword) {
       setLoading(false);
       setMessage(dataRegis.message);
       setAlert(true);
-    } else {
-      navigate("/sign-in");
     }
+    setLoading(false);
   }
 
   return (
@@ -79,6 +83,7 @@ function SignUp() {
             </Link>
           </div>
         </div>
+
         <form className="w-full flex flex-col gap-5" onSubmit={signUp}>
           <div className="w-full flex flex-col gap-5">
             <input
@@ -119,7 +124,7 @@ function SignUp() {
 
           <button
             type="submit"
-            className="bg-[#3366FF]  rounded-2xl w-full text-white h-[40px]"
+            className="bg-[#27005D] rounded-2xl w-full text-[#7BC9FF] h-[40px]"
           >
             Sign Up
           </button>
@@ -128,7 +133,7 @@ function SignUp() {
       {alert ? (
         <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
           <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
-            <div>password yang anda masukkan salah</div>
+            <div>pastikan password sama</div>
             <button
               className="flex gap-[10px] items-center justify-center"
               onClick={() => setAlert()}
