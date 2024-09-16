@@ -10,6 +10,7 @@ function ManageEvent() {
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
   const [data, setData] = React.useState([]);
+  const [noEvent, setNoEvent] = React.useState(false);
   console.log(data, "mkmnkkmkmk");
   function btnCreate() {
     if (create === true) {
@@ -28,8 +29,12 @@ function ManageEvent() {
         },
       });
       const EventData = await response.json();
-      console.log(EventData.results);
-      setData(EventData.results);
+      if (EventData.success) {
+        setNoEvent(false);
+        setData(EventData.results);
+      } else {
+        setNoEvent(false);
+      }
     }
     createEventByUser();
   }, []);
@@ -75,11 +80,21 @@ function ManageEvent() {
               </div>
             );
           })}
+          {noEvent ? (
+            ""
+          ) : (
+            <div className="flex flex-col items-center py-40">
+              <div className="font-semibold text-[24px]">No tickets bought</div>
+              <div className="font-medium text-[#B3B8B8] w-[340px] text-center">
+                It appears you haven't bought any tickets yet. Maybe try
+                searching these?
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
       {create ? "" : <CreateEvent />}
     </div>

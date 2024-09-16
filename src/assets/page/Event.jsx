@@ -121,7 +121,6 @@ function Event() {
 
       <div className="flex flex-col md:mt-[0] mt-[500px] gap-[144px]">
         <Footer />
-        <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
       </div>
     </div>
   );

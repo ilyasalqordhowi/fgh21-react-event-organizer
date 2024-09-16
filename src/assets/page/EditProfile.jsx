@@ -1,23 +1,18 @@
 import React, { useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
 import Navbar from "../component/Navbar";
-
 import Sidebar from "../component/Sidebar";
 import Footer from "../component/Footer";
-import { FaCameraRetro, FaRectangleXmark } from "react-icons/fa6";
-
-import { Provider, useSelector, useDispatch } from "react-redux";
-
+import { FaRectangleXmark } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux";
 import loadingDino from "../img/dino.gif";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import User from "../img/user.png";
 import { addProfile } from "../../redux/reducers/profile";
 
 function EditProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profile = useSelector((state) => state.profile.data);
-  const [selectedNationality, setSelectedNationality] = React.useState("");
   const datatoken = useSelector((state) => state.auth.token);
   const token = useSelector((state) => state.auth.token);
   const date = new Date(profile.birthdayDate);
@@ -106,7 +101,18 @@ function EditProfile() {
       body,
     });
     const json = await response.json();
-    console.log(json);
+    console.log(json, "klklklklkl");
+    if (json.success) {
+      const getResponse = await fetch("http://localhost:8888/profile/", {
+        headers: {
+          Authorization: "Bearer " + datatoken,
+        },
+      });
+      const data = await getResponse.json();
+      const dataResult = data.results;
+      console.log("data result terupdate", dataResult);
+      dispatch(addProfile(dataResult));
+    }
   }
   const handlerChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -116,9 +122,28 @@ function EditProfile() {
     reader.readAsDataURL(selectedFile);
 
     reader.onloadend = () => {
-      setPreview(reader.result);
+      setPreview(reader.results);
     };
   };
+  async function getData() {
+    const response = await fetch("http://localhost:8888/profile/", {
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+    });
+    const data = await response.json();
+    const listData = data.results;
+    console.log(listData, "data terupdate");
+    dispatch(addProfile(listData));
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (profile === null) {
+    navigate("/sign-up");
+  }
   return (
     <div className="bg-[#27005D]">
       <Navbar />
@@ -130,21 +155,18 @@ function EditProfile() {
           onSubmit={Update}
           className="w-full gap-[160px] h-auto md:p-[100px] bg-[#AED2FF] md:rounded-[20px] "
         >
-          <div className="md:flex md:flex-row  flex-row-reverse ">
-            <div className="w-[60%]  md:pt-[0] pt-[50px] gap-[10px]">
+          <div className="md:flex  md:flex-row flex-col">
+            <div className="w-[60%] mb-10 md:mb-0 md:pt-[0] pt-[50px] gap-[10px]">
               <h1 className="font-bold  text-[30px]">Profile</h1>
-              <div className="md:hidden justify-center  flex gap-[200px]">
-                <img src={profile.profile[0].picture}></img>
-              </div>
-              <div className="flex flex-col ml-[110px] md:ml-[0] gap-[50px] mt-[50px]">
+              <div className="flex flex-col md:pl-0 pl-11 w-[400px] md:w-full md:ml-[0] gap-[50px] mt-[50px]">
                 <div className="md:flex w-full">
                   <div>Name</div>
                   <input
                     name="fullName"
-                    placeholder="Jhon Tomson"
+                    placeholder="Full Name"
                     type="name"
                     className="border border-[#C1C5D0] w-full md:ml-[110px] p-[5px] rounded-[5px]"
-                    defaultValue={profile.profile[0].full_name}
+                    defaultValue={profile.profile?.full_name}
                   ></input>
                 </div>
                 <div className="md:flex w-full">
@@ -155,7 +177,7 @@ function EditProfile() {
                         name="userName"
                         type="text"
                         className="border border-[#C1C5D0] md:ml-[80px] w-full p-[5px] rounded-[5px]"
-                        defaultValue={profile.user.username}
+                        defaultValue={profile.user?.username}
                       />
                     </div>
                   </div>
@@ -168,7 +190,7 @@ function EditProfile() {
                         name="email"
                         type="email"
                         className="border border-[#C1C5D0] md:ml-[115px] w-full p-[5px] rounded-[5px] "
-                        defaultValue={profile.user.email}
+                        defaultValue={profile.user?.email}
                       />
                     </div>
                   </div>
@@ -181,7 +203,7 @@ function EditProfile() {
                         name="phoneNumber"
                         type="text"
                         className="border border-[#C1C5D0] p-[5px] rounded-[5px] md:ml-[70px] w-full "
-                        defaultValue={profile.profile[0].phoneNumber}
+                        defaultValue={profile.profile?.phoneNumber}
                       />
                     </div>
                   </div>
@@ -196,7 +218,7 @@ function EditProfile() {
                         type="radio"
                         id="male"
                         defaultChecked={
-                          profile.profile[0].gender === 1 ? true : false
+                          profile.profile?.gender === 1 ? true : false
                         }
                       />
                       <label htmlFor="male">Male</label>
@@ -208,7 +230,7 @@ function EditProfile() {
                         type="radio"
                         id="female"
                         defaultChecked={
-                          profile.profile[0].gender === 2 ? true : false
+                          profile.profile?.gender === 2 ? true : false
                         }
                       />
                       <label htmlFor="female">Female</label>
@@ -222,7 +244,7 @@ function EditProfile() {
                       name="profession"
                       type="text"
                       className="border border-[#C1C5D0] p-[5px] rounded-[5px] w-full "
-                      defaultValue={profile.profile[0].profession}
+                      defaultValue={profile.profile?.profession}
                     />
                   </div>
                 </div>
@@ -239,7 +261,7 @@ function EditProfile() {
                           <option
                             value={items.id}
                             selected={
-                              items.id === profile.profile[0].nationalityId
+                              items.id === profile.profile?.nationalityId
                                 ? true
                                 : false
                             }
@@ -269,18 +291,22 @@ function EditProfile() {
             </div>
             <form
               onSubmit={uploadImage}
-              className="md:flex flex-col gap-32 items-center w-[50%] pt-56 hidden "
+              className="md:flex flex-col justify-center w-full items-center md:w-[50%]"
             >
-              <div className="flex  justify-center items-center">
-                {profile.profile[0].picture == null ? (
-                  <div className="text-[100px]  text-white absolute bg-black/50 p-[90px] rounded-[50%]">
-                    <FaCameraRetro />
-                  </div>
+              <div className="flex justify-center items-center">
+                {profile.profile?.picture == null ? (
+                  <img
+                    className="w-20 rounded-full border-white border-[5px]"
+                    src={User}
+                  ></img>
                 ) : (
-                  <img src={profile.profile[0].picture}></img>
+                  <img
+                    className="w-20 rounded-full  border-blue-950 border-[5px] overflow-hidden"
+                    src={profile.profile?.picture}
+                  ></img>
                 )}
               </div>
-              <div>
+              <div className="flex flex-col justify-center w-full items-center">
                 <label
                   htmlFor="img"
                   className="mt-[50px] bg-white w-[315px] font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[20px]"
@@ -295,7 +321,7 @@ function EditProfile() {
                   onChange={handlerChange}
                 />
                 <div>
-                  <div>Image size: max, 2 MB</div>
+                  <div>Image size: max, 500kb</div>
                   <div>Image formats: .JPG, .JPEG, .PNG</div>
                 </div>
               </div>
@@ -337,7 +363,6 @@ function EditProfile() {
         )}
 
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
       </div>
     </div>
   );

@@ -289,7 +289,6 @@ function Booking() {
         </div>
         <div className="flex flex-col  gap-[144px]">
           <Footer />
-          <div>© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
     </div>

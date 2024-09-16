@@ -29,15 +29,14 @@ function Login() {
     }
   }
   const dispatch = useDispatch();
-  const forms = useSelector((state) => state.auth.token);
 
   async function doLogin(event) {
     event.preventDefault();
 
+    setLoading(true);
     const password = event.target.password.value;
     const email = event.target.email.value;
 
-    setLoading(true);
     const formData = new URLSearchParams();
     formData.append("password", password);
     formData.append("email", email);
@@ -65,8 +64,6 @@ function Login() {
           setLoading(false);
           setMessage(data.message);
           setAlert(true);
-          // window.alert;
-          // window.alert(data.message);
         }
       });
     });
@@ -75,7 +72,7 @@ function Login() {
   return (
     <div className="flex w-full bg-[#9400FF] h-[100vh]">
       <div className="flex w-full h-[100vh]">
-        <div className="bg-[#27005D]  md:block w-full hidden md:flex items-center md:justify-center">
+        <div className="bg-[#27005D]  md:flex w-full hidden items-center md:justify-center">
           <img src={People}></img>
         </div>
         <div className=" flex items-center md:w-[40%] w-full justify-center flex-col gap-5 p-[100px]">

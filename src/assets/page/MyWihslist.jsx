@@ -92,7 +92,6 @@ function MyWihslist() {
       </div>
       <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
     </div>
   );

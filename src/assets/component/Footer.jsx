@@ -7,38 +7,43 @@ import Twitter from "../img/twitter.png";
 
 function Footer() {
   return (
-    <div className="flex flex-col p-[10px] bg-[27005D]  md:flex-row gap-[100px] md:flex  mt-[170px] w-full justify-center md:gap-[200px]">
-      <div>
-        <Logo />
-        <div>Find events you love with our</div>
-        <div className="flex  gap-[10px]">
-          <img src={Facebook}></img>
-          <img src={Whatsapp}></img>
-          <img src={Instagram}></img>
-          <img src={Twitter}></img>
+    <div className="flex flex-col gap-36">
+      <div className="flex flex-col p-[10px] bg-[27005D]  md:flex-row gap-[100px] md:flex mt-[170px] w-full justify-center md:gap-[200px]">
+        <div>
+          <Logo />
+          <div>Find events you love with our</div>
+          <div className="flex  gap-[10px]">
+            <img src={Facebook}></img>
+            <img src={Whatsapp}></img>
+            <img src={Instagram}></img>
+            <img src={Twitter}></img>
+          </div>
+        </div>
+        <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
+          <h1 className="text-black font-bold">Wetick</h1>
+          <div>About Us</div>
+          <div>Blog</div>
+          <div>Payment</div>
+          <div>Mobile App</div>
+        </div>
+        <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
+          <h1 className="font-bold text-black">Features</h1>
+          <div>Booking</div>
+          <div>Create Event</div>
+          <div>Discover</div>
+          <div>Register</div>
+        </div>
+        <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
+          <h1 className="font-bold text-black">Company</h1>
+          <div>Partnership</div>
+          <div>Help</div>
+          <div>Terms of Service</div>
+          <div>Privacy Policy</div>
+          <div>Sitemap</div>
         </div>
       </div>
-      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
-        <h1 className="text-black font-bold">Wetick</h1>
-        <div>About Us</div>
-        <div>Blog</div>
-        <div>Payment</div>
-        <div>Mobile App</div>
-      </div>
-      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
-        <h1 className="font-bold text-black">Features</h1>
-        <div>Booking</div>
-        <div>Create Event</div>
-        <div>Discover</div>
-        <div>Register</div>
-      </div>
-      <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
-        <h1 className="font-bold text-black">Company</h1>
-        <div>Partnership</div>
-        <div>Help</div>
-        <div>Terms of Service</div>
-        <div>Privacy Policy</div>
-        <div>Sitemap</div>
+      <div className="flex p-[10px] justify-center">
+        © 2024 SnagTick All Rights Reserved
       </div>
     </div>
   );

@@ -339,7 +339,6 @@ function Payment() {
         </div>
         <div className="flex flex-col  md: gap-[144px]">
           <Footer />
-          <div className="p-[10px]">© 2024 SnagTick All Rights Reserved</div>
         </div>
       </div>
     </div>

@@ -157,7 +157,6 @@ function ChangePassword() {
       )}
       <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2020 Wetick All Rights Reserved</div>
       </div>
     </div>
   );

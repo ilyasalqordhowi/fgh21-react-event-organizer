@@ -165,7 +165,7 @@ function Home() {
         </div>
         <div className="flex p-[10px] justify-center">
           <div className="bg-[#27005D]  mb-[175px] md:w-[1300px] w-full rounded-[30px] flex flex-col justify-center p-[30px] h-auto">
-            <div className="flex  font-bold gap-2 p-[10px] text-[12px] ml-[100px] mb-[50px] text-[#27005D] bg-[#6FDCE3] h-[35px] w-[130px] justify-center rounded-2xl">
+            <div className="flex  font-bold gap-2 p-[10px] text-[12px]  mb-[50px] text-[#27005D] bg-[#6FDCE3] h-[35px] w-[130px] justify-center rounded-2xl">
               <div>——</div>
               <div>Location</div>
             </div>
@@ -223,7 +223,7 @@ function Home() {
           >
             {event.map((element) => {
               return (
-                <Link to="/detail">
+                <Link to="/detail/:id">
                   <div className="w-[260px] h-[376px] rounded-xl bg-[#27005D] overflow-hidden relative">
                     <img
                       src={element.image}
@@ -281,7 +281,6 @@ function Home() {
         </div>
         <div className="flex flex-col  gap-[144px]">
           <Footer />
-          <div className="p-[10px]">© 2020 Wetick All Rights Reserved</div>
         </div>
       </div>
     </div>

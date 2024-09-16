@@ -49,12 +49,12 @@ function MyBooking() {
           Authorization: "Bearer " + datatoken,
         },
       });
+      console.log(response, "hello");
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
       const json = await response.json();
       setBooking(json.results);
-      console.log(json.results, "hello");
     })();
   }, []);
   let data = true;
@@ -67,7 +67,7 @@ function MyBooking() {
   console.log(data);
 
   return (
-    <div className="">
+    <>
       <Navbar />
       <div className="flex  md:p-[50px] bg-[#27005D]">
         <div className="flex md:w-[242px] h-[508px]">
@@ -119,9 +119,8 @@ function MyBooking() {
       </div>
       <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
-        <div>© 2024 SnagTick All Rights Reserved</div>
       </div>
-    </div>
+    </>
   );
 }
 export default MyBooking;

@@ -63,7 +63,7 @@ function SignUp() {
 
   return (
     <div className="flex bg-[#9400FF] h-[100vh]">
-      <div className="bg-[#27005D] w-full md:block hidden md:flex items-center md:justify-center">
+      <div className="bg-[#27005D] w-full  hidden md:flex items-center md:justify-center">
         <img src={People}></img>
       </div>
       <div className=" flex items-center md:w-[40%] w-full justify-center flex-col gap-5 p-[100px]">

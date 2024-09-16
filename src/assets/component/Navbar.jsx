@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
 import { Link, ScrollRestoration } from "react-router-dom";
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/auth";
-import { addProfile } from "../../redux/reducers/profile";
+
+import User from "../img/user.png";
 
 function Navbar() {
   const [navbar, setNavbar] = React.useState(true);
+  const profile = useSelector((state) => state.profile.data);
+  const token = useSelector((state) => state.auth.token);
   function btnNav() {
     if (navbar === true) {
       setNavbar(false);
@@ -15,13 +18,6 @@ function Navbar() {
       setNavbar(true);
     }
   }
-  const dispatch = useDispatch();
-  const forms = useSelector((state) => state.auth.token);
-  console.log(forms);
-
-  dispatch(login(forms));
-  const profile = useSelector((state) => state.profile.data);
-  console.log(profile);
 
   return (
     <div className="flex md:flex-row text-[#E4F1FF] bg-[#9400FF] flex-col justify-between md:p-[10px]  ">
@@ -31,7 +27,7 @@ function Navbar() {
           <FaBars />
         </button>
       </div>
-      <div className={navbar ? "hidden md:flex gap-[300px]" : ""}>
+      <div className={navbar ? "hidden md:flex" : ""}>
         <div className="md:flex md:flex-row list-none flex flex-col items-center gap-5">
           <Link to="/">
             <li className="hover:text-blue-400 hover:underline flex gap-[10px]">
@@ -49,7 +45,7 @@ function Navbar() {
         </div>
       </div>
       <div className="flex">
-        {forms === null ? (
+        {token === null ? (
           <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
             <Link to="/sign-in">
               <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
@@ -63,14 +59,18 @@ function Navbar() {
             </Link>
           </div>
         ) : (
-          <div className="flex justify-between items-center">
+          <div className="flex items-center pr-12">
             <Link to="/editProfile">
-              <div className="flex gap-5 w-[226px] items-center">
+              <div className="flex gap-5 justify-start items-center">
                 <img
-                  className=" rounded-full p-[30px] border-blue-950 border-[5px]"
-                  src={profile}
+                  className="w-20 rounded-full border-blue-950 border-[5px]"
+                  src={
+                    profile.profile?.picture === null
+                      ? User
+                      : profile.profile?.picture
+                  }
                 ></img>
-                <div>ilyas</div>
+                <div>{profile.profile?.full_name}</div>
               </div>
             </Link>
           </div>
