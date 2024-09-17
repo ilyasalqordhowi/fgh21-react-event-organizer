@@ -49,11 +49,12 @@ function Event() {
       <Link to={"/events/section/" + data.id} />
       <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#27005D]">
         <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-[#AED2FF]  rounded-[20px] ">
-          <div className="flex flex-col items-center gap-[10px] w-[60%]">
+          <div className="flex flex-col items-center gap-[10px]  w-full">
             <img
               src={data.image}
-              className="w-full md:rounded-[20px]  object-cover"
+              className="w-full brightness-50 md:rounded-[20px] object-cover"
             ></img>
+
             <button
               onClick={Whishlist}
               className="md:flex items-center text-[30px] hidden"
@@ -66,9 +67,12 @@ function Event() {
             <div className="flex flex-col md:text-black mt-[100px] text-white md:mb-[0] gap-[10px] md:mt-[0px] ">
               <h1 className="flex font-bold w-full md:text-[30px] text-[40px]">
                 {data.title}
-                <div className="flex items-center md:hidden">
+                <button
+                  onClick={Whishlist}
+                  className="flex items-center md:hidden"
+                >
                   <FaHeart />
-                </div>
+                </button>
               </h1>
               <div className="md:flex md:flex-row flex-col md:text-[15px] text-[13px] w-full gap-[8px]">
                 <div className="flex gap-[10px]">
@@ -105,7 +109,9 @@ function Event() {
             <hr className="md:flex hidden"></hr>
             <div className="flex flex-col w-full p-[10px] gap-[12px]">
               <h1 className="font-bold text-[20px]">Event Detail</h1>
-              <p className="text-[#373A42BF] ">{data.descriptions}</p>
+              <p className="md:text-[#373A42BF] text-white">
+                {data.descriptions}
+              </p>
               <div className="text-blue-400">Read More</div>
               <div className="font-bold text-[20px]">Location</div>
               <img className="w-[315px]" src={Map}></img>

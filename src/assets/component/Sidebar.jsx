@@ -25,7 +25,7 @@ function Sidebar() {
     dispatch(removeProfile(profile));
   }
   return (
-    <div className="md:flex flex-col text-white hidden w-[242px] h-[508px]">
+    <div className="md:flex flex-col text-white  w-[242px] h-[508px]">
       <div className="flex items-center text-center gap-[15px]">
         {profile.profile?.picture === null ? (
           <img
@@ -48,7 +48,7 @@ function Sidebar() {
           <FaBars />
         </button> */}
       </div>
-      <div className="flex flex-col gap-[30px] mt-[50px]">
+      <div className="flex flex-col gap-5 mt-[50px]">
         <div className="flex hover:text-blue-700 items-center  gap-[25px]">
           <div className="bg-[#C1C5D0] w-[40px]  p-[10px] justify-center  flex items-center rounded-full">
             <FaUser />

@@ -30,7 +30,7 @@ function ManageEvent() {
       });
       const EventData = await response.json();
       if (EventData.success) {
-        setNoEvent(false);
+        setNoEvent(true);
         setData(EventData.results);
       } else {
         setNoEvent(false);
@@ -43,7 +43,7 @@ function ManageEvent() {
     <div className="">
       <Navbar />
       <div className="flex reltive  md:p-[50px] bg-[#27005D]">
-        <div className="flex  md:w-[242px]  h-[508px]">
+        <div className="md:flex  md:w-[242px] hidden h-[508px]">
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto md:p-[40px] bg-[#AED2FF] md:rounded-[20px] ">
@@ -58,8 +58,7 @@ function ManageEvent() {
               <div className="flex flex-col gap-[25px]">
                 <div className="flex gap-[25px]">
                   <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                    <h1 className="text-yellow-500">15</h1>
-                    <p>Wed</p>
+                    <img src={element.image} alt="" />
                   </div>
                   <div className="flex flex-col">
                     <div className="text-[24px] mb-[15px]">{element.title}</div>
@@ -86,14 +85,14 @@ function ManageEvent() {
             <div className="flex flex-col items-center py-40">
               <div className="font-semibold text-[24px]">No tickets bought</div>
               <div className="font-medium text-[#B3B8B8] w-[340px] text-center">
-                It appears you haven't bought any tickets yet. Maybe try
+                It appears you haven’t bought any tickets yet. Maybe try
                 searching these?
               </div>
             </div>
           )}
         </div>
       </div>
-      <div className="flex flex-col md:bg-[#27005D] gap-[144px]">
+      <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
       </div>
       {create ? "" : <CreateEvent />}

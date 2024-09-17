@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/auth";
 
 import User from "../img/user.png";
+import Sidebar from "./Sidebar";
 
 function Navbar() {
   const [navbar, setNavbar] = React.useState(true);
+  const [sideBar, setSideBar] = React.useState(true);
   const profile = useSelector((state) => state.profile.data);
   const token = useSelector((state) => state.auth.token);
   function btnNav() {
@@ -16,6 +18,13 @@ function Navbar() {
       setNavbar(false);
     } else {
       setNavbar(true);
+    }
+  }
+  function btnSideBar() {
+    if (sideBar === true) {
+      setSideBar(false);
+    } else {
+      setSideBar(true);
     }
   }
 
@@ -59,20 +68,32 @@ function Navbar() {
             </Link>
           </div>
         ) : (
-          <div className="flex items-center pr-12">
-            <Link to="/editProfile">
-              <div className="flex gap-5 justify-start items-center">
-                <img
-                  className="w-20 rounded-full border-blue-950 border-[5px]"
-                  src={
-                    profile.profile?.picture === null
-                      ? User
-                      : profile.profile?.picture
-                  }
-                ></img>
-                <div>{profile.profile?.full_name}</div>
+          <div className="flex flex-col justify-between w-full pl-2">
+            <div className="flex items-center justify-between w-full ">
+              <div className="flex  items-center pr-12">
+                <Link to="/editProfile">
+                  <div className="flex gap-5 justify-start items-center">
+                    <img
+                      className="w-20 rounded-full border-blue-950 border-[5px]"
+                      src={
+                        profile.profile?.picture === null
+                          ? User
+                          : profile.profile?.picture
+                      }
+                    ></img>
+                    <div>{profile.profile?.full_name}</div>
+                  </div>
+                </Link>
               </div>
-            </Link>
+              <button className="md:hidden" type="button" onClick={btnSideBar}>
+                <FaBars />
+              </button>
+            </div>
+            <div className="md:hidden">
+              <div className={sideBar ? "hidden md:hidden" : ""}>
+                <Sidebar />
+              </div>
+            </div>
           </div>
         )}
       </div>

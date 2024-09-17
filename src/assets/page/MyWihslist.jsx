@@ -32,12 +32,22 @@ function MyWihslist() {
     }
     Whishlist();
   }, []);
+  function DeleteWhishlist() {
+    const responseWhislist = fetch("http://localhost:8888/whislist/" + id, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+    });
+    console.log(responseWhislist, "ini delete whislist");
+  }
+  DeleteWhishlist();
 
   return (
     <div className="">
       <Navbar />
       <div className="flex  md:p-[50px] bg-[#27005D]">
-        <div className="flex md:w-[242px] h-[508px]">
+        <div className="md:flex hidden md:w-[242px] h-[508px]">
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-[#AED2FF] md:rounded-[20px] ">
@@ -66,7 +76,7 @@ function MyWihslist() {
                   </div>
                   <div>
                     <button
-                      // onClick={DeleteWhishlist}
+                      onClick={DeleteWhishlist}
                       className="text-5xl text-blue-600"
                     >
                       <FaHeart />
@@ -83,7 +93,7 @@ function MyWihslist() {
             <div className="flex flex-col items-center py-40">
               <div className="font-semibold text-[24px]">No tickets bought</div>
               <div className="font-medium text-[#B3B8B8] w-[340px] text-center">
-                It appears you haven't bought any tickets yet. Maybe try
+                It appears you haven’t bought any tickets yet. Maybe try
                 searching these?
               </div>
             </div>

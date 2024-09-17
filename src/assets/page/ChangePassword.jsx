@@ -76,7 +76,7 @@ function ChangePassword() {
     <div className="bg-[#27005D]">
       <Navbar />
       <div className="flex md:p-[50px]  bg-[#27005D]">
-        <div className="flex  w-[242px] h-[508px]">
+        <div className="md:flex  hidden w-[242px] h-[508px]">
           <Sidebar />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto p-[40px] bg-[#AED2FF] md:rounded-[20px] ">

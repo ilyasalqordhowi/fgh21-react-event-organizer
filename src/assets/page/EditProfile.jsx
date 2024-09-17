@@ -148,7 +148,7 @@ function EditProfile() {
     <div className="bg-[#27005D]">
       <Navbar />
       <div className="flex  md:p-[50px] bg-[#27005D]">
-        <div className="md:flex md:w-[242px] h-[508px]">
+        <div className="md:flex hidden md:w-[242px] h-[508px]">
           <Sidebar />
         </div>
         <form
@@ -321,7 +321,7 @@ function EditProfile() {
                   onChange={handlerChange}
                 />
                 <div>
-                  <div>Image size: max, 500kb</div>
+                  <div>Image size: max, 700kb</div>
                   <div>Image formats: .JPG, .JPEG, .PNG</div>
                 </div>
               </div>
