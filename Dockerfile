@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:lts-alpine
 
 WORKDIR /app
 
@@ -6,4 +6,5 @@ COPY . /app/
 
 RUN npm install -g serve@latest
 RUN npx vite build
-ENTRYPOINT cd dist && serve -1 tcp://0.0.0.0:6000
+
+ENTRYPOINT cd dist && serve -l tcp://0.0.0.0:3000
