@@ -52,50 +52,54 @@ function Navbar() {
             Location
           </li>
         </div>
-      </div>
-      <div className="flex">
-        {token === null ? (
-          <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
-            <Link to="/sign-in">
-              <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
-                <button>Log in</button>
-              </div>
-            </Link>
-            <Link to="/sign-up">
-              <div className=" bg-[#3366FF] w-full  md:w-[150px] font-bold  text-white md:rounded-2xl text-center p-[10px]">
-                <button>Sign Up</button>
-              </div>
-            </Link>
-          </div>
-        ) : (
-          <div className="flex flex-col justify-between w-full pl-2">
-            <div className="flex items-center justify-between w-full ">
-              <div className="flex  items-center pr-12">
-                <Link to="/editProfile">
-                  <div className="flex gap-5 justify-start items-center">
-                    <img
-                      className="w-20 rounded-full border-blue-950 border-[5px]"
-                      src={
-                        profile.profile?.picture === null
-                          ? User
-                          : profile.profile?.picture
-                      }
-                    ></img>
-                    <div>{profile.profile?.full_name}</div>
-                  </div>
-                </Link>
-              </div>
-              <button className="md:hidden" type="button" onClick={btnSideBar}>
-                <FaBars />
-              </button>
+        <div className="flex">
+          {token === null ? (
+            <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
+              <Link to="/sign-in">
+                <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
+                  <button>Log in</button>
+                </div>
+              </Link>
+              <Link to="/sign-up">
+                <div className=" bg-[#3366FF] w-full  md:w-[150px] font-bold  text-white md:rounded-2xl text-center p-[10px]">
+                  <button>Sign Up</button>
+                </div>
+              </Link>
             </div>
-            <div className="md:hidden">
-              <div className={sideBar ? "hidden md:hidden" : ""}>
-                <Sidebar />
+          ) : (
+            <div className="flex flex-col justify-between w-full pl-2">
+              <div className="flex items-center justify-between w-full ">
+                <div className="flex  items-center pr-12">
+                  <Link to="/editProfile">
+                    <div className="flex gap-5 justify-start items-center">
+                      <img
+                        className="w-20 rounded-full border-blue-950 border-[5px]"
+                        src={
+                          profile.profile?.picture === null
+                            ? User
+                            : profile.profile?.picture
+                        }
+                      ></img>
+                      <div>{profile.profile?.full_name}</div>
+                    </div>
+                  </Link>
+                </div>
+                <button
+                  className="md:hidden"
+                  type="button"
+                  onClick={btnSideBar}
+                >
+                  <FaBars />
+                </button>
+              </div>
+              <div className="md:hidden">
+                <div className={sideBar ? "hidden md:hidden" : ""}>
+                  <Sidebar />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <ScrollRestoration />
     </div>
