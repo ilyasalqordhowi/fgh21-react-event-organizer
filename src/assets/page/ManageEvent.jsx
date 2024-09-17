@@ -3,13 +3,14 @@ import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import Sidebar from "../component/Sidebar";
 import CreateEvent from "../component/CreateEvent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 function ManageEvent() {
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
   const [data, setData] = React.useState([]);
+  const nav = useNavigate();
   const [noEvent, setNoEvent] = React.useState(false);
   console.log(data, "mkmnkkmkmk");
   function btnCreate() {
@@ -30,14 +31,17 @@ function ManageEvent() {
       });
       const EventData = await response.json();
       if (EventData.success) {
-        setNoEvent(true);
+        setNoEvent(false);
         setData(EventData.results);
       } else {
-        setNoEvent(false);
+        setNoEvent(true);
       }
     }
     createEventByUser();
   }, []);
+  async function btnDetail(id) {
+    nav("/detail/" + id);
+  }
 
   return (
     <div className="">
@@ -69,9 +73,12 @@ function ManageEvent() {
                       {element.date}
                     </div>
                     <div className="flex mt-[10px] gap-[14px]">
-                      <div className="text-[#3366FF]  text-[12px]">Detail</div>
-                      <div className="text-[#3366FF]  text-[12px]">Update</div>
-                      <div className="text-[#3366FF]  text-[12px]">Delete</div>
+                      <button
+                        onClick={() => btnDetail(element.id)}
+                        className="text-[#3366FF]  text-[12px]"
+                      >
+                        Detail
+                      </button>
                     </div>
                   </div>
                 </div>

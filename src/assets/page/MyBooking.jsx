@@ -65,6 +65,9 @@ function MyBooking() {
   }
   dataShow();
   console.log(data);
+  async function btnDetail(id) {
+    navigate("/detail/" + id);
+  }
 
   return (
     <>
@@ -108,7 +111,13 @@ function MyBooking() {
                     <div className="text-white text-[12px]">
                       {formatTimestamp(items.date)}
                     </div>
-                    <div className="text-[#3366FF]  text-[12px]">Detail</div>
+
+                    <button
+                      onClick={() => btnDetail(items.id)}
+                      className="text-[#3366FF] flex justify-start text-[12px]"
+                    >
+                      Detail
+                    </button>
                   </div>
                 </div>
                 <hr></hr>

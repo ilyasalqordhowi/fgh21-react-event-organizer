@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import loadingDino from "../img/dino.gif";
+import { FaRectangleXmark } from "react-icons/fa6";
 
 function CreateEvent() {
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
+  const [message, setMessage] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   function btnCreate() {
     if (create === true) {
       setCreate(false);
@@ -29,7 +33,7 @@ function CreateEvent() {
     console.log(priceEvent);
     console.log(imageEvent);
     console.log(detailEvent);
-
+    setLoading(false);
     const formData = new URLSearchParams();
     formData.append("image", imageEvent);
     formData.append("title", nameEvent);
@@ -47,9 +51,14 @@ function CreateEvent() {
     console.log(dataNew);
     const response = await dataNew.json();
     if (response.success) {
-      window.alert("Success Updated");
+      setTimeout(() => {
+        setLoading(true);
+      }, 3000);
     } else {
-      window.alert("tidak berhasil");
+      setTimeout(() => {
+        setLoading(true);
+        setMessage(true);
+      }, 3000);
     }
   }
   createEvent;
@@ -182,6 +191,31 @@ function CreateEvent() {
           </div>
         </form>
       </div>
+      {loading ? (
+        ""
+      ) : (
+        <div className=" flex h-full w-full justify-center items-center fixed z-10 top-0 left-0 bg-[rgba(0,0,0,0.5)]">
+          <div className="bg-violet-300 flex  items-center gap-[20px] rounded-md p-[10px]">
+            <img className="w-[100px] " src={loadingDino}></img>
+          </div>
+        </div>
+      )}
+      {message ? (
+        <div className="fixed flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
+          <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
+            <div>create event not updated</div>
+            <button
+              className="flex gap-[10px] items-center justify-center"
+              onClick={() => setMessage()}
+            >
+              <FaRectangleXmark />
+              <p>Cancel</p>
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

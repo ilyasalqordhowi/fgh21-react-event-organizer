@@ -44,10 +44,13 @@ function Event() {
     console.log(response);
   }
   return (
-    <div className="flex flex-col bg-[#27005D]">
+    <div className="flex flex-col  gap-0 bg-[#27005D]">
       <Navbar />
       <Link to={"/events/section/" + data.id} />
-      <div className="flex flex-col justify-center  items-center md:p-[50px] bg-[#27005D]">
+      <div
+        className="flex flex-col justify-center w-full
+        items-center md:p-[50px] bg-[#27005D]"
+      >
         <div className="md:flex flex flex-row md:w-[1100px] w-full gap-[46px] h-full md:p-[100px]  md:bg-[#AED2FF]  rounded-[20px] ">
           <div className="flex flex-col items-center gap-[10px]  w-full">
             <img
@@ -63,8 +66,8 @@ function Event() {
               <div>Add to Wishlist</div>
             </button>
           </div>
-          <div className="flex flex-col md:relative absolute md:w-[40%] md:gap-[30px]">
-            <div className="flex flex-col md:text-black mt-[100px] text-white md:mb-[0] gap-[10px] md:mt-[0px] ">
+          <div className="flex flex-col md:relative absolute  md:w-[40%] md:gap-[30px]">
+            <div className="flex flex-col md:text-black text-white md:mb-[0] gap-[10px] md:mt-[0px] ">
               <h1 className="flex font-bold w-full md:text-[30px] text-[40px]">
                 {data.title}
                 <button
@@ -108,12 +111,16 @@ function Event() {
             </div>
             <hr className="md:flex hidden"></hr>
             <div className="flex flex-col w-full p-[10px] gap-[12px]">
-              <h1 className="font-bold text-[20px]">Event Detail</h1>
+              <h1 className="font-bold  md:text-black text-blue-300  text-[20px]">
+                Event Detail
+              </h1>
               <p className="md:text-[#373A42BF] text-white">
                 {data.descriptions}
               </p>
               <div className="text-blue-400">Read More</div>
-              <div className="font-bold text-[20px]">Location</div>
+              <div className="font-bold md:text-black text-blue-300 text-[20px]">
+                Location
+              </div>
               <img className="w-[315px]" src={Map}></img>
             </div>
             <Link to={"/events/section/" + data.id}>
@@ -124,8 +131,7 @@ function Event() {
           </div>
         </div>
       </div>
-
-      <div className="flex flex-col md:mt-[0] mt-[500px] gap-[144px]">
+      <div className="flex flex-col md:mt-[0] gap-[144px]">
         <Footer />
       </div>
     </div>
