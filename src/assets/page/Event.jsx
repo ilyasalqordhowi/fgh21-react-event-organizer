@@ -80,7 +80,7 @@ function Event() {
               <div className="md:flex md:flex-row flex-col md:text-[15px] text-[13px] w-full gap-[8px]">
                 <div className="flex gap-[10px]">
                   <img src={Location}></img>
-                  <div>Jakarta, Indonesia</div>
+                  <div>Indonesia</div>
                 </div>
                 <div className="flex gap-[10px]">
                   <img src={Clock}></img>

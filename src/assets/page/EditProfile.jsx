@@ -20,8 +20,8 @@ function EditProfile() {
   date.setDate(futureDate);
   const defaultValue = date.toLocaleDateString("en-CA");
   const [message, setMessage] = React.useState(false);
-  const [nationality, setNationality] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [nationality, setNationality] = React.useState([]);
   const [file, setFile] = React.useState(null);
 
   useEffect(() => {
@@ -166,7 +166,7 @@ function EditProfile() {
                     placeholder="Full Name"
                     type="name"
                     className="border border-[#C1C5D0] w-full md:ml-[110px] p-[5px] rounded-[5px]"
-                    defaultValue={profile.profile?.full_name}
+                    defaultValue={profile.profile.full_name}
                   ></input>
                 </div>
                 <div className="md:flex w-full">
@@ -177,7 +177,7 @@ function EditProfile() {
                         name="userName"
                         type="text"
                         className="border border-[#C1C5D0] md:ml-[80px] w-full p-[5px] rounded-[5px]"
-                        defaultValue={profile.user?.username}
+                        defaultValue={profile.user.username}
                       />
                     </div>
                   </div>

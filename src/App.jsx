@@ -14,8 +14,10 @@ import Login from "./assets/page/Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
-import { ImPointDown } from "react-icons/im";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
+const persistor = persistStore(store);
 const page = createBrowserRouter([
   {
     path: "/",
@@ -71,7 +73,9 @@ const page = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={page} />
+      <PersistGate persistor={persistor}>
+        <RouterProvider router={page} />
+      </PersistGate>
     </Provider>
   );
 }

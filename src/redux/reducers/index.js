@@ -2,7 +2,6 @@ import { combineReducers } from "@reduxjs/toolkit";
 import auth from "./auth";
 import event from "./event";
 import profile from "./profile";
-import booking from "./booking";
 import bookingReducer from "./booking";
 
 const reducer = combineReducers({
