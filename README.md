@@ -2,11 +2,11 @@
 
 Welcome to the **SnagTick**! This platform enables users to easily book tickets, purchase tickets, and create events. Built for efficiency and simplicity, **SnagTick** provides a seamless experience for both event organizers and attendees.
 
-  <img src="/src/assets/imgPortofio/SnagTick-login.png" alt="login" width="300">
-   <img src="/src/assets/imgPortofio/SnagTick-Home.png" alt="Home" width="300">
-    <img src="/src/assets/imgPortofio/SnagTick-Mobile.png" alt="Mobile" width="300">
-     <img src="/src/assets/imgPortofio/SnagTick-Profile.png" alt="Profile" width="300">
-      <img src="/src/assets/imgPortofio/SnagTick-Transction.png" alt="Transction width="300">
+<img src="./src/assets/imgPortfolio/SnagTick-login.png" alt="login" width="400">
+   <img src="./src/assets/imgPortfolio/SnagTick-Home.png" alt="Home" width="400" >
+     <img src="./src/assets/imgPortfolio/SnagTick-Profile.png" alt="Profile" width="400">
+      <img src="./src/assets/imgPortfolio/SnagTick-Transction.png" alt="Transction"width="800" >
+    <img src="./src/assets/imgPortfolio/SnagTick-Mobile.png" alt="Mobile" width="200">
 
 ## Features
 
