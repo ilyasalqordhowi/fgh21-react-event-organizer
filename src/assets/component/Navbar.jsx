@@ -32,7 +32,7 @@ function Navbar() {
     <div className="flex md:flex-row text-[#E4F1FF] bg-[#9400FF] flex-col justify-between md:p-[10px]  ">
       <div className="flex items-center justify-between ">
         <Logo />
-        <button className="md:hidden" type="button" onClick={btnNav}>
+        <button className="md:hidden flex ml-6" type="button" onClick={btnNav}>
           <FaBars />
         </button>
       </div>
@@ -87,7 +87,7 @@ function Navbar() {
                   </Link>
                 </div>
                 <button
-                  className="md:hidden"
+                  className="md:hidden flex ml-6"
                   type="button"
                   onClick={btnSideBar}
                 >
