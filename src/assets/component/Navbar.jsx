@@ -52,7 +52,9 @@ function Navbar() {
             Location
           </li>
         </div>
-        <div className="flex">
+      </div>
+      <div className="flex">
+        <div className={navbar ? "hidden md:flex" : "w-full"}>
           {token === null ? (
             <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
               <Link to="/sign-in">
@@ -101,6 +103,7 @@ function Navbar() {
           )}
         </div>
       </div>
+
       <ScrollRestoration />
     </div>
   );
