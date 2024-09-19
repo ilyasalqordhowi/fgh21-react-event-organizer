@@ -1,4 +1,4 @@
-# SnagTick
+# SnagTick FRONTEND
 
 Welcome to the **SnagTick**! This platform enables users to easily book tickets, purchase tickets, and create events. Built for efficiency and simplicity, **SnagTick** provides a seamless experience for both event organizers and attendees.
 
