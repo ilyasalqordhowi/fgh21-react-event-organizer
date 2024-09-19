@@ -5,7 +5,7 @@ Welcome to the **SnagTick**! This platform enables users to easily book tickets,
 <div style="display: grid; grid-template-columns: repeat(3, 2fr); gap: 20px; grid-template-rows: auto auto; align-items: center; justify-items: center">
 <img src="./src/assets/imgPortfolio/SnagTick-login.png" alt="login" width="400">
    <img src="./src/assets/imgPortfolio/SnagTick-Home.png" alt="Home" width="400" >
-    <img src="./src/assets/imgPortfolio/SnagTick-Mobile.png" alt="Mobile" width="200">
+    <img src="./src/assets/imgPortfolio/SnagTick-Mobile.png" alt="Mobile" width="200" style="display:flex; align-items: center;">
      <img src="./src/assets/imgPortfolio/SnagTick-Profile.png" alt="Profile" width="400">
       <img src="./src/assets/imgPortfolio/SnagTick-Transction.png" alt="Transction"width="400" >
 </div>
