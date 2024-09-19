@@ -44,7 +44,7 @@ function MyBooking() {
 
   React.useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:8888/transactions/", {
+      const response = await fetch("http://103.93.58.89:21213/transactions/", {
         headers: {
           Authorization: "Bearer " + datatoken,
         },

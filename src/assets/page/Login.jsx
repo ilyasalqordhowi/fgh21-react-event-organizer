@@ -40,7 +40,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("password", password);
     formData.append("email", email);
-    fetch("http://localhost:8888/auth/login", {
+    fetch("http://103.93.58.89:21213/auth/login", {
       method: "POST",
       body: formData,
     }).then((response) => {
@@ -49,7 +49,7 @@ function Login() {
           console.log(data.success);
           dispatch(login(data.results.token));
           async function dataUpdate() {
-            const response = await fetch("http://localhost:8888/profile/", {
+            const response = await fetch("http://103.93.58.89:21213/profile/", {
               headers: {
                 Authorization: "Bearer " + data.results.token,
               },

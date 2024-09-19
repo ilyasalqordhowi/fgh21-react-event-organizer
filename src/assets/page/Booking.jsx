@@ -36,7 +36,7 @@ function Booking() {
   React.useEffect(() => {
     (async function () {
       const response = await fetch(
-        "http://localhost:8888/events/section/" + id,
+        "http://103.93.58.89:21213/events/section/" + id,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -48,11 +48,14 @@ function Booking() {
       setSection(results);
     })();
     (async function () {
-      const response = await fetch("http://localhost:8888/events" + "/" + id, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const response = await fetch(
+        "http://103.93.58.89:21213/events" + "/" + id,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
       const json = await response.json();
       const results = json.results;
       console.log(json, "hai");

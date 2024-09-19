@@ -41,7 +41,7 @@ function CreateEvent() {
     formData.append("date", dateEvent);
     formData.append("descriptions", detailEvent);
 
-    const dataNew = await fetch("http://localhost:8888/events", {
+    const dataNew = await fetch("http://103.93.58.89:21213/events", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + datatoken,

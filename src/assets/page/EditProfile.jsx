@@ -26,11 +26,14 @@ function EditProfile() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:8888/profile/national", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const response = await fetch(
+        "http://103.93.58.89:21213/profile/national",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
       const json = await response.json();
       const dataNew = json.results;
       setNationality(dataNew);
@@ -67,13 +70,16 @@ function EditProfile() {
     formData.append("profession", profession);
     formData.append("nationalityId", nationalityId);
 
-    const dataProfile = await fetch("http://localhost:8888/profile/update", {
-      method: "PATCH",
-      headers: {
-        Authorization: "Bearer " + datatoken,
-      },
-      body: formData,
-    });
+    const dataProfile = await fetch(
+      "http://103.93.58.89:21213/profile/update",
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: "Bearer " + datatoken,
+        },
+        body: formData,
+      }
+    );
     console.log(dataProfile);
     const response = await dataProfile.json();
     if (response.success) {
@@ -93,7 +99,7 @@ function EditProfile() {
     const body = new FormData();
     body.append("profileImg", file);
 
-    const response = await fetch("http://localhost:8888/profile/img", {
+    const response = await fetch("http://103.93.58.89:21213/profile/img", {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,
@@ -103,7 +109,7 @@ function EditProfile() {
     const json = await response.json();
     console.log(json, "klklklklkl");
     if (json.success) {
-      const getResponse = await fetch("http://localhost:8888/profile/", {
+      const getResponse = await fetch("http://103.93.58.89:21213/profile/", {
         headers: {
           Authorization: "Bearer " + datatoken,
         },
@@ -126,7 +132,7 @@ function EditProfile() {
     };
   };
   async function getData() {
-    const response = await fetch("http://localhost:8888/profile/", {
+    const response = await fetch("http://103.93.58.89:21213/profile/", {
       headers: {
         Authorization: "Bearer " + datatoken,
       },

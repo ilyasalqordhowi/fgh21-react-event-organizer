@@ -20,7 +20,9 @@ function Event() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch("http://localhost:8888/events" + "/" + id);
+        const response = await fetch(
+          "http://103.93.58.89:21213/events" + "/" + id
+        );
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
@@ -35,7 +37,7 @@ function Event() {
     dataEvent();
   }, []);
   async function Whishlist() {
-    const response = await fetch("http://localhost:8888/whislist/" + id, {
+    const response = await fetch("http://103.93.58.89:21213/whislist/" + id, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + datatoken,

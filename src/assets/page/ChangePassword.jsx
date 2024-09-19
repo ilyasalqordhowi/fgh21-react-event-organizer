@@ -50,7 +50,7 @@ function ChangePassword() {
     formData.append("oldPassword", oldPassword);
     formData.append("newPassword", newPassword);
 
-    const dataPass = await fetch("http://localhost:8888/users/password", {
+    const dataPass = await fetch("http://103.93.58.89:21213/users/password", {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,

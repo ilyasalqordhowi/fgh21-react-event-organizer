@@ -23,7 +23,7 @@ function ManageEvent() {
 
   useEffect(() => {
     async function createEventByUser() {
-      const response = await fetch("http://localhost:8888/events/data", {
+      const response = await fetch("http://103.93.58.89:21213/events/data", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + datatoken,

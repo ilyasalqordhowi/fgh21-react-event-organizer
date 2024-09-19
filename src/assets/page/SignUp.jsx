@@ -48,7 +48,7 @@ function SignUp() {
     formData.append("full_name", fullName);
     formData.append("email", email);
     formData.append("password", password);
-    const dataRegis = await fetch("http://localhost:8888/auth/register", {
+    const dataRegis = await fetch("http://103.93.58.89:21213/auth/register", {
       method: "POST",
       body: formData,
     });

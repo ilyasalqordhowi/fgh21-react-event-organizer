@@ -5,7 +5,7 @@ function Partner() {
   useEffect(() => {
     async function dataPartner() {
       try {
-        const partner = await fetch("http://localhost:8888/partners");
+        const partner = await fetch("http://103.93.58.89:21213/partners");
         console.log(partner);
         if (!partner.ok) {
           throw new Error(`partner status ${partner.status}`);

@@ -16,7 +16,7 @@ function MyWihslist() {
 
   useEffect(() => {
     async function Whishlist() {
-      const response = await fetch("http://localhost:8888/whislist/" + id, {
+      const response = await fetch("http://103.93.58.89:21213/whislist/" + id, {
         headers: {
           Authorization: "Bearer " + datatoken,
         },
@@ -33,7 +33,7 @@ function MyWihslist() {
     Whishlist();
   }, []);
   function DeleteWhishlist() {
-    const responseWhislist = fetch("http://localhost:8888/whislist/" + id, {
+    const responseWhislist = fetch("http://103.93.58.89:21213/whislist/" + id, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + datatoken,

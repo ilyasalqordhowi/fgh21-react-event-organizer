@@ -41,7 +41,7 @@ function Home() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch("http://localhost:8888/events");
+        const response = await fetch("http://103.93.58.89:21213/events");
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
@@ -55,7 +55,7 @@ function Home() {
     dataEvent();
     async function dataLocation() {
       try {
-        const response = await fetch("http://localhost:8888/locations");
+        const response = await fetch("http://103.93.58.89:21213/locations");
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
