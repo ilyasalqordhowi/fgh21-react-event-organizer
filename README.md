@@ -7,7 +7,7 @@ Welcome to the **SnagTick**! This platform enables users to easily book tickets,
    <img src="./src/assets/imgPortfolio/SnagTick-Home.png" alt="Home" width="400" >
      <img src="./src/assets/imgPortfolio/SnagTick-Profile.png" alt="Profile" width="400">
       <img src="./src/assets/imgPortfolio/SnagTick-Transction.png" alt="Transction"width="400" >
-    <img src="./src/assets/imgPortfolio/SnagTick-Mobile.png" alt="Mobile" width="200">
+    <img src="./src/assets/imgPortfolio/SnagTick-Mobile.png" alt="Mobile" width="200" Height="400">
 </div>
 ## Features
 
