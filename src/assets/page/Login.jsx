@@ -55,8 +55,7 @@ function Login() {
               },
             });
             const json = await response.json();
-            console.log(json);
-
+            console.log(json, "results profile");
             dispatch(addProfile(json.results));
           }
           dataUpdate();

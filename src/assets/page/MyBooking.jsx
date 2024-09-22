@@ -49,11 +49,12 @@ function MyBooking() {
           Authorization: "Bearer " + datatoken,
         },
       });
-      console.log(response, "hello");
+      console.log(response, "hello ini transactions");
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
       const json = await response.json();
+      console.log(json, "ksskkskskkskskskksksk");
       setBooking(json.results);
     })();
   }, []);
