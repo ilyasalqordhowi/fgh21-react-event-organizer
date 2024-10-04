@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
 import { Link, ScrollRestoration } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../redux/reducers/auth";
-
+import { useSelector } from "react-redux";
 import User from "../img/user.png";
 import Sidebar from "./Sidebar";
 
 function Navbar() {
   const [navbar, setNavbar] = React.useState(true);
   const [sideBar, setSideBar] = React.useState(true);
-  const profile = useSelector((state) => state.profile.data);
+
+  const profile = useSelector((state) => state.profile.data) || {};
+
   const token = useSelector((state) => state.auth.token);
   function btnNav() {
     if (navbar === true) {
@@ -39,17 +39,22 @@ function Navbar() {
       <div className={navbar ? "hidden md:flex" : ""}>
         <div className="md:flex md:flex-row list-none flex flex-col items-center gap-5">
           <Link to="/">
-            <li className="hover:text-blue-400 hover:underline flex gap-[10px]">
+            <li className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]">
               Home
             </li>
           </Link>
           <Link to="/manage-event">
-            <li className="hover:text-blue-400 hover:underline flex gap-[10px]">
+            <li className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]">
               Create Event
             </li>
           </Link>
-          <li className="hover:text-blue-400 hover:underline flex gap-[10px]">
-            Location
+          <li>
+            <a
+              href="#location"
+              className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]"
+            >
+              Location
+            </a>
           </li>
         </div>
       </div>
@@ -82,7 +87,9 @@ function Navbar() {
                             : profile.profile?.picture
                         }
                       ></img>
-                      <div>{profile.profile?.full_name}</div>
+                      <div className="text-[20px] font-bold">
+                        {profile.profile?.full_name}
+                      </div>
                     </div>
                   </Link>
                 </div>

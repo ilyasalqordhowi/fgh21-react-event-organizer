@@ -2,20 +2,17 @@ import React from "react";
 import People from "../img/peopleWeb.png";
 import Logo from "../component/Logoo";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loadingDino from "../img/dino.gif";
-import { FaRectangleXmark } from "react-icons/fa6";
-import { data } from "autoprefixer";
+import { Formik, useFormik } from "formik";
+import * as Yup from "yup";
 
 function SignUp() {
   const navigate = useNavigate();
-
   const [pass, setPass] = React.useState("password");
   const [confPass, setConfPass] = React.useState("password");
-  const [alert, setAlert] = React.useState(false);
+
   const [loading, setLoading] = React.useState(false);
-  const [message, setMessage] = React.useState("");
 
   function password() {
     if (pass === "password") {
@@ -31,12 +28,40 @@ function SignUp() {
       setConfPass("password");
     }
   }
-  async function signUp(event) {
-    event.preventDefault();
-    const fullName = event.target.fullname.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
+
+  const formik = useFormik({
+    onSubmit: signUp,
+    initialValues: {
+      fullname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: Yup.object().shape({
+      fullname: Yup.string()
+        .min(7, "Full Name must be a minimum of 7 characters")
+        .required("Full Name is required"),
+      email: Yup.string()
+        .email("Invalid email format")
+        .matches(
+          /@(gmail|mail)\.com$/,
+          "Email must contain '@', 'gmail', 'mail', '.com'"
+        )
+        .required("Email is required"),
+      password: Yup.string()
+        .min(8, "Password must be at least 8 characters")
+        .required("Password is required"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Passwords do not match")
+        .required("Password confirmation is required"),
+    }),
+  });
+
+  async function signUp() {
+    const fullName = formik.values.fullname;
+    const email = formik.values.email;
+    const password = formik.values.password;
+    const confirmPassword = formik.values.confirmPassword;
 
     console.log(fullName);
     console.log(email);
@@ -54,15 +79,9 @@ function SignUp() {
     });
     const json = await dataRegis.json();
     if (json.success) {
+      setLoading(false);
       navigate("/sign-in");
     }
-
-    if (password != confirmPassword) {
-      setLoading(false);
-      setMessage(dataRegis.message);
-      setAlert(true);
-    }
-    setLoading(false);
   }
 
   return (
@@ -84,42 +103,64 @@ function SignUp() {
           </div>
         </div>
 
-        <form className="w-full flex flex-col gap-5" onSubmit={signUp}>
+        <form
+          className="w-full flex flex-col gap-5"
+          onSubmit={formik.handleSubmit}
+        >
           <div className="w-full flex flex-col gap-5">
             <input
               className="w-full border  outline-none rounded-2xl p-[10px]"
               name="fullname"
               type="text"
               placeholder="Full Name"
+              onChange={formik.handleChange}
             />
+            {formik.errors.fullname && formik.touched.fullname && (
+              <p className="font-bold text-red-300">{formik.errors.fullname}</p>
+            )}
             <input
               className="w-full border outline-none rounded-2xl p-[10px]"
               name="email"
               type="email"
               placeholder="Email"
+              onChange={formik.handleChange}
             />
+            {formik.errors.email && formik.touched.email && (
+              <p className="font-bold text-red-300">{formik.errors.email}</p>
+            )}
             <div className="flex justify-center bg-white rounded-2xl p-[10px] border">
               <input
                 className="flex-1 w-full outline-none "
                 name="password"
                 type={pass}
                 placeholder="Password"
+                onChange={formik.handleChange}
               ></input>
               <button onClick={password} type="button">
                 <FaEye />
               </button>
             </div>
+            {formik.errors.password && formik.touched.password && (
+              <p className="font-bold text-red-300">{formik.errors.password}</p>
+            )}
             <div className="flex justify-center bg-white rounded-2xl p-[10px] border">
               <input
                 className="flex-1 w-full outline-none "
                 name="confirmPassword"
                 type={confPass}
                 placeholder="Confirm Password"
+                onChange={formik.handleChange}
               />
               <button onClick={confPassword} type="button">
                 <FaEye />
               </button>
             </div>
+            {formik.errors.confirmPassword &&
+              formik.touched.confirmPassword && (
+                <p className="font-bold text-red-300">
+                  {formik.errors.confirmPassword}
+                </p>
+              )}
           </div>
 
           <button
@@ -130,26 +171,10 @@ function SignUp() {
           </button>
         </form>
       </div>
-      {alert ? (
-        <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
-          <div className="bg-[#27005D] text-[#AED2FF] w-[375px] flex flex-col items-center gap-[20px] rounded-md p-[10px]">
-            <div>pastikan password sama</div>
-            <button
-              className="flex gap-[10px] items-center justify-center"
-              onClick={() => setAlert()}
-            >
-              <FaRectangleXmark />
-              <p>Cancel</p>
-            </button>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
       {loading ? (
         <div className="absolute flex bg-black/50 w-full h-screen top-0 left-0 items-center justify-center">
           <div className="bg-[#AED2FF] flex items-center gap-[20px] rounded-md p-[10px]">
-            <img className="w-[100px] " src={loadingDino}></img>
+            <img className="w-[100px] " src={loadingDino} />
           </div>
         </div>
       ) : (

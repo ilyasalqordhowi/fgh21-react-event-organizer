@@ -130,18 +130,6 @@ function Home() {
                       <h1 className="font-bold  text-[30px]">
                         {element.title}
                       </h1>
-                      <div className="flex mt-[30px] ">
-                        {/* {element.attendees.map((items) => {
-                          return ( */}
-                        {/* <img
-                              className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
-                              src={
-                                "https://wsw6zh-8888.csb.app/" + items.picture
-                              }
-                            ></img>
-                          );
-                        })} */}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -163,7 +151,7 @@ function Home() {
             <FaArrowRight />
           </button>
         </div>
-        <div className="flex p-[10px] justify-center">
+        <div id="location" className="flex p-[10px] justify-center">
           <div className="bg-[#27005D]  mb-[175px] md:w-[1300px] w-full rounded-[30px] flex flex-col justify-center p-[30px] h-auto">
             <div className="flex  font-bold gap-2 p-[10px] text-[12px]  mb-[50px] text-[#27005D] bg-[#6FDCE3] h-[35px] w-[130px] justify-center rounded-2xl">
               <div>——</div>

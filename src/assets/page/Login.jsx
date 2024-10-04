@@ -2,7 +2,8 @@ import React from "react";
 import People from "../img/peopleWeb.png";
 import Logo from "../component/Logoo";
 import { FaEye } from "react-icons/fa6";
-
+import { Formik, useFormik } from "formik";
+import * as Yup from "yup";
 import { Link, useParams } from "react-router-dom";
 import { FaRectangleXmark } from "react-icons/fa6";
 import { Provider, useSelector, useDispatch } from "react-redux";
@@ -29,13 +30,29 @@ function Login() {
     }
   }
   const dispatch = useDispatch();
-
-  async function doLogin(event) {
-    event.preventDefault();
-
+  const formik = useFormik({
+    onSubmit: doLogin,
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string()
+        .email("Invalid email format")
+        .matches(
+          /@(gmail|mail)\.com$/,
+          "Email must contain '@', 'gmail', 'mail', '.com'"
+        )
+        .required("Email is required"),
+      password: Yup.string()
+        .min(8, "Password must be at least 8 characters")
+        .required("Password is required"),
+    }),
+  });
+  async function doLogin() {
     setLoading(true);
-    const password = event.target.password.value;
-    const email = event.target.email.value;
+    const password = formik.values.password;
+    const email = formik.values.email;
 
     const formData = new URLSearchParams();
     formData.append("password", password);
@@ -85,35 +102,51 @@ function Login() {
               <p>Hi, Welcome back to Urticket! </p>
             </div>
           </div>
-          <form className="w-full flex flex-col gap-5" onSubmit={doLogin}>
+          <form
+            className="w-full flex flex-col gap-5"
+            onSubmit={formik.handleSubmit}
+          >
             <div className="w-full flex flex-col gap-5">
               <input
                 className="w-full outline-none border rounded-2xl p-[10px]"
                 name="email"
                 type="email"
                 placeholder="Email"
-              ></input>
+                onChange={formik.handleChange}
+              />
+              {formik.errors.email && formik.touched.email && (
+                <p className="font-bold text-red-300">{formik.errors.email}</p>
+              )}
               <div className="flex bg-white justify-center w-full rounded-2xl p-[10px] border">
                 <input
                   className="flex-1 w-full outline-none "
                   name="password"
                   type={pass}
                   placeholder="Password"
-                ></input>
+                  onChange={formik.handleChange}
+                />
                 <button onClick={password} type="button">
                   <FaEye />
                 </button>
               </div>
+              {formik.errors.password && formik.touched.password && (
+                <p className="font-bold text-red-300">
+                  {formik.errors.password}
+                </p>
+              )}
             </div>
-            {/* <div className="flex justify-end text-[#C4E4FF]">
+            <Link className="flex justify-end text-[#C4E4FF] hover:text-white">
               Forgot Password?
-            </div> */}
-            <Link to="/sign-up" className="flex justify-end text-[#C4E4FF]">
-              <button type="button">Dont Have an Account?</button>
+            </Link>
+            <Link
+              to="/sign-up"
+              className="flex justify-end text-[#C4E4FF] hover:text-white"
+            >
+              Dont Have an Account?
             </Link>
             <button
               type="submit"
-              className="bg-[#27005D]  rounded-2xl w-full text-[#7BC9FF] h-[40px]"
+              className="bg-[#27005D]  rounded-2xl w-full text-[#7BC9FF] h-[40px] "
             >
               Sign In
             </button>

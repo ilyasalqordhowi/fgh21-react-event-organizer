@@ -17,7 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Sidebar() {
   const dispatch = useDispatch();
   const forms = useSelector((state) => state.auth.token);
-  const profile = useSelector((state) => state.profile.data);
+  const profile = useSelector((state) => state.profile.data) || {};
 
   console.log(profile);
   function btnlogout() {
@@ -40,13 +40,8 @@ function Sidebar() {
         )}
         <div>
           <h2>{profile.profile?.full_name}</h2>
-          <p className="text-[12px] text-[#AED2FF]">
-            {profile.profile?.profession}
-          </p>
+          <p>{profile.profile?.profession}</p>
         </div>
-        {/* <button className="md:hidden" type="button">
-          <FaBars />
-        </button> */}
       </div>
       <div className="flex flex-col gap-5 mt-[50px]">
         <div className="flex hover:text-blue-700 items-center  gap-[25px]">
