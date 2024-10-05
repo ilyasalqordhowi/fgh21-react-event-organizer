@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import BookingOne from "../img/Booking1.png";
 import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import LogoBooking from "../img/Logo-booking.png";
-import LogoBookingOne from "../img/logo1.png";
-import LogoBookingTwo from "../img/logo2.png";
-import LogoBookingThree from "../img/logo3.png";
-import BookingTwo from "../img/booking2.png";
+
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -44,6 +40,7 @@ function Booking() {
         }
       );
       const json = await response.json();
+      console.log(json, "ini result section");
       const results = json.results;
       setSection(results);
     })();
@@ -126,6 +123,7 @@ function Booking() {
               </div>
             </div>
             {section.map((item, index) => {
+              console.log(item, "ini item");
               console.log(`{plus${item.id}}`);
               return (
                 <Transactions
@@ -137,131 +135,6 @@ function Booking() {
                 />
               );
             })}
-            {/* {saction.map((items) => {
-              return ( */}
-            {/* <div className="mb-[24px]">
-              <div>
-                <div className="flex items-center w-full  mt-[50px]">
-                  <div className="bg-[#F1EAFF] w-[45px] p-[11px] rounded-[10px]">
-                    <img src={LogoBookingOne}></img>
-                  </div>
-                  <div className="flex pl-[10px] gap-[96px]">
-                    <div>
-                      <h2>{dataBooking.name}Section reg, Row 1</h2>
-                      <p className="text-white">
-                        {dataBooking.quantity}12 Seats available
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <h3>{dataBooking.price}100000</h3>
-                      <p className="text-white">per person</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex w-full items-center pl-[60px]  gap-[137px]">
-                  <div>Quantity</div>
-                  <div className="flex items-center gap-[20px]">
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={minus1}
-                      >
-                        —
-                      </button>
-                    </div>
-                    <div className="text-[12px]">{num1}</div>
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={plus1}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center w-full  mt-[50px]">
-                  <div className="bg-[#FFEAEF] w-[45px] p-[11px] rounded-[10px]">
-                    <img src={LogoBookingTwo}></img>
-                  </div>
-                  <div className="flex pl-[10px] gap-[96px]">
-                    <div>
-                      <h2>{dataBooking.name}Section vip, Row 2</h2>
-                      <p className="text-white">10 Seats available</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <h3>{dataBooking.price}500000</h3>
-                      <p className="text-white">per person</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex w-full items-center pl-[60px]  gap-[137px]">
-                  <div>Quantity</div>
-                  <div className="flex items-center gap-[20px]">
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={minus2}
-                      >
-                        —
-                      </button>
-                    </div>
-                    <div className="text-[12px]">{num2}</div>
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black "
-                        onClick={plus2}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center w-full  mt-[50px]">
-                  <div className="bg-[#FFF4E7] w-[45px] p-[11px] rounded-[10px]">
-                    <img src={LogoBookingThree}></img>
-                  </div>
-                  <div className="flex pl-[10px] gap-[96px]">
-                    <div>
-                      <h2>{dataBooking.name}Section vvip, Row 3</h2>
-                      <p className="text-white">8 Seats available</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <h3>{dataBooking.price}1000000</h3>
-                      <p className="text-white">per person</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex w-full items-center pl-[60px]  gap-[137px]">
-                  <div>Quantity</div>
-                  <div className="flex items-center gap-[20px]">
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={minus3}
-                      >
-                        —
-                      </button>
-                    </div>
-                    <div className="text-[12px]">{num3}</div>
-                    <div className="">
-                      <button
-                        className="bg-white shadow-lg shadow-black-500/50  p-[6px] w-[33px]  text-[#C1C5D0] flex justify-center rounded-[7px] hover:text-black"
-                        onClick={plus3}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-            {/* );
-            })} */}
             <hr></hr>
             <div className="flex flex-col mt-[25px] w-full gap-[15px]">
               <div className="flex justify-between">
