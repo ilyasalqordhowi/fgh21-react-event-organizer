@@ -13,14 +13,10 @@ function ManageEvent() {
   const nav = useNavigate();
   const [noEvent, setNoEvent] = React.useState(false);
   console.log(data, "mkmnkkmkmk");
-  function btnCreate() {
-    if (create === true) {
-      setCreate(false);
-    } else {
-      setCreate(true);
-    }
-  }
 
+  function btnCreate() {
+    setCreate(!create);
+  }
   useEffect(() => {
     async function createEventByUser() {
       const response = await fetch("http://103.93.58.89:21213/events/data", {
@@ -102,7 +98,7 @@ function ManageEvent() {
       <div className="flex flex-col bg-[#27005D] gap-[144px]">
         <Footer />
       </div>
-      {create ? "" : <CreateEvent />}
+      {!create && <CreateEvent onClose={btnCreate} />}
     </div>
   );
 }
