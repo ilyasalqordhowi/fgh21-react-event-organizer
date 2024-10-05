@@ -29,9 +29,9 @@ function EditProfile() {
   const formik = useFormik({
     onSubmit: Update,
     initialValues: {
-      fullName: "",
+      fullName: "Default fullName",
       userName: "",
-      email: "",
+      email: "default@mail.com",
       phoneNumber: "",
       gender: "",
       profession: "",
@@ -59,6 +59,7 @@ function EditProfile() {
         .notOneOf(["0"], "Please select a valid country"),
     }),
   });
+
   useEffect(() => {
     (async () => {
       const response = await fetch(
@@ -86,8 +87,9 @@ function EditProfile() {
 
     console.log(fullName);
     console.log(userName);
-    console.log(email);
+    console.log(email, "ini email");
     console.log(phoneNumber);
+    console.log(profession, "ini data profession");
     console.log(gender);
     console.log(nationalityId);
 
@@ -113,7 +115,7 @@ function EditProfile() {
         body: formData,
       }
     );
-    console.log(dataProfile);
+    console.log(dataProfile, "ini data profile");
     const response = await dataProfile.json();
     if (response.success) {
       uploadImage();
@@ -123,7 +125,6 @@ function EditProfile() {
     } else {
       setTimeout(() => {
         setLoading(true);
-        setMessage(true);
       }, 3000);
     }
   }
