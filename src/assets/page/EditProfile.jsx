@@ -373,17 +373,17 @@ function EditProfile() {
             </div>
             <form
               onSubmit={uploadImage}
-              className="md:flex flex-col justify-center w-full items-center md:w-[50%]"
+              className="md:flex flex-col justify-center w-full items-center md:w-[50%] "
             >
               <div className="flex justify-center items-center">
                 {profile.profile?.picture == null ? (
                   <img
-                    className="w-20 rounded-full border-white border-[5px]"
+                    className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
                     src={User}
                   ></img>
                 ) : (
                   <img
-                    className="w-20 rounded-full  border-blue-950 border-[5px] overflow-hidden"
+                    className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
                     src={profile.profile?.picture}
                   ></img>
                 )}
