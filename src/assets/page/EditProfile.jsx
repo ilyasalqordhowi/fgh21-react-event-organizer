@@ -29,7 +29,6 @@ function EditProfile() {
   const formik = useFormik({
     onSubmit: Update,
     initialValues: {
-      fullName: "Default fullName",
       userName: "",
       email: "default@mail.com",
       phoneNumber: "",
@@ -43,7 +42,7 @@ function EditProfile() {
         "Full Name must be a minimum of 7 characters"
       ),
       userName: Yup.string()
-        .required("username is required")
+        .required("please refill")
         .min(5, "Username must be a minimum of 5 characters"),
       email: Yup.string()
         .email("Invalid email format")
@@ -51,11 +50,11 @@ function EditProfile() {
           /@(gmail|mail)\.com$/,
           "Email must contain '@', 'gmail', 'mail', '.com'"
         ),
-      phoneNumber: Yup.string().min("10").required("Phone Number is required"),
-      gender: Yup.string().required("Gender is required"),
-      profession: Yup.string().required("Profession is required"),
+      phoneNumber: Yup.string().min("10").required("please refill"),
+      gender: Yup.string().required("please refill"),
+      profession: Yup.string().required("please refill"),
       nationality: Yup.string()
-        .required("Nationality is required")
+        .required("please refill")
         .notOneOf(["0"], "Please select a valid country"),
     }),
   });
