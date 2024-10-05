@@ -24,18 +24,16 @@ function CreateEvent() {
     const locationEvent = event.target.location.value;
     const dateEvent = event.target.date.value;
     const priceEvent = event.target.price.value;
-    const imageEvent = event.target.image.value;
+
     const detailEvent = event.target.detail.value;
 
     console.log(nameEvent);
     console.log(locationEvent);
     console.log(dateEvent);
     console.log(priceEvent);
-    console.log(imageEvent);
     console.log(detailEvent);
     setLoading(false);
     const formData = new URLSearchParams();
-    formData.append("image", imageEvent);
     formData.append("title", nameEvent);
     // formData.append("title", categoryEvent);
     formData.append("date", dateEvent);
@@ -61,6 +59,28 @@ function CreateEvent() {
       }, 3000);
     }
   }
+  async function uploadImageEvent() {
+    const body = new FormData();
+    body.append("eventImg", file);
+
+    const response = await fetch("http://103.93.58.89:21213/events/img", {
+      method: "POST",
+      body,
+    });
+    const json = await response.json();
+    console.log(json, "ini berhasil");
+  }
+  const handlerChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+
+    reader.onloadend = () => {
+      setPreview(reader.results);
+    };
+  };
   createEvent;
   return (
     <div
@@ -156,20 +176,28 @@ function CreateEvent() {
                 />
               </div>
             </div>
-            <div className="w-1/2">
+            <form onSubmit={uploadImageEvent} className="w-1/2">
               <label htmlFor="name" className="mb-[10px]">
                 Image
               </label>
               <div>
+                <label
+                  type="button"
+                  htmlFor="img"
+                  className=" bg-white w-full font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[10px]"
+                >
+                  upload image
+                </label>
+
                 <input
-                  type="text"
-                  name="image"
-                  id="name"
-                  placeholder="Chose File ..."
-                  className="h-[55px] border-2 w-full pl-[20px] pr-[20px] rounded-[15px] mb-[30px]"
+                  type="file"
+                  name="img"
+                  id="img"
+                  className="hidden"
+                  onChange={handlerChange}
                 />
               </div>
-            </div>
+            </form>
           </div>
           <div className="w-full">
             <div className="mb-[10px]">Detail</div>
