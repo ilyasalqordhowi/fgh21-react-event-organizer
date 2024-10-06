@@ -105,6 +105,7 @@ function EditProfile() {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,
+        "Content-Type": "multipart/form-data",
       },
       body,
     });
