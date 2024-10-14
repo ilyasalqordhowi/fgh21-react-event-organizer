@@ -26,6 +26,7 @@ function EditProfile() {
   const [nationality, setNationality] = React.useState([]);
   const [file, setFile] = React.useState(null);
   const [preview, setPreview] = React.useState();
+  console.log(preview);
 
   useEffect(() => {
     (async () => {
