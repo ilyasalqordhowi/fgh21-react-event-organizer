@@ -110,7 +110,7 @@ function EditProfile() {
       body,
     });
     const json = await response.json();
-    console.log(json, "klklklklkl");
+    console.log(json, "ini respon image");
     if (json.success) {
       const getResponse = await fetch("http://103.93.58.89:21213/profile/", {
         headers: {
@@ -126,13 +126,14 @@ function EditProfile() {
   const handlerChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
+    console.log(selectedFile, "inininininini");
 
     const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-
+    console.log(reader, "ookokk");
     reader.onloadend = () => {
       setPreview(reader.results);
     };
+    reader.readAsDataURL(selectedFile);
   };
   async function getData() {
     const response = await fetch("http://103.93.58.89:21213/profile/", {
