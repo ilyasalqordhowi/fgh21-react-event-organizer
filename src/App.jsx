@@ -16,6 +16,7 @@ import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+import SearchEvent from "./assets/page/SearchEvent.jsx";
 
 const persistor = persistStore(store);
 const page = createBrowserRouter([
@@ -67,6 +68,10 @@ const page = createBrowserRouter([
   {
     path: "/create-event",
     element: <CreateEvent />,
+  },
+  {
+    path: "/search",
+    element: <SearchEvent />,
   },
 ]);
 
