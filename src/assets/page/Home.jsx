@@ -7,12 +7,14 @@ import { FaArrowRight } from "react-icons/fa";
 import { events } from "../../redux/reducers/event";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { json, Link } from "react-router-dom";
-import { login } from "../../redux/reducers/auth";
-import { data } from "autoprefixer";
 import Partner from "../component/partner";
+import { useListCategoriesQuery } from "../../redux/services/categories";
 
 function Home() {
   const [navbar, setNavbar] = React.useState(true);
+  const { data, err, isLoading } = useListCategoriesQuery([1, 7]);
+  console.log(data?.results, "ini");
+
   const [location, setLocation] = React.useState([]);
   const dispatch = useDispatch();
   const event = useSelector((state) => state.event.listEvent);
@@ -188,13 +190,13 @@ function Home() {
           <div className="font-bold text-[50px]">Browse Events By Category</div>
         </div>
         <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-10 text-[#E4F1FF] justify-center list-none gap-[40px]">
-          <button className="hover:text-blue-400 ">Music</button>
-          <button className="hover:text-blue-400 ">Arts</button>
-          <button className="hover:text-blue-400 ">Outdoors</button>
-          <button className="hover:text-blue-400 ">Workshop</button>
-          <button className="hover:text-blue-400 ">Sport</button>
-          <button className="hover:text-blue-400 ">Festival</button>
-          <button className="hover:text-blue-400 ">Fashion</button>
+          {data?.results.map((item) => {
+            return (
+              <button key={item.id} className="text-white">
+                {item.categories}
+              </button>
+            );
+          })}
         </div>
         <div className="flex items-center  justify-center">
           <div className="md:flex hidden items-center">
@@ -226,18 +228,7 @@ function Home() {
                             {element.title}
                           </h1>
                         </div>
-                        <div className="relative top-0 left-0 flex pl-4">
-                          {/* {element.attendees.map((items) => {
-                            return (
-                              <img
-                                className="top-0 left-0 rounded-full h-[30px] w-[30px] ml-[-10px] border border-[#ff8900]"
-                                src={
-                                  "https://wsw6zh-8888.csb.app/" + items.picture
-                                }
-                              ></img>
-                            );
-                          })} */}
-                        </div>
+                        <div className="relative top-0 left-0 flex pl-4"></div>
                       </div>
                     </div>
                   </div>
