@@ -56,6 +56,11 @@ function Navbar() {
               Location
             </a>
           </li>
+          <Link to="/search">
+            <li className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]">
+              Search Event
+            </li>
+          </Link>
         </div>
       </div>
       <div className="flex">
