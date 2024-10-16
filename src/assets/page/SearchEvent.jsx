@@ -19,6 +19,10 @@ function SearchEvent() {
   const [page, setPage] = useState(1);
   console.log(page);
   const navigate = useNavigate();
+  const eventCategoryId = useSelector(
+    (state) => state.eventCategory.listEventCategry
+  );
+  console.log(eventCategoryId);
   async function clickEvent(id) {
     navigate("/detail/" + id);
   }
@@ -57,7 +61,25 @@ function SearchEvent() {
             <div className="font-bold text-[20px]">List Events</div>
           </div>
           <div className="flex w-full items-center justify-center gap-5">
-            {eventSearch.length > 0 ? (
+            {eventCategoryId && eventCategoryId.length > 0 ? (
+              eventCategoryId.map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex w-[250px] h-[250px] items-center justify-center relative shrink-0"
+                  >
+                    <img
+                      className="rounded-xl absolute overflow-hidden w-full h-full object-cover"
+                      src={item.image}
+                      alt=""
+                    />
+                    <div className="absolute bottom-0 p-4 text-white flex flex-col justify-start font-bold rounded-xl bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.5)] to-[rgba(16,20,38,1)] w-full">
+                      <p onClick={() => clickEvent(item.id)}>{item.title}</p>
+                    </div>
+                  </div>
+                );
+              })
+            ) : eventSearch && eventSearch.length > 0 ? (
               eventSearch.map((item) => {
                 return (
                   <div
@@ -81,6 +103,7 @@ function SearchEvent() {
               </div>
             )}
           </div>
+
           <form onSubmit={eventPagination}>
             <div className="flex items-center gap-5 justify-center">
               <button
