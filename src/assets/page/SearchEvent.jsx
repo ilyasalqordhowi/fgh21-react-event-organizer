@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useListEventsQuery } from "../../redux/services/events";
 import { FaForward, FaBackward } from "react-icons/fa";
 import Footer from "../component/Footer";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function SearchEvent() {
   const [eventSearch, setEvent] = useState([]);
@@ -27,17 +28,13 @@ function SearchEvent() {
     navigate("/detail/" + id);
   }
   async function filterEvents(search = "") {
-    const filtered = await fetch(
-      `http://103.93.58.89:21213/events/?search=${search}`
-    );
+    const filtered = await fetch(`${BASE_URL}/events/?search=${search}`);
     const listFiltered = await filtered.json();
     setEvent(listFiltered.results);
   }
   async function eventPagination(event) {
     event.preventDefault();
-    const pagination = await fetch(
-      `http://103.93.58.89:21213/events/?page=${page}`
-    );
+    const pagination = await fetch(`${BASE_URL}/events/?page=${page}`);
     const listPage = await pagination.json();
     setEvent(listPage.results);
   }

@@ -11,6 +11,7 @@ import { FaChevronUp } from "react-icons/fa6";
 import { FaChevronDown } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { data } from "autoprefixer";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Payment() {
   const [card, setCard] = React.useState(false);
@@ -87,7 +88,7 @@ function Payment() {
   }
   async function payment() {
     try {
-      const response = await fetch("http://103.93.58.89:21213/transactions/", {
+      const response = await fetch(`${BASE_URL}/transactions/`, {
         method: "POST",
         body: formData,
         headers: {

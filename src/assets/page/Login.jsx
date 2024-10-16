@@ -14,6 +14,7 @@ import { FaGoogle } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa6";
 import { addProfile } from "../../redux/reducers/profile";
 import { data } from "autoprefixer";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Login() {
   let { id } = useParams();
@@ -57,7 +58,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("password", password);
     formData.append("email", email);
-    fetch("http://103.93.58.89:21213/auth/login", {
+    fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       body: formData,
     }).then((response) => {
@@ -66,7 +67,7 @@ function Login() {
           console.log(data.success);
           dispatch(login(data.results.token));
           async function dataUpdate() {
-            const response = await fetch("http://103.93.58.89:21213/profile/", {
+            const response = await fetch(`${BASE_URL}/profile/`, {
               headers: {
                 Authorization: "Bearer " + data.results.token,
               },

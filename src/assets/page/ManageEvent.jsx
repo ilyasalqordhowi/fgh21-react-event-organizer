@@ -6,6 +6,8 @@ import CreateEvent from "../component/CreateEvent";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function ManageEvent() {
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
@@ -13,13 +15,15 @@ function ManageEvent() {
   const nav = useNavigate();
   const [noEvent, setNoEvent] = React.useState(false);
   console.log(data, "mkmnkkmkmk");
-
+  if (datatoken === null) {
+    nav("/sign-up");
+  }
   function btnCreate() {
     setCreate(!create);
   }
   useEffect(() => {
     async function createEventByUser() {
-      const response = await fetch("http://103.93.58.89:21213/events/data", {
+      const response = await fetch(`${BASE_URL}/events/data`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + datatoken,

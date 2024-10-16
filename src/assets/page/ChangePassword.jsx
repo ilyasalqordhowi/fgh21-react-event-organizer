@@ -6,6 +6,7 @@ import { Form, Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import loadingDino from "../img/dino.gif";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function ChangePassword() {
   const datatoken = useSelector((state) => state.auth.token);
@@ -50,7 +51,7 @@ function ChangePassword() {
     formData.append("oldPassword", oldPassword);
     formData.append("newPassword", newPassword);
 
-    const dataPass = await fetch("http://103.93.58.89:21213/users/password", {
+    const dataPass = await fetch(`${BASE_URL}/users/password`, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,

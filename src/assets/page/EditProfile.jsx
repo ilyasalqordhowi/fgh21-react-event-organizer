@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import loadingDino from "../img/dino.gif";
 import { useNavigate } from "react-router-dom";
 import { addProfile } from "../../redux/reducers/profile";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function EditProfile() {
   const dispatch = useDispatch();
@@ -27,14 +28,11 @@ function EditProfile() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(
-        "http://103.93.58.89:21213/profile/national",
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/profile/national`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       const json = await response.json();
       const dataNew = json.results;
       setNationality(dataNew);
@@ -69,16 +67,13 @@ function EditProfile() {
     formData.append("profession", profession);
     formData.append("nationalityId", nationalityId);
 
-    const dataProfile = await fetch(
-      "http://103.93.58.89:21213/profile/update",
-      {
-        method: "PATCH",
-        headers: {
-          Authorization: "Bearer " + datatoken,
-        },
-        body: formData,
-      }
-    );
+    const dataProfile = await fetch(`${BASE_URL}/profile/update`, {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+      body: formData,
+    });
     console.log(dataProfile, "ini data profile");
     const response = await dataProfile.json();
     if (response.success) {
@@ -98,7 +93,7 @@ function EditProfile() {
   async function uploadImage() {
     const body = new FormData();
     body.append("image", file);
-    const response = await fetch("http://103.93.58.89:21213/profile/img", {
+    const response = await fetch(`${BASE_URL}/profile/img`, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,
@@ -124,7 +119,7 @@ function EditProfile() {
     };
   };
   async function getData() {
-    const response = await fetch("http://103.93.58.89:21213/profile/", {
+    const response = await fetch(`${BASE_URL}/profile/`, {
       headers: {
         Authorization: "Bearer " + datatoken,
       },
