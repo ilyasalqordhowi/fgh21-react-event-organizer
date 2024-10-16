@@ -6,10 +6,7 @@ import { FaRectangleXmark } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import loadingDino from "../img/dino.gif";
 import { useNavigate } from "react-router-dom";
-import User from "../img/user.png";
 import { addProfile } from "../../redux/reducers/profile";
-import { Formik, useFormik } from "formik";
-import * as Yup from "yup";
 
 function EditProfile() {
   const dispatch = useDispatch();
@@ -25,7 +22,7 @@ function EditProfile() {
   const [loading, setLoading] = React.useState(true);
   const [nationality, setNationality] = React.useState([]);
   const [file, setFile] = React.useState(null);
-  const [preview, setPreview] = React.useState();
+  const [preview, setPreview] = React.useState(null);
   console.log(preview);
 
   useEffect(() => {
@@ -50,7 +47,7 @@ function EditProfile() {
     const userName = event.target.userName.value;
     const email = event.target.email.value;
     const phoneNumber = event.target.phoneNumber.value;
-    const gender = event.target.gender.value;
+    const gender = parseInt(event.target.gender.value);
     const profession = event.target.profession.value;
     const nationalityId = event.target.nationality.value;
 
@@ -62,15 +59,13 @@ function EditProfile() {
     console.log(gender);
     console.log(nationalityId);
 
-    const genderInt = parseInt(gender, 10);
-
     setLoading(false);
     const formData = new URLSearchParams();
     formData.append("full_name", fullName);
     formData.append("username", userName);
     formData.append("email", email);
     formData.append("phone_number", phoneNumber);
-    formData.append("gender", genderInt);
+    formData.append("gender", gender);
     formData.append("profession", profession);
     formData.append("nationalityId", nationalityId);
 
@@ -88,6 +83,7 @@ function EditProfile() {
     const response = await dataProfile.json();
     if (response.success) {
       uploadImage();
+      getData();
       setTimeout(() => {
         setLoading(true);
       }, 3000);
@@ -101,41 +97,31 @@ function EditProfile() {
 
   async function uploadImage() {
     const body = new FormData();
-    body.append("profileImg", file);
-
+    body.append("image", file);
     const response = await fetch("http://103.93.58.89:21213/profile/img", {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,
-        "Content-Type": "multipart/form-data",
       },
       body,
     });
     const json = await response.json();
-    console.log(json, "ini respon image");
+    console.log(json, "ini jasooon");
     if (json.success) {
-      const getResponse = await fetch("http://103.93.58.89:21213/profile/", {
-        headers: {
-          Authorization: "Bearer " + datatoken,
-        },
-      });
-      const data = await getResponse.json();
-      const dataResult = data.results;
-      console.log("data result terupdate", dataResult);
-      dispatch(addProfile(dataResult));
+      getData();
     }
+    console.log(json);
   }
-  const handlerChange = (e) => {
+  const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-    console.log(selectedFile, "inininininini");
 
     const reader = new FileReader();
-    console.log(reader, "ookokk");
-    reader.onloadend = () => {
-      setPreview(reader.results);
-    };
     reader.readAsDataURL(selectedFile);
+
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
   };
   async function getData() {
     const response = await fetch("http://103.93.58.89:21213/profile/", {
@@ -310,34 +296,48 @@ function EditProfile() {
             </div>
             <form
               onSubmit={uploadImage}
+              enctype="multipart/form-data"
               className="md:flex flex-col justify-center w-full items-center md:w-[50%] "
             >
               <div className="flex justify-center items-center">
-                {profile.profile?.picture == null ? (
-                  <img
-                    className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
-                    src={User}
-                  ></img>
+                {preview ? (
+                  <div className="w-[137px] h-[137px] bg-gradient-to-r from-[#508D4E] to-purple-500 rounded-full flex justify-center items-center">
+                    <div className="min-w-[130px] h-[130px] bg-white rounded-full flex justify-center items-center ">
+                      <div className="relative border border-gray-500 w-[110px] h-[110px] rounded-full bg-gray-500 overflow-hidden">
+                        <img
+                          src={preview}
+                          alt={profile.profile?.id}
+                          className="absolute top-0 left-0 w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <img
-                    className="h-[200px] w-[200px] rounded-full border-4 border-[#373a42bf] object-cover"
-                    src={profile.profile?.picture}
-                  ></img>
+                  <div className="w-[137px] h-[137px] bg-gradient-to-r from-[#508D4E] to-purple-500 rounded-full flex justify-center items-center">
+                    <div className="min-w-[130px] h-[130px] bg-white rounded-full flex justify-center items-center ">
+                      <div className="relative border border-gray-500 w-[110px] h-[110px] rounded-full bg-gray-500 overflow-hidden">
+                        <img
+                          src={profile.profile?.picture}
+                          alt={profile.profile?.id}
+                          className="absolute top-0 left-0 w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
               <div className="flex flex-col justify-center w-full items-center">
                 <label
-                  htmlFor="img"
+                  htmlFor="file"
                   className="mt-[50px] bg-white w-[315px] font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[20px]"
                 >
                   Choose Photo
                 </label>
                 <input
                   type="file"
-                  name="img"
-                  id="img"
+                  id="file"
                   className="hidden"
-                  onChange={handlerChange}
+                  onChange={handleFileChange}
                 />
                 <div>
                   <div>Image size: max, 700kb</div>
