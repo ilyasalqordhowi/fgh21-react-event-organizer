@@ -9,19 +9,22 @@ import { events } from "../../redux/reducers/event";
 import { useNavigate } from "react-router-dom";
 import { useListEventsQuery } from "../../redux/services/events";
 import { FaForward, FaBackward } from "react-icons/fa";
+import Footer from "../component/Footer";
 
 function SearchEvent() {
   const [eventSearch, setEvent] = useState([]);
+  console.log(eventSearch);
   const dispatch = useDispatch();
   const { data, err, isLoading } = useListEventsQuery([1, 5]);
   const [page, setPage] = useState(1);
+  console.log(page);
   const navigate = useNavigate();
   async function clickEvent(id) {
     navigate("/detail/" + id);
   }
   async function filterEvents(search = "") {
     const filtered = await fetch(
-      `http://103.93.58.89:21213/events?search=${search}`
+      `http://103.93.58.89:21213/events/?search=${search}`
     );
     const listFiltered = await filtered.json();
     setEvent(listFiltered.results);
@@ -29,7 +32,7 @@ function SearchEvent() {
   async function eventPagination(event) {
     event.preventDefault();
     const pagination = await fetch(
-      `http://103.93.58.89:21213/events?page=${page}`
+      `http://103.93.58.89:21213/events/?page=${page}`
     );
     const listPage = await pagination.json();
     setEvent(listPage.results);
@@ -47,26 +50,26 @@ function SearchEvent() {
       <Navbar />
       <div className="flex flex-col md:flex-row gap-5 md:p-[50px] bg-[#27005D]">
         <div className="md:flex bg- hidden md:w-[242px] bg-[#AED2FF] rounded-xl p-4 h-[508px]">
-          <SearchBar />
+          <SearchBar filteredEvents={filterEvents} />
         </div>
         <div className="flex flex-col w-full gap-[46px] h-auto p-[20px] md:p-[40px] bg-[#AED2FF] md:rounded-[20px]">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="font-bold text-[20px]">List Events</div>
           </div>
-          <div className="flex">
+          <div className="flex w-full items-center justify-center gap-5">
             {eventSearch.length > 0 ? (
               eventSearch.map((item) => {
                 return (
                   <div
                     key={item.id}
-                    className="flex w-[250px] h-[125px] items-center justify-center relative shrink-0"
+                    className="flex w-[250px] h-[250px] items-center justify-center relative shrink-0"
                   >
                     <img
                       className="rounded-xl absolute overflow-hidden w-full h-full object-cover"
                       src={item.image}
                       alt=""
                     />
-                    <div className="absolute bottom-0 p-4 text-white flex flex-col justify-start font-bold bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.5)] to-[rgba(16,20,38,1)] w-full">
+                    <div className="absolute bottom-0 p-4 text-white flex flex-col justify-start font-bold rounded-xl bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.5)] to-[rgba(16,20,38,1)] w-full">
                       <p onClick={() => clickEvent(item.id)}>{item.title}</p>
                     </div>
                   </div>
@@ -98,6 +101,7 @@ function SearchEvent() {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -7,7 +7,7 @@ import Twitter from "../img/twitter.png";
 
 function Footer() {
   return (
-    <div className="flex flex-col gap-36">
+    <div className="flex flex-col bg-[#27005D] gap-36">
       <div className="flex flex-col p-[10px] bg-[27005D]  md:flex-row gap-[100px] md:flex mt-[170px] w-full justify-center md:gap-[200px]">
         <div>
           <Logo />
