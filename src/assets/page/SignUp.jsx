@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import loadingDino from "../img/dino.gif";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function SignUp() {
   const navigate = useNavigate();
@@ -74,7 +73,7 @@ function SignUp() {
     formData.append("full_name", fullName);
     formData.append("email", email);
     formData.append("password", password);
-    const dataRegis = await fetch(`${BASE_URL}/auth/register`, {
+    const dataRegis = await fetch(`http://103.93.58.89:21213/auth/register`, {
       method: "POST",
       body: formData,
     });

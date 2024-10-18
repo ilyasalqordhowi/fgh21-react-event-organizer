@@ -6,7 +6,6 @@ import CreateEvent from "../component/CreateEvent";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function ManageEvent() {
   const datatoken = useSelector((state) => state.auth.token);
@@ -23,7 +22,7 @@ function ManageEvent() {
   }
   useEffect(() => {
     async function createEventByUser() {
-      const response = await fetch(`${BASE_URL}/events/data`, {
+      const response = await fetch(`http://103.93.58.89:21213/events/data`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + datatoken,
@@ -42,6 +41,27 @@ function ManageEvent() {
   async function btnDetail(id) {
     nav("/detail/" + id);
   }
+  async function uploadImageEvent() {
+    const body = new FormData();
+    body.append("eventImg", file);
+    const response = await fetch(`http://103.93.58.89:21213/events/img`, {
+      method: "POST",
+      body,
+    });
+    const json = await response.json();
+    console.log(json, "ini jasooon");
+  }
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
+  };
 
   return (
     <div className="">

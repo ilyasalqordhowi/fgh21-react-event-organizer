@@ -5,7 +5,6 @@ import Sidebar from "../component/Sidebar";
 import DatePng from "../img/date.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function MyBooking() {
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ function MyBooking() {
 
   React.useEffect(() => {
     (async function () {
-      const response = await fetch(`${BASE_URL}/transactions/`, {
+      const response = await fetch(`http://103.93.58.89:21213/transactions/`, {
         headers: {
           Authorization: "Bearer " + datatoken,
         },

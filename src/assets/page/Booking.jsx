@@ -14,7 +14,6 @@ import {
   addQuantity,
 } from "../../redux/reducers/booking";
 import Transactions from "../component/transaction";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Booking() {
   const dispatch = useDispatch();
@@ -31,18 +30,21 @@ function Booking() {
 
   React.useEffect(() => {
     (async function () {
-      const response = await fetch(`${BASE_URL}/events/section/` + id, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const response = await fetch(
+        `http://103.93.58.89:21213/events/section/` + id,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
       const json = await response.json();
       console.log(json, "ini result section");
       const results = json.results;
       setSection(results);
     })();
     (async function () {
-      const response = await fetch(`${BASE_URL}/events/` + id, {
+      const response = await fetch(`http://103.93.58.89:21213/events/` + id, {
         headers: {
           Authorization: "Bearer " + token,
         },

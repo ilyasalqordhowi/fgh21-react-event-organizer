@@ -9,7 +9,6 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import { json, Link } from "react-router-dom";
 import Partner from "../component/partner";
 import { useListCategoriesQuery } from "../../redux/services/categories";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Home() {
   const [navbar, setNavbar] = React.useState(true);
@@ -44,7 +43,7 @@ function Home() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch(`${BASE_URL}/events`);
+        const response = await fetch(`http://103.93.58.89:21213/events`);
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
@@ -58,7 +57,7 @@ function Home() {
     dataEvent();
     async function dataLocation() {
       try {
-        const response = await fetch(`${BASE_URL}/locations`);
+        const response = await fetch(`http://103.93.58.89:21213/locations`);
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);

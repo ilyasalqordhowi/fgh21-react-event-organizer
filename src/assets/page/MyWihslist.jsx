@@ -7,7 +7,6 @@ import { Link, useParams } from "react-router-dom";
 import { FaHeart } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function MyWihslist() {
   let { id } = useParams();
@@ -17,7 +16,7 @@ function MyWihslist() {
 
   useEffect(() => {
     async function Whishlist() {
-      const response = await fetch(`${BASE_URL}/whislist/` + id, {
+      const response = await fetch(`http://103.93.58.89:21213/whislist/` + id, {
         headers: {
           Authorization: "Bearer " + datatoken,
         },
@@ -34,7 +33,7 @@ function MyWihslist() {
     Whishlist();
   }, []);
   function DeleteWhishlist() {
-    const responseWhislist = fetch(`${BASE_URL}/whislist/` + id, {
+    const responseWhislist = fetch(`http://103.93.58.89:21213/whislist/` + id, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + datatoken,

@@ -35,7 +35,7 @@ function Sidebar() {
         ) : (
           <img
             src={profile.profile?.picture}
-            className="w-14 rounded-full border-white-950 border-[5px]"
+            className="object-cover w-20 h-20 rounded-full border-blue-950 border-[5px]"
           ></img>
         )}
         <div>

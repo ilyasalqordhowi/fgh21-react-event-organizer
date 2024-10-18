@@ -85,13 +85,14 @@ function Navbar() {
                   <Link to="/editProfile">
                     <div className="flex gap-5 justify-start items-center">
                       <img
-                        className="w-20 rounded-full border-blue-950 border-[5px]"
+                        className="object-cover w-20 h-20 rounded-full border-blue-950 border-[5px]"
                         src={
                           profile.profile?.picture === null
                             ? User
                             : profile.profile?.picture
                         }
                       ></img>
+
                       <div className="text-[20px] font-bold">
                         {profile.profile?.full_name}
                       </div>
