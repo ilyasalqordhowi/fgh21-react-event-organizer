@@ -13,22 +13,16 @@ import Footer from "../component/Footer";
 
 function SearchEvent() {
   const [eventSearch, setEvent] = useState([]);
-  console.log(eventSearch);
-  const dispatch = useDispatch();
-  const { data, err, isLoading } = useListEventsQuery([1, 5]);
   const [page, setPage] = useState(1);
-  console.log(page);
+  const { data, err, isLoading } = useListEventsQuery([1, 5]);
+  console.log(data, "ini");
   const navigate = useNavigate();
-  const eventCategoryId = useSelector(
-    (state) => state.eventCategory.listEventCategry
-  );
-  console.log(eventCategoryId);
   async function clickEvent(id) {
     navigate("/detail/" + id);
   }
   async function filterEvents(search = "") {
     const filtered = await fetch(
-      `http://103.93.58.89:21213/events/?search=${search}`
+      `http://103.93.58.89:21213/events/pagination?search=${search}`
     );
     const listFiltered = await filtered.json();
     setEvent(listFiltered.results);
@@ -36,9 +30,10 @@ function SearchEvent() {
   async function eventPagination(event) {
     event.preventDefault();
     const pagination = await fetch(
-      `http://103.93.58.89:21213/events/?page=${page}`
+      `http://103.93.58.89:21213/events/pagination?page=${page}`
     );
     const listPage = await pagination.json();
+    console.log(listPage);
     setEvent(listPage.results);
   }
 
@@ -80,7 +75,7 @@ function SearchEvent() {
                 );
               })
             ) : (
-              <div className="h-full w-full flex flex-col justify-center items-center gap-6">
+              <div className="w-[250px] h-[250px] flex flex-col justify-center items-center gap-6">
                 <div className="text-2xl font-semibold">Events not found</div>
               </div>
             )}
@@ -89,8 +84,10 @@ function SearchEvent() {
           <form onSubmit={eventPagination}>
             <div className="flex items-center gap-5 justify-center">
               <button
-                onClick={() => setPage(page - 1)}
-                className="p-3 rounded-lg shadow-xl bg-violet-500 text-white hover:text-yellow-200 hover:brightness-90"
+                onClick={() => page > 1 && setPage(page - 1)}
+                className={`p-3 rounded-lg shadow-xl bg-violet-500 text-white hover:text-yellow-200 hover:brightness-90 ${
+                  page === 1 ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
                 <FaBackward />
               </button>

@@ -9,18 +9,23 @@ function CreateEvent() {
   const [create, setCreate] = React.useState(true);
   const [message, setMessage] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
+  const [file, setFile] = React.useState(null);
+  console.log(file, "file img");
+
   function btnCreate() {
     setCreate(!create);
   }
+  const handlerChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
   async function createEvent(event) {
     event.preventDefault();
 
     const nameEvent = event.target.nameEvent.value;
-    // const categoryEvent = event.target.category.value;
     const locationEvent = event.target.location.value;
     const dateEvent = event.target.date.value;
     const priceEvent = event.target.price.value;
-
     const detailEvent = event.target.detail.value;
 
     console.log(nameEvent);
@@ -29,9 +34,10 @@ function CreateEvent() {
     console.log(priceEvent);
     console.log(detailEvent);
     setLoading(false);
-    const formData = new URLSearchParams();
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("locationId", locationEvent);
     formData.append("title", nameEvent);
-    // formData.append("title", categoryEvent);
     formData.append("date", dateEvent);
     formData.append("descriptions", detailEvent);
 
@@ -55,29 +61,8 @@ function CreateEvent() {
       }, 3000);
     }
   }
-  async function uploadImageEvent() {
-    const body = new FormData();
-    body.append("eventImg", file);
 
-    const response = await fetch("http://localhost:8888/events/img", {
-      method: "POST",
-      body,
-    });
-    const json = await response.json();
-    console.log(json, "ini berhasil");
-  }
-  const handlerChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-
-    reader.onloadend = () => {
-      setPreview(reader.results);
-    };
-  };
-  createEvent;
+  createEvent();
   return (
     <>
       {create && (
@@ -168,14 +153,13 @@ function CreateEvent() {
                     />
                   </div>
                 </div>
-                <form onSubmit={uploadImageEvent} className="w-1/2">
-                  <label htmlFor="name" className="mb-[10px]">
+                <div className="w-1/2">
+                  <label htmlFor="file" className="mb-[10px]">
                     Image
                   </label>
                   <div>
                     <label
-                      type="button"
-                      htmlFor="img"
+                      htmlFor="file"
                       className=" bg-white w-full font-bold border-solid border-2 border-sky-500 flex items-center justify-center text-blue-700 rounded-[15px] p-[10px]"
                     >
                       upload image
@@ -183,13 +167,12 @@ function CreateEvent() {
 
                     <input
                       type="file"
-                      name="img"
-                      id="img"
+                      id="file"
                       className="hidden"
                       onChange={handlerChange}
                     />
                   </div>
-                </form>
+                </div>
               </div>
               <div className="w-full">
                 <div className="mb-[10px]">Detail</div>

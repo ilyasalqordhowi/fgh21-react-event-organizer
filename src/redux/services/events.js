@@ -5,10 +5,11 @@ export const event = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://103.93.58.89:21213" }),
   endpoints: (builder) => ({
     listEvents: builder.query({
-      query: ([page, limit]) => `/events/?page=${page}&limit=${limit}`,
+      query: ([page, limit]) =>
+        `/events/pagination?page=${page}&limit=${limit}`,
     }),
     getOneEvent: builder.query({
-      query: (id) => `/events/${id}`,
+      query: (id) => `/events/pagination${id}`,
     }),
   }),
 });

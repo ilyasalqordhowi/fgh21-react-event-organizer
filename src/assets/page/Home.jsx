@@ -9,11 +9,18 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import { json, Link } from "react-router-dom";
 import Partner from "../component/partner";
 import { useListCategoriesQuery } from "../../redux/services/categories";
+import axios from "axios";
+import { eventCategory } from "../../redux/reducers/eventCategory";
 
 function Home() {
   const [navbar, setNavbar] = React.useState(true);
   const { data, err, isLoading } = useListCategoriesQuery([1, 7]);
   console.log(data?.results, "ini");
+  const url = "http://103.93.58.89:21213";
+  const eventCategoryId = useSelector(
+    (state) => state.eventCategory.listEventCategry
+  );
+  console.log(eventCategoryId);
 
   const [location, setLocation] = React.useState([]);
   const dispatch = useDispatch();
@@ -70,6 +77,14 @@ function Home() {
     }
     dataLocation();
   }, []);
+  async function getEventByCategory(id) {
+    try {
+      const respont = await axios.get(`${url}/events/category/${id}`);
+      dispatch(eventCategory(respont.data.results));
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="bg-[#9400FF]">
@@ -192,7 +207,12 @@ function Home() {
         <div className=" md:flex grid grid-cols-3 md:ml-[0] ml-10 text-[#E4F1FF] justify-center list-none gap-[40px]">
           {data?.results.map((item) => {
             return (
-              <button key={item.id} className="text-white">
+              <button
+                onClick={() => {
+                  getEventByCategory(item.id);
+                }}
+                className="text-white font-bold hover:text-orange-400"
+              >
                 {item.categories}
               </button>
             );
@@ -211,30 +231,38 @@ function Home() {
             className="flex  gap-[30px] mb-[50px]  md:w-[600px] items-center mt-[30px]  relative justify-center ml-10 rounded-xl overflow-x-scroll no-scrollbar"
             id="scrollBottom"
           >
-            {event.map((element) => {
-              return (
-                <Link to="/detail/:id">
-                  <div className="w-[260px] h-[376px] rounded-xl bg-[#27005D] overflow-hidden relative">
-                    <img
-                      src={element.image}
-                      alt=""
-                      className="w-full h-1/2 object-cover"
-                    />
-                    <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
-                      <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
-                        <div>
-                          <p className="text-[15px]">{element.date}</p>
-                          <h1 className="font-bold  text-[30px]">
-                            {element.title}
-                          </h1>
+            {eventCategoryId == 0 ? (
+              <div className="w-[260px] h-[376px] flex flex-col justify-center items-center gap-6">
+                <div className="text-2xl w-full h-1/2 items-center flex font-semibold">
+                  Events not found
+                </div>
+              </div>
+            ) : (
+              eventCategoryId.map((element) => {
+                return (
+                  <Link to="/detail/:id">
+                    <div className="w-[260px] h-[376px] rounded-xl bg-[#27005D] overflow-hidden relative">
+                      <img
+                        src={element.image}
+                        alt=""
+                        className="w-full h-1/2 object-cover"
+                      />
+                      <div className=" absolute top-0 text-white flex  left-0  w-full h-full">
+                        <div className=" text-white  top-0 pl-[20px] pt-[170px] flex flex-col-reverse justify-center mb-[70px] gap-[20px] ">
+                          <div>
+                            <p className="text-[15px]">{element.date}</p>
+                            <h1 className="font-bold  text-[30px]">
+                              {element.title}
+                            </h1>
+                          </div>
+                          <div className="relative top-0 left-0 flex pl-4"></div>
                         </div>
-                        <div className="relative top-0 left-0 flex pl-4"></div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })
+            )}
           </div>
           <div className="md:flex hidden items-center">
             <button

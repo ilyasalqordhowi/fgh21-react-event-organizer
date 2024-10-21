@@ -20,7 +20,7 @@ function Footer() {
           </div>
         </div>
         <div className="text-[#C1C5D0] flex flex-col  gap-[10px]">
-          <h1 className="text-black font-bold">Wetick</h1>
+          <h1 className="text-black font-bold">SnagTick</h1>
           <div>About Us</div>
           <div>Blog</div>
           <div>Payment</div>

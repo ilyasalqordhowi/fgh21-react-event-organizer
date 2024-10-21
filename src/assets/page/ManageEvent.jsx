@@ -77,38 +77,40 @@ function ManageEvent() {
               <button onClick={btnCreate}>Create</button>
             </div>
           </div>
-          {data.map((element) => {
-            return (
-              <div className="flex flex-col gap-[25px]">
-                <div className="flex gap-[25px]">
-                  <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
-                    <img src={element.image} alt="" />
+          <div className="flex flex-col overflow-y-scroll gap-[25px]">
+            {data.map((element) => {
+              return (
+                <div>
+                  <div className="flex gap-[25px]">
+                    <div className="bg-white shadow-lg shadow-black-500/50 p-[14px] w-[50px] h-[75px] text-[#C1C5D0] flex flex-col items-center justify-center rounded-[7px] ">
+                      <img src={element.image} alt="" />
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="text-[24px] mb-[15px]">
+                        {element.title}
+                      </div>
+                      <div className="text-white text-[12px]">
+                        Jakarta, Indonesia
+                      </div>
+                      <div className="text-white    text-[12px]">
+                        {element.date}
+                      </div>
+                      <div className="flex mt-[10px] gap-[14px]">
+                        <button
+                          onClick={() => btnDetail(element.id)}
+                          className="text-[#3366FF]  text-[12px]"
+                        >
+                          Detail
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex flex-col">
-                    <div className="text-[24px] mb-[15px]">{element.title}</div>
-                    <div className="text-white text-[12px]">
-                      Jakarta, Indonesia
-                    </div>
-                    <div className="text-white    text-[12px]">
-                      {element.date}
-                    </div>
-                    <div className="flex mt-[10px] gap-[14px]">
-                      <button
-                        onClick={() => btnDetail(element.id)}
-                        className="text-[#3366FF]  text-[12px]"
-                      >
-                        Detail
-                      </button>
-                    </div>
-                  </div>
+                  <hr className="md:flex hidden"></hr>
                 </div>
-                <hr className="md:flex hidden"></hr>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
           {noEvent ? (
-            ""
-          ) : (
             <div className="flex flex-col items-center py-40">
               <div className="font-semibold text-[24px]">No tickets bought</div>
               <div className="font-medium text-[#B3B8B8] w-[340px] text-center">
@@ -116,6 +118,8 @@ function ManageEvent() {
                 searching these?
               </div>
             </div>
+          ) : (
+            ""
           )}
         </div>
       </div>
