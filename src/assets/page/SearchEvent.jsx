@@ -12,6 +12,7 @@ import { FaForward, FaBackward } from "react-icons/fa";
 import Footer from "../component/Footer";
 
 function SearchEvent() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [eventSearch, setEvent] = useState([]);
   const [page, setPage] = useState(1);
   const { data, err, isLoading } = useListEventsQuery([1, 5]);
@@ -22,7 +23,7 @@ function SearchEvent() {
   }
   async function filterEvents(search = "") {
     const filtered = await fetch(
-      `http://103.93.58.89:21213/events/pagination?search=${search}`
+      `${BASE_URL}/events/pagination?search=${search}`
     );
     const listFiltered = await filtered.json();
     setEvent(listFiltered.results);
@@ -30,7 +31,7 @@ function SearchEvent() {
   async function eventPagination(event) {
     event.preventDefault();
     const pagination = await fetch(
-      `http://103.93.58.89:21213/events/pagination?page=${page}`
+      `${BASE_URL}/events/pagination?page=${page}`
     );
     const listPage = await pagination.json();
     console.log(listPage);

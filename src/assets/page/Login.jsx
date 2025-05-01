@@ -16,6 +16,7 @@ import { addProfile } from "../../redux/reducers/profile";
 import { data } from "autoprefixer";
 
 function Login() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   let { id } = useParams();
   const navigate = useNavigate();
   const [alert, setAlert] = React.useState(false);
@@ -57,7 +58,7 @@ function Login() {
     const formData = new URLSearchParams();
     formData.append("password", password);
     formData.append("email", email);
-    fetch(`http://103.93.58.89:21213/auth/login`, {
+    fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       body: formData,
     }).then((response) => {
@@ -66,7 +67,7 @@ function Login() {
           console.log(data.success);
           dispatch(login(data.results.token));
           async function dataUpdate() {
-            const response = await fetch(`http://103.93.58.89:21213/profile/`, {
+            const response = await fetch(`${BASE_URL}/profile/`, {
               headers: {
                 Authorization: "Bearer " + data.results.token,
               },

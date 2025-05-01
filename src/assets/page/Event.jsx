@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 function Event() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const datatoken = useSelector((state) => state.auth.token);
   let { id } = useParams();
   console.log(id);
@@ -20,7 +21,7 @@ function Event() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch(`http://103.93.58.89:21213/events/` + id);
+        const response = await fetch(`${BASE_URL}/events/` + id);
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
@@ -35,7 +36,7 @@ function Event() {
     dataEvent();
   }, []);
   async function Whishlist() {
-    const response = await fetch(`http://103.93.58.89:21213/whislist/` + id, {
+    const response = await fetch(`${BASE_URL}/whislist/` + id, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + datatoken,

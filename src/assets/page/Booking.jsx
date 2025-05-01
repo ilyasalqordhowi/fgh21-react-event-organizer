@@ -16,6 +16,7 @@ import {
 import Transactions from "../component/transaction";
 
 function Booking() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { id } = useParams();
@@ -30,21 +31,18 @@ function Booking() {
 
   React.useEffect(() => {
     (async function () {
-      const response = await fetch(
-        `http://103.93.58.89:21213/events/section/` + id,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/events/section/` + id, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       const json = await response.json();
       console.log(json, "ini result section");
       const results = json.results;
       setSection(results);
     })();
     (async function () {
-      const response = await fetch(`http://103.93.58.89:21213/events/` + id, {
+      const response = await fetch(`${BASE_URL}/events/` + id, {
         headers: {
           Authorization: "Bearer " + token,
         },

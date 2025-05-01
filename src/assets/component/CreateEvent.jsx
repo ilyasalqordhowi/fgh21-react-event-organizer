@@ -5,6 +5,7 @@ import loadingDino from "../img/dino.gif";
 import { FaRectangleXmark } from "react-icons/fa6";
 
 function CreateEvent() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
   const [message, setMessage] = React.useState(false);
@@ -41,7 +42,7 @@ function CreateEvent() {
     formData.append("date", dateEvent);
     formData.append("descriptions", detailEvent);
 
-    const dataNew = await fetch("http://103.93.58.89:21213/events", {
+    const dataNew = await fetch(`${BASE_URL}/events`, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + datatoken,
@@ -62,7 +63,6 @@ function CreateEvent() {
     }
   }
 
-  createEvent();
   return (
     <>
       {create && (

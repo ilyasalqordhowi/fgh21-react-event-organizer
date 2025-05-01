@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import loadingDino from "../img/dino.gif";
 
 function ChangePassword() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const datatoken = useSelector((state) => state.auth.token);
   console.log(datatoken);
   const [loading, setLoading] = React.useState(true);
@@ -50,7 +51,7 @@ function ChangePassword() {
     formData.append("oldPassword", oldPassword);
     formData.append("newPassword", newPassword);
 
-    const dataPass = await fetch(`http://103.93.58.89:21213/users/password`, {
+    const dataPass = await fetch(`${BASE_URL}/users/password`, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,

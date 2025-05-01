@@ -18,6 +18,7 @@ function Sidebar() {
   const dispatch = useDispatch();
   const forms = useSelector((state) => state.auth.token);
   const profile = useSelector((state) => state.profile.data) || {};
+  console.log(profile.user?.role_id);
 
   console.log(profile);
   function btnlogout() {
@@ -68,12 +69,16 @@ function Sidebar() {
             </div>
           </Link>
         </div>
-        <Link to="/manage-event">
-          <div className="flex hover:text-blue-700  gap-[20px]">
-            <FaCirclePlus />
-            <div>Create Event</div>
-          </div>
-        </Link>
+        {profile.user?.role_id == 1 ? (
+          <Link to="/manage-event">
+            <div className="flex hover:text-blue-700  gap-[20px]">
+              <FaCirclePlus />
+              <div>Create Event</div>
+            </div>
+          </Link>
+        ) : (
+          ""
+        )}
         <Link to="/my-booking">
           <div className="flex hover:text-blue-700  gap-[20px]">
             <FaListCheck />

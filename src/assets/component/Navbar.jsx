@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logoo";
 import { FaBars } from "react-icons/fa";
 import { Link, ScrollRestoration } from "react-router-dom";
@@ -9,8 +9,13 @@ import Sidebar from "./Sidebar";
 function Navbar() {
   const [navbar, setNavbar] = React.useState(true);
   const [sideBar, setSideBar] = React.useState(true);
-
   const profile = useSelector((state) => state.profile.data) || {};
+  console.log(profile.user?.role_id);
+  useEffect(() => {
+    if (profile.user?.role_id) {
+      console.log("Role ID:", profile.user.role_id);
+    }
+  }, [profile.user?.role_id]);
 
   const token = useSelector((state) => state.auth.token);
   function btnNav() {
@@ -43,11 +48,16 @@ function Navbar() {
               Home
             </li>
           </Link>
-          <Link to="/manage-event">
-            <li className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]">
-              Create Event
-            </li>
-          </Link>
+          {profile.user?.role_id == 1 ? (
+            <Link to="/manage-event">
+              <li className="hover:text-blue-400 text-[25px] font-bold  flex gap-[10px]">
+                Create Event
+              </li>
+            </Link>
+          ) : (
+            ""
+          )}
+
           <li>
             <a
               href="#location"
@@ -69,7 +79,7 @@ function Navbar() {
             <div className=" gap-5 md:flex w-full  flex-col md:flex-row items-center">
               <Link to="/sign-in">
                 <div className="bg-[#FFFBF5] text-center text-black font-bold p-[10px]  md:w-[100px] md:rounded-2xl ">
-                  <button>Log in</button>
+                  <button>Sign in</button>
                 </div>
               </Link>
               <Link to="/sign-up">

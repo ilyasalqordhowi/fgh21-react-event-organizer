@@ -10,13 +10,14 @@ import { useEffect } from "react";
 
 function MyWihslist() {
   let { id } = useParams();
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const datatoken = useSelector((state) => state.auth.token);
   const [whislist, setWhislist] = React.useState([]);
   const [noWhislist, setNoWhislist] = React.useState(false);
 
   useEffect(() => {
     async function Whishlist() {
-      const response = await fetch(`http://103.93.58.89:21213/whislist/` + id, {
+      const response = await fetch(`${BASE_URL}/whislist/` + id, {
         headers: {
           Authorization: "Bearer " + datatoken,
         },

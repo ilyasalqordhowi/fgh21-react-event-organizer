@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { addProfile } from "../../redux/reducers/profile";
 
 function EditProfile() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profile = useSelector((state) => state.profile.data);
@@ -27,14 +28,11 @@ function EditProfile() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(
-        `http://103.93.58.89:21213/profile/national`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/profile/national`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       const json = await response.json();
       const dataNew = json.results;
       setNationality(dataNew);
@@ -69,16 +67,13 @@ function EditProfile() {
     formData.append("profession", profession);
     formData.append("nationalityId", nationalityId);
 
-    const dataProfile = await fetch(
-      `http://103.93.58.89:21213/profile/update`,
-      {
-        method: "PATCH",
-        headers: {
-          Authorization: "Bearer " + datatoken,
-        },
-        body: formData,
-      }
-    );
+    const dataProfile = await fetch(`${BASE_URL}/profile/update`, {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + datatoken,
+      },
+      body: formData,
+    });
     console.log(dataProfile, "ini data profile");
     const response = await dataProfile.json();
     if (response.success) {
@@ -98,7 +93,7 @@ function EditProfile() {
   async function uploadImage() {
     const body = new FormData();
     body.append("image", file);
-    const response = await fetch(`http://103.93.58.89:21213/profile/img`, {
+    const response = await fetch(`${BASE_URL}/profile/img`, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + datatoken,
@@ -124,7 +119,7 @@ function EditProfile() {
     };
   };
   async function getData() {
-    const response = await fetch(`http://103.93.58.89:21213/profile/`, {
+    const response = await fetch(`${BASE_URL}/profile/`, {
       headers: {
         Authorization: "Bearer " + datatoken,
       },
@@ -239,7 +234,6 @@ function EditProfile() {
                     </div>
                   </div>
                 </div>
-
                 <div className="md:flex  justify-between">
                   <div>Profession</div>
                   <div className=" flex md:ml-[90px] w-full rounded-[5px] items-center  justify-end p-[30p] ">
@@ -251,7 +245,6 @@ function EditProfile() {
                     />
                   </div>
                 </div>
-
                 <div className="md:flex justify-between">
                   <div>Nationality</div>
                   <div className=" flex w-full md:ml-[90px] rounded-[5px]  items-center justify-end p-[30p] ">
@@ -277,7 +270,6 @@ function EditProfile() {
                     </select>
                   </div>
                 </div>
-
                 <div className="md:flex justify-between">
                   <div> Birthday Date</div>
                   <div className="flex w-full md:ml-[100px]  items-start">

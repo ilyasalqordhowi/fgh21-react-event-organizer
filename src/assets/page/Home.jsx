@@ -13,21 +13,17 @@ import axios from "axios";
 import { eventCategory } from "../../redux/reducers/eventCategory";
 
 function Home() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [navbar, setNavbar] = React.useState(true);
   const { data, err, isLoading } = useListCategoriesQuery([1, 7]);
-  console.log(data?.results, "ini");
-  const url = "http://103.93.58.89:21213";
   const eventCategoryId = useSelector(
     (state) => state.eventCategory.listEventCategry
   );
-  console.log(eventCategoryId);
 
   const [location, setLocation] = React.useState([]);
   const dispatch = useDispatch();
   const event = useSelector((state) => state.event.listEvent);
-  console.log(event);
   function scrollLeft() {
-    console.log("test....");
     document.getElementById("scroll").scrollLeft -= 50;
   }
   function scrollRight() {
@@ -50,7 +46,7 @@ function Home() {
   useEffect(() => {
     async function dataEvent() {
       try {
-        const response = await fetch(`http://103.93.58.89:21213/events`);
+        const response = await fetch(`${BASE_URL}/events`);
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);
@@ -64,7 +60,7 @@ function Home() {
     dataEvent();
     async function dataLocation() {
       try {
-        const response = await fetch(`http://103.93.58.89:21213/locations`);
+        const response = await fetch(`${BASE_URL}/locations`);
         console.log(response);
         if (!response.ok) {
           throw new Error(`response status ${response.status}`);

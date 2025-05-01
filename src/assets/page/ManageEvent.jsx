@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function ManageEvent() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const datatoken = useSelector((state) => state.auth.token);
   const [create, setCreate] = React.useState(true);
   const [data, setData] = React.useState([]);
@@ -22,7 +23,7 @@ function ManageEvent() {
   }
   useEffect(() => {
     async function createEventByUser() {
-      const response = await fetch(`http://103.93.58.89:21213/events/data`, {
+      const response = await fetch(`${BASE_URL}/events/data`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + datatoken,
@@ -44,7 +45,7 @@ function ManageEvent() {
   async function uploadImageEvent() {
     const body = new FormData();
     body.append("eventImg", file);
-    const response = await fetch(`http://103.93.58.89:21213/events/img`, {
+    const response = await fetch(`${BASE_URL}/events/img`, {
       method: "POST",
       body,
     });

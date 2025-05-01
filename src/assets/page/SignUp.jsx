@@ -8,6 +8,7 @@ import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 
 function SignUp() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const [pass, setPass] = React.useState("password");
   const [confPass, setConfPass] = React.useState("password");
@@ -62,6 +63,7 @@ function SignUp() {
     const email = formik.values.email;
     const password = formik.values.password;
     const confirmPassword = formik.values.confirmPassword;
+    const roleId = 2;
 
     console.log(fullName);
     console.log(email);
@@ -73,7 +75,8 @@ function SignUp() {
     formData.append("full_name", fullName);
     formData.append("email", email);
     formData.append("password", password);
-    const dataRegis = await fetch(`http://103.93.58.89:21213/auth/register`, {
+    formData.append("role_id", roleId);
+    const dataRegis = await fetch(`${BASE_URL}/auth/register`, {
       method: "POST",
       body: formData,
     });

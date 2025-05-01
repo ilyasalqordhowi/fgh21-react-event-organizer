@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 
 function Partner() {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [partner, setPartner] = React.useState([]);
   useEffect(() => {
     async function dataPartner() {
       try {
-        const partner = await fetch("http://103.93.58.89:21213/partners");
+        const partner = await fetch(`${BASE_URL}/partners`);
         console.log(partner);
         if (!partner.ok) {
           throw new Error(`partner status ${partner.status}`);
